@@ -2,8 +2,6 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <CscToolPath>C:\Program Files\Unity\Editor\Data\Tools\RoslynScripts</CscToolPath>
-    <CscToolExe>unity_csc.bat</CscToolExe>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -11,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{1C996164-8EB9-CC8B-2A78-3A0C769BF563}</ProjectGuid>
+    <ProjectGuid>{3CE5F14F-4267-D00B-4928-A34AE2EC6531}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -54,6 +52,9 @@
     <UnityVersion>2019.1.14f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -68,6 +69,7 @@
     <Compile Include="Assets\CompoundColliderGenerator\ProceduralToolkit\MeshPrimitives.cs" />
     <Compile Include="Assets\CompoundColliderGenerator\ProceduralToolkit\PTUtils.cs" />
     <Compile Include="Assets\Cost.cs" />
+    <Compile Include="Assets\Cricle.cs" />
     <Compile Include="Assets\DataMananger.cs" />
     <Compile Include="Assets\DebugManager.cs" />
     <Compile Include="Assets\DestroyMySelf.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="Assets\GameMangaer.cs" />
     <Compile Include="Assets\GamePlayerCtrl.cs" />
     <Compile Include="Assets\Games\BotNameData.cs" />
+    <Compile Include="Assets\Games\FPS_Counter.cs" />
     <Compile Include="Assets\Games\Matching\Process_Player.cs" />
     <Compile Include="Assets\Games\Rank\GetInforRankPlayer.cs" />
     <Compile Include="Assets\Games\Rank\RankManager.cs" />
@@ -89,6 +92,46 @@
     <Compile Include="Assets\Games\Shop\Destroy_Review.cs" />
     <Compile Include="Assets\Games\WatchingBall.cs" />
     <Compile Include="Assets\GetInfor.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\AdFailedToLoadEventArgs.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\AdLoader.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\AdPosition.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\AdRequest.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\AdSize.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\BannerView.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\CustomNativeEventArgs.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\CustomNativeTemplateAd.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\Gender.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\InterstitialAd.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\Mediation\MediationExtras.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\MobileAds.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\Reward.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Api\RewardBasedVideoAd.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Common\DummyClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Common\IAdLoaderClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Common\IBannerClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Common\ICustomNativeTemplateClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Common\IInterstitialClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Common\IMobileAdsClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Common\IRewardBasedVideoAdClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Common\MobileAdsEventExecutor.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Common\Utils.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\Android\AdLoaderClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\Android\BannerClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\Android\CustomNativeTemplateClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\Android\InterstitialClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\Android\MobileAdsClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\Android\RewardBasedVideoAdClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\Android\Utils.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\GoogleMobileAdsClientFactory.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\AdLoaderClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\BannerClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\CustomNativeTemplateClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\Externs.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\InterstitialClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\MobileAdsClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\MonoPInvokeCallbackAttribute.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\RewardBasedVideoAdClient.cs" />
+    <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\Utils.cs" />
     <Compile Include="Assets\InforBall.cs" />
     <Compile Include="Assets\InforMap.cs" />
     <Compile Include="Assets\InforPlayer.cs" />
@@ -100,6 +143,7 @@
     <Compile Include="Assets\Octahedron Sphere\OctahedronSphereTester.cs" />
     <Compile Include="Assets\Player.cs" />
     <Compile Include="Assets\Point.cs" />
+    <Compile Include="Assets\QuangCao\Scripts\ManagerAds.cs" />
     <Compile Include="Assets\RollBall.cs" />
     <Compile Include="Assets\Shop\Infor_Skill.cs" />
     <Compile Include="Assets\Shop\List_Infor_Skill.cs" />
@@ -114,27 +158,25 @@
     <None Include="Assets\FX Quest\!Readme.txt" />
     <None Include="Assets\Pokemon XY\Pikachu\Tag.txt" />
     <None Include="Assets\Minions\IMPORTANT!.txt" />
+    <None Include="Assets\Firebase\Plugins\link.xml" />
     <None Include="Assets\obj\readme.txt" />
     <None Include="Assets\bug\Readme.txt" />
+    <None Include="Assets\Firebase\m2repository\com\google\firebase\firebase-analytics-unity\maven-metadata.xml" />
     <None Include="Assets\Minions\IMPORTANTE.txt" />
+    <None Include="Assets\UnityAds\link.xml" />
+    <None Include="Assets\Firebase\m2repository\com\google\firebase\firebase-app-unity\maven-metadata.xml" />
     <None Include="Assets\CompoundColliderGenerator\README.txt" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -313,14 +355,35 @@
     <Reference Include="nunit.framework">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/TestRunner/net35/unity-custom/nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="Firebase.Analytics">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Firebase/Plugins/Firebase.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.App">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Firebase/Plugins/Firebase.App.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Platform">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Firebase/Plugins/Firebase.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.MiniJson">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Firebase/Plugins/Google.MiniJson.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements.Editor">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/UnityAds/UnityEngine.Advertisements.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Tasks">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Parse/Plugins/Unity.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Compat">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Parse/Plugins/Unity.Compat.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

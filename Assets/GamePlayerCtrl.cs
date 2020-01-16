@@ -210,12 +210,14 @@ public class GamePlayerCtrl : MonoBehaviour
             else
             {
                 
-                Debug.Log("REMOVE : "+i +"     "+ player[i].name);
+            //    Debug.Log("REMOVE : "+i +"     "+ player[i].name);
             }
-
+            
         }
         for (int i = 0; i < player.Length; i++)
         {
+            player[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
+            player[i].GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             player[i].GetComponent<Rigidbody>().isKinematic = false;
         }
 
@@ -283,7 +285,7 @@ public class GamePlayerCtrl : MonoBehaviour
        Enemy[] player = GameObject.FindObjectsOfType<Enemy>();
         for(int i = 0; i < player.Length; i++)
         {
-            Debug.Log("NAME : " +player[i].name);
+          //  Debug.Log("NAME : " +player[i].name);
             player[i].GetComponent<Enemy>().Destroy();
             player[i].gameObject.SetActive(false);
         }
@@ -329,25 +331,39 @@ public class GamePlayerCtrl : MonoBehaviour
         while (!Accpect)
         {
             Vector3 pos = Random.insideUnitCircle * Radius;
-            pos = new Vector3(pos.x, Ground + OffSet, pos.z);
-            if (Physics.SphereCast(new Ray(pos, transform.up), 1.2f, 0, MaskPlayer))
-            {
-                Accpect = false;
-                Debug.Log(" NOT OK");
-
-            }
-            else
+            pos = new Vector3(pos.x, Ground + OffSet, pos.y);
+            if (Physics.SphereCastAll(new Ray(pos, transform.up), 1.5f, 0, MaskPlayer).Length==0)
             {
                 Debug.Log("OK");
                 var a = Instantiate(AI, pos, Quaternion.identity, Parent);
 
                 a.name = "AI_" + i;
-                a.GetComponent<InforPlayer>().SetInfor();
-                // StartCoroutine(Spawn_Player(Time.fixedDeltaTime * 3 * i, pos, i));
-                Accpect = true;
+             
+                Debug.Log(a.name + " " + a.GetComponent<Enemy>().GetEnemyInRadius(1.5f,pos,transform.up));
+                if(a.GetComponent<Enemy>().GetEnemyInRadius(1, pos, transform.up) != 0)
+                {
+                    Accpect = false;
+                    a.GetComponent<Enemy>().Destroy();
+                }
+                else
+                {
+                    a.GetComponent<InforPlayer>().SetInfor();
+                    Accpect = true;
+                }
+                //   StartCoroutine(Spawn_Player(Time.fixedDeltaTime * 3 * i, pos, i));
+              
 
 
             }
+            else
+            {
+                Accpect = false;
+                Debug.Log(" NOT OK :" + Physics.SphereCastAll(new Ray(pos, transform.up), 1f, 0, MaskPlayer).Length);
+              
+
+
+            }
+            yield return new WaitForSeconds(0);
         }
       
      

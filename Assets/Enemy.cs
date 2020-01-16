@@ -56,7 +56,8 @@ public class Enemy : MonoBehaviour
     public float Radius = 1;
     // Go Back
     public float MinForce;
-    
+    public float MaxForce;
+
 
     public bool isMoveLimit = false;
     public float Bound;
@@ -92,16 +93,20 @@ public class Enemy : MonoBehaviour
     public Player PlayerDodge;
     public Vector3[] directX8 = { new Vector3(0, 0, 1) ,new Vector3(0.5f,0,0.5f),new Vector3(1,0,0),new Vector3(0.5f,0,-0.5f),new Vector3(-0.5f,0,-0.5f),new Vector3(-0.5f,0,0.5f),new Vector3(-1,0,0),new Vector3(0,0,-1)};
     public Vector3[] directx4 = { new Vector3(0, 0, 1), new Vector3(1, 0, 0), new Vector3(-1, 0, 0), new Vector3(0, 0, -1) };
-
+   
 
     //Local Variable
     bool Stop = false;
-
+    bool isDead = false;
     //Effect
     public GameObject ParticeSmoke;
     public float CoolTimeSmoke = 1;
     //Set String
     public Transform Parent_Skin;
+    public Player isTargetBy;
+    public float Length_Push;
+    public float level=1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -161,26 +166,7 @@ public class Enemy : MonoBehaviour
         }
         if (!GamePlayerCtrl.Instance.isGamePause )
         {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-
-
-                Debug.Log(TransfromVector(Vector3.forward));
-
-            }
-            //  CheckGround
-            
-            if (Input.GetKeyUp(KeyCode.P))
-            {
-                Time.timeScale = 1;
-            }
-
-           
-
-
-
-
-
+        
             /// Move
 
             if (isGround)
@@ -199,7 +185,17 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                body.constraints = RigidbodyConstraints.None;
+                if (!isDead)
+                {
+                    isDead = true;
+                    if (isTargetBy != null)
+                    {
+                        isTargetBy.GetComponent<Enemy>().Incre_Level();
+                        isTargetBy = null;
+                    }
+                    body.constraints = RigidbodyConstraints.None;
+                }
+            
             }
 
 
@@ -403,7 +399,7 @@ public class Enemy : MonoBehaviour
           
             if (Vector3.Magnitude(body.velocity) < Mass)
             {
-             
+                isTargetBy = null;
                 isMoveBack = false;
             }
             else
@@ -507,28 +503,28 @@ public class Enemy : MonoBehaviour
      
       
         float ForceBack = 0;
-        ForceBack = (ForcePlayer + Force)*Length*1.2f;
+        ForceBack = (ForcePlayer + Force)*Length_Push;
     
 
       
            
-            ForceIntertion = (ForceBack/weight) * BoundPlayer;
+            ForceIntertion = Mathf.Clamp((ForceBack/weight) * BoundPlayer,MinForce,MaxForce);
 
 
         DirectMove = direct;
   
         if (gameObject.tag == "Player")
         {
-            Debug.Log(DirectMove + "  " + ForcePlayer + "  " + Force + "  " + Length + " " + BoundPlayer);
-            Debug.Log((ForcePlayer + Force) * Length * 1.2f);
+         //   Debug.Log(DirectMove + "  " + ForcePlayer + "  " + Force + "  " + Length + " " + BoundPlayer);
+           // Debug.Log((ForcePlayer + Force) * Length * 1.2f);
             AddForce((DirectMove * ForceIntertion), ForceModeWhenInteraction, ForceIntertion);
         
             
         }
         else
         {
-            Debug.Log(DirectMove + "  " + ForcePlayer + "  " + Force + "  " + Length + " " + BoundPlayer);
-            Debug.Log((ForcePlayer + Force) * Length * 1.2f);
+         //   Debug.Log(DirectMove + "  " + ForcePlayer + "  " + Force + "  " + Length + " " + BoundPlayer);
+           // Debug.Log((ForcePlayer + Force) * Length * 1.2f);
             AddForce((DirectMove * ForceIntertion), ForceModeWhenInteraction, ForceIntertion);
         
 
@@ -570,10 +566,9 @@ public class Enemy : MonoBehaviour
    
         if (collision.gameObject.layer == 10)
         {
+            isTargetBy = collision.gameObject.GetComponent<Player>();
             Vector3 pos1 = collision.gameObject.transform.position;
-       
             Vector3 pos = transform.position;
-          
             Vector3 direct = (pos - pos1).normalized;
             direct = new Vector3(direct.x, 0, direct.z);
             Debug.Log("Hit");
@@ -1265,11 +1260,12 @@ public class Enemy : MonoBehaviour
    
     // Move Random
   
-    private int GetEnemyInRadius(float radius, Vector3 pos, Vector3 direct)
+    public int GetEnemyInRadius(float radius, Vector3 pos, Vector3 direct)
     {
         int number = 0;
         Ray ray = new Ray(pos, direct);
         RaycastHit[] hits = Physics.SphereCastAll(ray,radius,0,MaskPlayer);
+     //     Debug.Log(gameObject.name + "COLL WITH " + hits.Length);
         number = hits.Length;
         
         string s ="";
@@ -1282,7 +1278,7 @@ public class Enemy : MonoBehaviour
           
         }
         number--;
-        Debug.Log(gameObject.name+ " "+s);
+     
         return number;
     }
     private int GetEnemyInRadius(float radius, Vector3 pos, Vector3 direct, out Player[] player)
@@ -1456,19 +1452,19 @@ public class Enemy : MonoBehaviour
     public void Warring_Limit()
     {
         index_Limit = 0;
-        if (DistanceFromLimitNeart() >= 0 && DistanceFromLimitNeart() < 0.5f)
+        if (DistanceFromLimitNeart() >= 0 && DistanceFromLimitNeart() < 0.5f*level)
         {
             index_Limit = 1;
         }
-        else if (DistanceFromLimitNeart() >= 0.5f && DistanceFromLimitNeart() < 1)
+        else if (DistanceFromLimitNeart() >= 0.5f*level && DistanceFromLimitNeart() < 1*level)
         {
             index_Limit = 2;
         }
-        else if (DistanceFromLimitNeart() >= 1f && DistanceFromLimitNeart() < 1.5f)
+        else if (DistanceFromLimitNeart() >= 1f*level && DistanceFromLimitNeart() < 1.5f*level)
         {
             index_Limit = 3;
         }
-        else if (DistanceFromLimitNeart() >= 1.5f && DistanceFromLimitNeart() < 2)
+        else if (DistanceFromLimitNeart() >= 1.5f*level && DistanceFromLimitNeart() < 2*level)
         {
             index_Limit = 4;
         }
@@ -1554,12 +1550,12 @@ public class Enemy : MonoBehaviour
             Gizmos.DrawLine(transform.position, Target.transform.position);
         }
        
-        Gizmos.DrawWireSphere(transform.position, Radius);
-      //  Debug.Log(gameObject.name + " " + GetEnemyInRadius(Radius, transform.position, transform.up,out player));
+        Gizmos.DrawWireSphere(transform.position,Radius);
+      //  Debug.Log(gameObject.name + " " + GetEnemyInRadius(Radius, transform.position, transform.up));
         Gizmos.color = Color.blue;
        for (int i = 0; i < ListRay.Count; i++)
         {
-               // Gizmos.DrawLine(ListRay[i].transform.position, ListRay[i].transform.position + DirectMove* 50);
+                Gizmos.DrawLine(ListRay[i].transform.position, ListRay[i].transform.position + DirectMove* 50);
         }
        
 
@@ -1695,9 +1691,27 @@ public class Enemy : MonoBehaviour
     {
         Destroy(gameObject);
     }
+   
+    public void Incre_Level()
+    {
+        Debug.Log(" LEVEL UP ");
+    
+            transform.localScale +=  Vector3.one;
+            Vector3 pos = transform.position;
+            pos.y += 0.2f;
+            weight += 1;
+            Mass += 1;
+            Speed -= 2;
+            Bound += 1f;
+            transform.position = pos;
+            level += 0.8f;
+            MassChance +=5;
+            Radius += 0.8f;
+        }
+    }
+       
 
 
-}
 
 
 

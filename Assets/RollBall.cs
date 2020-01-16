@@ -47,7 +47,7 @@ public class RollBall : Enemy
     public float Wait_For_Complete = 0.2f;
     //GoBack
     public bool isGoBack = false;
-
+    public int id_Skin;
    
     private void Awake()
     {
@@ -71,10 +71,21 @@ void Start()
     {
 
         InitGird();
+        SetUpSkin();
         body = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
+
+        public void SetUpSkin() 
+    {
+        Parent_Skin.GetChild(0).gameObject.AddComponent<Destroy_Review>().Destroy();
+        int id = DataMananger.Instance.Get_Id_Skin();
+        id_Skin = id;
+        var a = Instantiate(DataMananger.Instance.Data_Skills.ListModel[id], Parent_Skin);
+        a.transform.localScale = Vector3.one;
+        a.transform.localPosition = Vector3.zero;
+    }
     public override void Update()
     {
 
@@ -371,7 +382,7 @@ void Start()
 
             
 
-            body.AddForce(DirectMove.normalized * SpeedVelocity*Time.deltaTime*Length,ForceModeWhenMove);
+            body.AddForce(DirectMove * SpeedVelocity*Time.deltaTime*Length,ForceModeWhenMove);
             //  Body.AddForce(new Vector3(LastDirect.x * SpeedVelocity, 0, -LastDirect.y * SpeedVelocity));
             // Body.AddForce(LastDirect* SpeedVelocity,ForceMode.VelocityChange);
             //   Debug.Log("ADD FORCE_1");

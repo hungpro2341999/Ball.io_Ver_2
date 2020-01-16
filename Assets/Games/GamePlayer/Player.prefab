@@ -24,10 +24,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077255141651849192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.221, y: 0.05, z: -0.065}
+  m_LocalPosition: {x: 0, y: -0.005, z: -0.092}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1912736078160590448}
+  - {fileID: 1077255142632244994}
   m_Father: {fileID: 6278288905637594091}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -60,7 +60,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7024401171822998008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.072, y: 20.41, z: 0}
+  m_LocalPosition: {x: -0.267, y: 0, z: 0.028}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1077255141651849199}
@@ -116,7 +116,8 @@ MonoBehaviour:
   weight: 1
   distanceRay: 0
   Radius: 1
-  MinForce: 3
+  MinForce: 200
+  MaxForce: 1200
   isMoveLimit: 0
   Bound: 1
   MassLimit: 0
@@ -162,6 +163,9 @@ MonoBehaviour:
   ParticeSmoke: {fileID: 0}
   CoolTimeSmoke: 1
   Parent_Skin: {fileID: 1077255141651849199}
+  isTargetBy: {fileID: 0}
+  Length_Push: 0
+  level: 1
   isColling: 0
   player: []
   posMouse: {x: 0, y: 0}
@@ -169,8 +173,8 @@ MonoBehaviour:
   isClick1: 0
   isClick2: 0
   LastDirect: {x: 0, y: 0, z: 0}
-  SpeedVelocity: 2
-  SpeedNode: 2
+  SpeedVelocity: 15
+  SpeedNode: 1
   SpeedRoll: 1
   maxVec: 50
   offSetX: 8
@@ -184,6 +188,7 @@ MonoBehaviour:
   isMovePath: 0
   Wait_For_Complete: 0.2
   isGoBack: 0
+  id_Skin: 0
   rotationX: 0
   rotationY: 0
   SpeedRotaion: 20
@@ -198,8 +203,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2930718
-  m_Center: {x: -0.21810538, y: 0.05196178, z: -0.09}
+  m_Radius: 0.29810295
+  m_Center: {x: 0.001, y: -0.01, z: -0.09000003}
 --- !u!54 &7024401171822998010
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -213,9 +218,9 @@ Rigidbody:
   m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 2
+  m_Interpolate: 0
   m_Constraints: 4
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!114 &7024401171822998004
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +258,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Skin_BasketBall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1475010843301851844, guid: 03c2a62fa2a195b4ab2adeae18085ee1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1475010843301851851, guid: 03c2a62fa2a195b4ab2adeae18085ee1,
         type: 3}
@@ -311,7 +321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03c2a62fa2a195b4ab2adeae18085ee1, type: 3}
---- !u!4 &1912736078160590448 stripped
+--- !u!4 &1077255142632244994 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1475010843301851851, guid: 03c2a62fa2a195b4ab2adeae18085ee1,
     type: 3}

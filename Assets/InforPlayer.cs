@@ -20,6 +20,11 @@ public class InforPlayer : MonoBehaviour
         {
             DataMananger.Instance.Push_Infor(this);
         }
+        else
+        {
+            namePlayer = DataMananger.Instance.Get_Name_Player();
+          
+        }
       
        
     }

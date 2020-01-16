@@ -57,7 +57,7 @@ public class Loading_Screen : MonoBehaviour
             {
            
                 int index = Random.Range(0, numberPlayer);
-                Debug.Log("INDEX : " + index);
+             //   Debug.Log("INDEX : " + index);
                 if (Loaded.Contains(index))
                 {
                     continue;
@@ -87,9 +87,9 @@ public class Loading_Screen : MonoBehaviour
 
     public IEnumerator Process_Loading(int index,GameObject game,float wait_time,bool isComplete)
     {
-        Debug.Log("INDEX : "+index);
+     //   Debug.Log("INDEX : "+index);
         Process_Player process = DataMananger.Instance.Set_Random_Infor();
-        Debug.Log(process.name);
+     //   Debug.Log(process.name);
         list_Process.Add(process);
        
      yield return new WaitForSeconds(wait_time);

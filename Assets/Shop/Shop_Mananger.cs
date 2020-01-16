@@ -84,7 +84,7 @@ public class Shop_Mananger : MonoBehaviour
     }
     public void Buy()
     {
-        if (Text_Cost.text!="BUYED")
+        if (Text_Cost.text!="USE")
         {
          
 
@@ -102,7 +102,7 @@ public class Shop_Mananger : MonoBehaviour
                                
                                 DataMananger.Instance.Earn_Coin(infor.infor.Cost);
                                 infor.infor.isBuy = true;
-                                SetCode("Buy");
+                                SetCode("USE");
                                 Load_Infor();
 
                             }
@@ -113,9 +113,14 @@ public class Shop_Mananger : MonoBehaviour
                 }                
             }
         }
-        else
+        else if(Text_Cost.text == "USE")
         {
-
+           
+           
+            DataMananger.Instance.Set_Id_Skin_Use(Stuff_Choice);
+            
+            Debug.Log("USE"+"   "+DataMananger.Instance.Get_Id_Skin());
+            
         }
      
     }

@@ -194,5 +194,13 @@ public class GameMangaer : MonoBehaviour
             }
         }
     }
+    public void Open_Ads_Reward() 
+    {
+       // ManagerAds.Ins.ShowRewardedVideo();
+    }
+    public void Open_Ads_Full() 
+    {
+        ManagerAds.Ins.ShowInterstitial();
+    }
    
 }

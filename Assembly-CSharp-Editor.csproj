@@ -2,8 +2,6 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <CscToolPath>C:\Program Files\Unity\Editor\Data\Tools\RoslynScripts</CscToolPath>
-    <CscToolExe>unity_csc.bat</CscToolExe>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -11,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{697B0051-AA9A-0980-2044-DA199D149856}</ProjectGuid>
+    <ProjectGuid>{D7810752-AB4D-FBE8-F441-AD2E4A1C22FC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -54,6 +52,9 @@
     <UnityVersion>2019.1.14f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Editor\Data\Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -68,23 +69,23 @@
     <Compile Include="Assets\Games\GoogleSheetReading\Editor\GGSheet.cs" />
     <Compile Include="Assets\Games\GoogleSheetReading\Editor\ReadExcelOnline.cs" />
     <Compile Include="Assets\Octahedron Sphere\Editor\OctahedronSphereWizard.cs" />
+    <Compile Include="Assets\QuangCao\Scripts\Editor\CustomAdsEditor.cs" />
+    <None Include="Assets\Firebase\Editor\FirebaseAnalytics_v5.3.1_manifest.txt" />
+    <None Include="Assets\Firebase\Editor\AppDependencies.xml" />
+    <None Include="Assets\PlayServicesResolver\Editor\play-services-resolver_v1.2.92.0.txt" />
+    <None Include="Assets\Firebase\Editor\AnalyticsDependencies.xml" />
+    <None Include="Assets\GoogleMobileAds\Editor\GoogleMobileAdsDependencies.xml" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -288,43 +289,79 @@
       <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
-      <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+      <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Editor">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Firebase/Editor/Firebase.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Analytics">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Firebase/Plugins/Firebase.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.App">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Firebase/Plugins/Firebase.App.dll</HintPath>
+    </Reference>
+    <Reference Include="Firebase.Platform">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Firebase/Plugins/Firebase.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.MiniJson">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Firebase/Plugins/Google.MiniJson.dll</HintPath>
     </Reference>
     <Reference Include="FX Quest">
-      <HintPath>E:/Game_Ball/Ball.io_online/Assets/FX Quest/Editor/FX Quest.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/FX Quest/Editor/FX Quest.dll</HintPath>
     </Reference>
     <Reference Include="Google.Apis.Auth">
-      <HintPath>E:/Game_Ball/Ball.io_online/Assets/Games/GoogleSheetReading/Editor/Google.Apis.Auth.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Games/GoogleSheetReading/Editor/Google.Apis.Auth.dll</HintPath>
     </Reference>
     <Reference Include="Google.Apis.Core">
-      <HintPath>E:/Game_Ball/Ball.io_online/Assets/Games/GoogleSheetReading/Editor/Google.Apis.Core.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Games/GoogleSheetReading/Editor/Google.Apis.Core.dll</HintPath>
     </Reference>
     <Reference Include="Google.Apis">
-      <HintPath>E:/Game_Ball/Ball.io_online/Assets/Games/GoogleSheetReading/Editor/Google.Apis.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Games/GoogleSheetReading/Editor/Google.Apis.dll</HintPath>
     </Reference>
     <Reference Include="Google.Apis.PlatformServices">
-      <HintPath>E:/Game_Ball/Ball.io_online/Assets/Games/GoogleSheetReading/Editor/Google.Apis.PlatformServices.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Games/GoogleSheetReading/Editor/Google.Apis.PlatformServices.dll</HintPath>
     </Reference>
     <Reference Include="Google.Apis.Sheets.v4">
-      <HintPath>E:/Game_Ball/Ball.io_online/Assets/Games/GoogleSheetReading/Editor/Google.Apis.Sheets.v4.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Games/GoogleSheetReading/Editor/Google.Apis.Sheets.v4.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>E:/Game_Ball/Ball.io_online/Assets/Games/GoogleSheetReading/Editor/Newtonsoft.Json.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Games/GoogleSheetReading/Editor/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.IOSResolver_v1.2.92.0">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.92.0.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.JarResolver_v1.2.92.0">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/PlayServicesResolver/Editor/Google.JarResolver_v1.2.92.0.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.VersionHandler">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/PlayServicesResolver/Editor/Google.VersionHandler.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.VersionHandlerImpl_v1.2.92.0">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/PlayServicesResolver/Editor/Google.VersionHandlerImpl_v1.2.92.0.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Advertisements.Editor">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/UnityAds/UnityEngine.Advertisements.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-      <HintPath>E:/Game_Ball/Ball.io_online/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Tasks">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Parse/Plugins/Unity.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Compat">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Parse/Plugins/Unity.Compat.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -683,7 +720,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{1C996164-8EB9-CC8B-2A78-3A0C769BF563}</Project>
+      <Project>{3CE5F14F-4267-D00B-4928-A34AE2EC6531}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
   </ItemGroup>

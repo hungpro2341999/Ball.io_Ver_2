@@ -32,6 +32,9 @@ public class Windown : MonoBehaviour
         if (type == Windown_Type.End_Game)
         {
             StartCoroutine(BackToStartScreen());
+        }else if(type == Windown_Type.Game_Over) 
+        {
+            Cricle.Wait_Over_Game = true;
         }
     }
     public void Close()

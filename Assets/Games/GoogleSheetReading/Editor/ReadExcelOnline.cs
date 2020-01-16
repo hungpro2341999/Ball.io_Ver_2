@@ -73,19 +73,19 @@ public static class ReadExcelOnline
         ClientSecrets clientSecrets = new ClientSecrets();
         clientSecrets.ClientId = CLIENT_ID;
         clientSecrets.ClientSecret = CLIENT_SECRET;
-        try
-        {
-            credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                clientSecrets,
-                Scopes,
-                "user",
-                CancellationToken.None,
-                new FileDataStore(scriptFolder, true)).Result;
-        }
-        catch (Exception e)
-        {
-            Debug.LogError(e.ToString());
-        }
+        //try
+        //{
+        //    credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
+        //        clientSecrets,
+        //        Scopes,
+        //        "user",
+        //        CancellationToken.None,
+        //        new FileDataStore(scriptFolder, true)).Result;
+        //}
+        //catch (Exception e)
+        //{
+        //    Debug.LogError(e.ToString());
+        //}
 
         return credential;
     }

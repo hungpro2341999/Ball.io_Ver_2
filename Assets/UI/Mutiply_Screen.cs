@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum Windown_Type {Start,Shop,Setting,Quest,Play,Revice,Game_Over,Rank,End_Game,Wait_For_Start}
 public enum Screen_Type {Screen_Start,Screen_Play,Screen_loading}
@@ -9,15 +10,17 @@ public class Mutiply_Screen : MonoBehaviour
 {
     public Screen_Type Type_Screen;
     public List<Windown> Windows;
+    public InputField input_Name;
     //   public BotNameData botnameData;
 
     // Start is called before the first frame update
     private void Awake()
     {
+
         switch (Type_Screen)
         {
             case Screen_Type.Screen_Start:
-
+                 input_Name.text = DataMananger.Instance.Get_Name_Player();
                  CloseAll(Windown_Type.Start);
                 GamePlayerCtrl.Instance.Event_Over_Game += End_Game_Start;
                 break;
@@ -36,6 +39,12 @@ public class Mutiply_Screen : MonoBehaviour
     {
        
        
+    }
+    public void Change_Name() 
+    {
+        string name = input_Name.text;
+        DataMananger.Instance.Set_Name_Player(name);
+
     }
     public void End_Game_Start() 
     

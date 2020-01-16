@@ -25,8 +25,10 @@ public class DataMananger : MonoBehaviour
     public const string Key_Variable = "Key_Var";
     public const string Key_Shop = "Key_Shop";
     public const string Key_Coin = "Key_Coin";
-    public const string Key_Name = "Key_Name";
+  
     public const string Key_Model_Use = "Key_Model_Use";
+    public const string Key_Name_Player = "Key_Name_Player";
+   
     #endregion
 
     #region 
@@ -80,7 +82,7 @@ public class DataMananger : MonoBehaviour
         }
 
         //  INIT SHOP
-       //  PlayerPrefs.DeleteKey(Key_Shop);
+      //  PlayerPrefs.DeleteKey(Key_Shop);
         if (!PlayerPrefs.HasKey(Key_Shop))
         {
           List<Infor_Skill> lists = new List<Infor_Skill>();
@@ -118,7 +120,7 @@ public class DataMananger : MonoBehaviour
         else
         {
             List<Infor_Skill> list = JsonUtility.FromJson<List_Infor_Skill>(PlayerPrefs.GetString(Key_Shop)).lists;
-            Debug.Log("CO SKIN : " + list.Count);
+        //    Debug.Log("CO SKIN : " + list.Count);
             Data_Skills.List_infor_Skill = list;
             Render();
 
@@ -148,16 +150,45 @@ public class DataMananger : MonoBehaviour
 
         }
         // Init Ball Player
-        if (PlayerPrefs.HasKey(Key_Model_Use))
+     //   PlayerPrefs.DeleteKey(Key_Model_Use);
+        if (!PlayerPrefs.HasKey(Key_Model_Use))
         {
             PlayerPrefs.SetInt(Key_Model_Use, 0);
             PlayerPrefs.Save();
         }
-        else
         {
-            id_mode_Use = PlayerPrefs.GetInt(Key_Model_Use);
-            
+            Debug.Log("SKIN : " +PlayerPrefs.GetInt(Key_Model_Use));
         }
+
+        // Init_Name_Player
+        if (!PlayerPrefs.HasKey(Key_Name_Player)) 
+        {
+            PlayerPrefs.SetString(Key_Name_Player, "");
+            PlayerPrefs.Save();
+        
+        }
+      
+    }
+    public void Set_Name_Player(string name) 
+    {
+        PlayerPrefs.SetString(Key_Name_Player, name);
+        PlayerPrefs.Save();
+    }
+    public string Get_Name_Player() 
+    {
+        return PlayerPrefs.GetString(Key_Name_Player);
+    }
+
+    public void Set_Id_Skin_Use(int id)
+    {
+        PlayerPrefs.SetInt(Key_Model_Use, id);
+        PlayerPrefs.Save();
+    }
+    public int Get_Id_Skin() 
+    {
+        
+        return PlayerPrefs.GetInt(Key_Model_Use);
+    
     }
   
     public GameObject getModel(int id)
@@ -253,7 +284,7 @@ public class DataMananger : MonoBehaviour
         List<Infor_Skill> list = JsonUtility.FromJson<List_Infor_Skill>(PlayerPrefs.GetString(Key_Shop)).lists;
         for(int i = 0;i< list.Count; i++)
         {
-            Debug.Log(list[i].id + "   " + list[i].isBuy);
+        //    Debug.Log(list[i].id + "   " + list[i].isBuy);
         }
     }
 
@@ -314,6 +345,8 @@ public class DataMananger : MonoBehaviour
       
 
     }
+    
+    
 
 
 }
