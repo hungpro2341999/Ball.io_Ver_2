@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class InforSkill : MonoBehaviour,IPointerDownHandler
 {
@@ -10,6 +11,7 @@ public class InforSkill : MonoBehaviour,IPointerDownHandler
     public Infor_Skill infor;
     public bool isChoice = false;
     public Transform choice;
+    public Image Render;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +23,9 @@ public class InforSkill : MonoBehaviour,IPointerDownHandler
     {
         
     }
-    public void Load_Infor()
+    public void Load_Infor(int Image)
     {
+        Render.sprite = DataMananger.Instance.Data_Skills.Images[Image];
        if(infor.isBuy)
         {
            

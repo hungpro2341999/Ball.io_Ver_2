@@ -140,20 +140,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-
-
-            Debug.Log(gameObject.name + "  " + GetEnemyInRadius(10, transform.position, body.velocity.normalized));
-
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-
-
-            Time.timeScale = 0;
-
-        }
+       
         if (Physics.Raycast(new Ray(transform.position, -Vector3.up), CheckGround))
         {
             // body.constraints = RigidbodyConstraints.FreezePositionY;
@@ -211,7 +198,7 @@ public class Enemy : MonoBehaviour
     {
         if (IsCollWall(body.velocity.normalized))
         {
-            body.velocity = body.velocity - Time.deltaTime * body.velocity * MassChance;
+            body.velocity = body.velocity - Time.deltaTime * body.velocity*100;
         }
          
         
@@ -385,7 +372,7 @@ public class Enemy : MonoBehaviour
                       
 
                    // ICanNotDead();
-                    body.AddForce((DirectMove*Random.Range(0,3)) * Speed*Time.fixedDeltaTime*Length, ForceModeWhenMove);
+                    body.AddForce(DirectMove*Speed*Time.deltaTime*Length, ForceModeWhenMove);
 
 
 
@@ -508,7 +495,7 @@ public class Enemy : MonoBehaviour
 
       
            
-            ForceIntertion = Mathf.Clamp((ForceBack/weight) * BoundPlayer,MinForce,MaxForce);
+            ForceIntertion = Mathf.Clamp((ForceBack/weight) *Length* BoundPlayer,MinForce,MaxForce);
 
 
         DirectMove = direct;
@@ -567,12 +554,15 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.layer == 10)
         {
             isTargetBy = collision.gameObject.GetComponent<Player>();
-            Vector3 pos1 = collision.gameObject.transform.position;
-            Vector3 pos = transform.position;
-            Vector3 direct = (pos - pos1).normalized;
-            direct = new Vector3(direct.x, 0, direct.z);
-            Debug.Log("Hit");
-            MoveBack(gameObject,direct,collision.gameObject.GetComponent<Enemy>());
+           
+                Vector3 pos1 = collision.gameObject.transform.position;
+                Vector3 pos = transform.position;
+                Vector3 direct = (pos - pos1).normalized;
+                direct = new Vector3(direct.x, 0, direct.z);
+                Debug.Log("Hit");
+                MoveBack(gameObject, direct, collision.gameObject.GetComponent<Enemy>());
+            
+         
           
           Instantiate(SpawnEffect.Instance.getEffectName("Hit"), collision.collider.ClosestPointOnBounds(transform.position), Quaternion.identity, null);
         }
@@ -1695,20 +1685,28 @@ public class Enemy : MonoBehaviour
     public void Incre_Level()
     {
         Debug.Log(" LEVEL UP ");
+           
     
             transform.localScale +=  Vector3.one;
             Vector3 pos = transform.position;
             pos.y += 0.2f;
             weight += 1;
             Mass += 1;
-            Speed -= 2;
+       //     Speed -= 2;
             Bound += 1f;
             transform.position = pos;
             level += 0.8f;
             MassChance +=5;
             Radius += 0.8f;
         }
-    }
+
+    // Movement
+    public List<Vector3> Point = new List<Vector3>();
+    public Vector3 PosInit = Vector3.zero;
+  
+}
+    
+    
        
 
 

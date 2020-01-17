@@ -54,17 +54,7 @@ public class RollBall : Enemy
 
        
     }
-    public void RotateToVelocity(float turnSpeed, bool ignoreY) {
-    Vector3 dir;    
-
-        dir = new Vector3(body.velocity.x, 0f, body.velocity.z);
-
-    
-     {
-       
-          
-        }
- }
+   
 
    
 void Start()
@@ -104,9 +94,9 @@ void Start()
             body.maxAngularVelocity = Mathf.Infinity;
 
 
-       
 
-         
+
+
 
 
             if (isGround)
@@ -128,46 +118,77 @@ void Start()
 
                     if (isClick1)
                     {
-                        if (count < 1)
-                        {
+                        //    if (count < 1)
+                        //    {
 
-                        }
-                        //    Debug.Log("Get");
+                        //    }
+                        //    //    Debug.Log("Get");
 
+
+
+                        //    AddPoint(point);
+                        //    int LastPoint = ListPoint.Count - 1;
+                        //    if (ListPoint.Count > 1)
+                        //    {
+                        //        DirectMove = (ListPoint[LastPoint] - ListPoint[LastPoint - 1]) * Time.deltaTime;
+
+
+                        //    }
+                        //    else
+                        //    {
+                        //        DirectMove = Vector3.zero;
+                        //        AddDirect(DirectMove);
+                        //    }
+                        //    // GeneratePath();
+
+
+
+
+
+                        //}
+                        //else
+                        //{
+                        //    ClearRecover();
+                        //}
                         Vector3 point = Input.mousePosition;
-
-                        AddPoint(point);
-                        int LastPoint = ListPoint.Count - 1;
-                        if (ListPoint.Count > 1)
-                        {
-                            DirectMove = (ListPoint[LastPoint] - ListPoint[LastPoint - 1]) * Time.deltaTime;
-
-
-                        }
-                        else
-                        {
-                            DirectMove = Vector3.zero;
-                            AddDirect(DirectMove);
-                        }
-                        // GeneratePath();
-
+                        DirectMove = Process_Point(point);
                         MoveToWardMouse();
-
 
 
                     }
                     else
                     {
-                        ClearRecover();
+
+                        //ClearRecover();
+                        Reset();
+                      
+
+
+
+
+
                     }
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        isClick1 = false;
+                        Reset();
+                        //ClearRecover();
+
+                    }
+                    if (isClick1)
+                    {
+                        if (!isMoveBack)
+                        {
+
+                        }
 
 
 
+
+                    }
                 }
                 else
                 {
-
-                    ClearRecover();
                     if (Vector3.Magnitude(body.velocity) < Mass)
                     {
                         isMoveBack = false;
@@ -179,41 +200,14 @@ void Start()
 
 
                     }
-
-
-
-
-
-                }
-                if (Input.GetMouseButtonUp(0))
-                {
                     isClick1 = false;
-                
-                    ClearRecover();
+                    Reset();
+                    //ClearRecover();
 
                 }
-                if (isClick1)
-                {
-                    if (!isMoveBack)
-                    {
-
-                    }
-
-
-
-
-                }
-            }
-            else
-            {
-                
-                isClick1 = false;
-               
-                ClearRecover();
+                Force = body.velocity.magnitude;
 
             }
-            Force = body.velocity.magnitude;
-
         }
     }
     private void LateUpdate()
@@ -470,33 +464,7 @@ void Start()
 
 
 
-    private void OnDrawGizmos()
-    {
-        
-        Rect rectInt = new Rect(1, 1, 1, 1);
-        int x = (int)(Width / offSetX);
-        int y = (int)(Height / offSetY);
-        Vector3 PosInit = Camera.main.ScreenToViewportPoint(new Vector3(0, 1280, 0));
-        InitGird();
-        for (int i = 0; i <=y; i++)
-        {
-           
-
-          //  Debug.DrawLine(new Vector3(0, i * offSetY, 0), new Vector3(720, i * offSetY, 0));
-        }
-        for (int i = 0; i <=x; i++)
-        {
-            Gizmos.color = Color.blue;
-            
-         //   Debug.DrawLine(new Vector3(i * offSetX, 0, 0), new Vector3(i * offSetX, 1280, 0));
-
-        }
-        Gizmos.DrawRay(new Ray(transform.position, DirectMove*100));
-        
-
-
-
-    }
+    
    
 
 
@@ -532,7 +500,78 @@ void Start()
 
     }
 
+    public Vector3 Process_Point(Vector3 point)
+    {
+        Point.Add(point);
+        int length = Point.Count;
+        if (length > 1)
+        {
+            if (Point[length - 1] != Point[length - 2])
+            {
+                Vector3 direct = Point[length - 1] - PosInit;
+
+                Debug.Log("TOWARD_MOUSE");
+
+                if (Vector3.Angle(direct.normalized,DirectMove.normalized)>4)
+                {
+                    PosInit = Point[length - 1];
+                    Point.RemoveRange(0, length - 1);
+                    direct = Vector3.zero;
+                    return Vector3.zero;
+
+                }
+                return direct.normalized;
+
+            }
+            else
+            {
+                Debug.Log("INIT_2");
+                PosInit = Point[length - 1];
+                Point.RemoveRange(0, length - 1);
+                return Vector3.zero;
+            }
+        }
+        else
+        {
+            Debug.Log("INIT");
+            PosInit = Point[length - 1];
+            return Vector3.zero;
+        }
+
+    }
+    public void Reset()
+    {
+        PosInit = Vector3.zero;
+        Point.Clear();
+    }
+
+    private void OnDrawGizmos()
+    {
+
+        //Rect rectInt = new Rect(1, 1, 1, 1);
+        //int x = (int)(Width / offSetX);
+        //int y = (int)(Height / offSetY);
+        //Vector3 PosInit = Camera.main.ScreenToViewportPoint(new Vector3(0, 1280, 0));
+        //InitGird();
+        //for (int i = 0; i <= y; i++)
+        //{
 
 
+        //    //  Debug.DrawLine(new Vector3(0, i * offSetY, 0), new Vector3(720, i * offSetY, 0));
+        //}
+        //for (int i = 0; i <= x; i++)
+        //{
+        //    Gizmos.color = Color.blue;
+
+        //    //   Debug.DrawLine(new Vector3(i * offSetX, 0, 0), new Vector3(i * offSetX, 1280, 0));
+
+        //}
+        //Gizmos.DrawRay(new Ray(transform.position, DirectMove * 100));
+        
+       
+
+
+
+    }
 
 }

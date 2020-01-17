@@ -367,6 +367,12 @@
     <Reference Include="Google.MiniJson">
       <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Firebase/Plugins/Google.MiniJson.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Compat">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Parse/Plugins/Unity.Compat.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Tasks">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Parse/Plugins/Unity.Tasks.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Advertisements.Editor">
       <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/UnityAds/UnityEngine.Advertisements.Editor.dll</HintPath>
     </Reference>
@@ -378,12 +384,6 @@
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
       <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Tasks">
-      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Parse/Plugins/Unity.Tasks.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Compat">
-      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Parse/Plugins/Unity.Compat.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

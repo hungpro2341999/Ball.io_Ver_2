@@ -327,6 +327,12 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Games/GoogleSheetReading/Editor/Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Compat">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Parse/Plugins/Unity.Compat.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Tasks">
+      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Parse/Plugins/Unity.Tasks.dll</HintPath>
+    </Reference>
     <Reference Include="Google.IOSResolver_v1.2.92.0">
       <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/PlayServicesResolver/Editor/Google.IOSResolver_v1.2.92.0.dll</HintPath>
     </Reference>
@@ -356,12 +362,6 @@
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Tasks">
-      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Parse/Plugins/Unity.Tasks.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Compat">
-      <HintPath>C:/Users/Hong Anh/Desktop/Project/GameBall_Ver_1.io/Ball.io_Ver_2/Assets/Parse/Plugins/Unity.Compat.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

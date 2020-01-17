@@ -27,7 +27,7 @@ Transform:
   m_LocalPosition: {x: 0, y: -0.005, z: -0.092}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1077255142632244994}
+  - {fileID: 1912736078160590448}
   m_Father: {fileID: 6278288905637594091}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -79,11 +79,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65549fb03de650d47a646f9509f29fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MassChance: 2
+  MassChance: 3
   Status: 0
   text: {fileID: 0}
   Type_Chance: 4
-  ForceModeWhenMove: 0
+  ForceModeWhenMove: 5
   ForceModeWhenInteraction: 0
   ForceModeWhenBrake: 0
   status: 2
@@ -168,6 +168,8 @@ MonoBehaviour:
   level: 1
   isColling: 0
   player: []
+  Point: []
+  PosInit: {x: 0, y: 0, z: 0}
   posMouse: {x: 0, y: 0}
   direct: {x: 0, y: 1, z: 0}
   isClick1: 0
@@ -321,7 +323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03c2a62fa2a195b4ab2adeae18085ee1, type: 3}
---- !u!4 &1077255142632244994 stripped
+--- !u!4 &1912736078160590448 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1475010843301851851, guid: 03c2a62fa2a195b4ab2adeae18085ee1,
     type: 3}

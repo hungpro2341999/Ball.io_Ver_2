@@ -45,7 +45,7 @@ public class Shop_Mananger : MonoBehaviour
         {
            var a = Instantiate(Skill, parent);
             a.GetComponent<InforSkill>().infor  = DataMananger.Instance.Data_Skills.List_infor_Skill[i];
-            a.GetComponent<InforSkill>().Load_Infor();
+            a.GetComponent<InforSkill>().Load_Infor(i);
             listSkill.Add(a);
         }
     }

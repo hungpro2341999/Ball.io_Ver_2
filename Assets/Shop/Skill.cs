@@ -10,8 +10,8 @@ public class Skill : ScriptableObject
     public List<GameObject> ListModel;
     public List<Infor_Skill> List_infor_Skill;
     public List<int> Cost;
+    public List<Sprite> Images;
 
-  
     public bool isBuy = false;
     public bool isUse = false;
     public Type_Skill Type_Skill;
