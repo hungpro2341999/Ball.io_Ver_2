@@ -105,12 +105,25 @@ public class Shop_Mananger : MonoBehaviour
                                 SetCode("USE");
                                 Load_Infor();
 
+                                var a = Instantiate(SpawnEffect.Instance.getEffectName("Status"), null);
+                                a.GetComponent<Status>().SetText("OK YOU GOT SOMETHING  LET TRY IT !!!");
+
+                            }
+                            else
+                            {
+                                var a = Instantiate(SpawnEffect.Instance.getEffectName("Status"), null);
+                                a.GetComponent<Status>().SetText("NOT ENOUGHT MONEY !!!");
                             }
 
                         }
                     }
                    
-                }                
+                }
+            }
+            else
+            {
+                var a = Instantiate(SpawnEffect.Instance.getEffectName("Status"), null);
+                a.GetComponent<Status>().SetText("CHOICE SOMETHING MAN !!!");
             }
         }
         else if(Text_Cost.text == "USE")
@@ -120,6 +133,8 @@ public class Shop_Mananger : MonoBehaviour
             DataMananger.Instance.Set_Id_Skin_Use(Stuff_Choice);
             
             Debug.Log("USE"+"   "+DataMananger.Instance.Get_Id_Skin());
+
+            
             
         }
      
@@ -142,4 +157,5 @@ public class Shop_Mananger : MonoBehaviour
        
         
     }
+   
 }

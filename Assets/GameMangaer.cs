@@ -194,13 +194,41 @@ public class GameMangaer : MonoBehaviour
             }
         }
     }
-    public void Open_Ads_Reward() 
+    
+
+    public void Open_Ads_Reward(int Coint) 
     {
-       // ManagerAds.Ins.ShowRewardedVideo();
+        Debug.Log("Show_1");
+        if (ManagerAds.Ins.IsRewardVideoAvailable())
+        {
+            ManagerAds.Ins.ShowRewardedVideo(success =>
+            {
+                if (success)
+                {
+                    Debug.Log("Show");
+                    DataMananger.Instance.Add_Coin(Coint);
+                }
+            });
+
+        }
+
+    }
+    public void GetReward()
+    {
+        Debug.Log("Show_1");
+        ManagerAds.Ins.ShowRewardedVideo(success =>
+        {
+            if (success)
+            {
+                Debug.Log("Show");
+                DataMananger.Instance.Add_Coin(20);
+            }
+        });
     }
     public void Open_Ads_Full() 
     {
         ManagerAds.Ins.ShowInterstitial();
     }
+    
    
 }

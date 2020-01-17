@@ -135,10 +135,10 @@ public class DataMananger : MonoBehaviour
         ///
 
         //Init Coin
-     //   PlayerPrefs.DeleteKey(Key_Coin);
+         PlayerPrefs.DeleteKey(Key_Coin);
         if (!PlayerPrefs.HasKey(Key_Coin))
         {
-            PlayerPrefs.SetInt(Key_Coin,999999);
+            PlayerPrefs.SetInt(Key_Coin,0);
             PlayerPrefs.Save();
             m_Coin.text = Get_Coin();
             Coin = PlayerPrefs.GetInt(Key_Coin);
@@ -150,7 +150,7 @@ public class DataMananger : MonoBehaviour
 
         }
         // Init Ball Player
-     //   PlayerPrefs.DeleteKey(Key_Model_Use);
+         PlayerPrefs.DeleteKey(Key_Model_Use);
         if (!PlayerPrefs.HasKey(Key_Model_Use))
         {
             PlayerPrefs.SetInt(Key_Model_Use, 0);

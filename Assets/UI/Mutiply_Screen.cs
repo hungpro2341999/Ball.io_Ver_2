@@ -8,6 +8,7 @@ public enum Screen_Type {Screen_Start,Screen_Play,Screen_loading}
 
 public class Mutiply_Screen : MonoBehaviour
 {
+    public Animator anim;
     public Screen_Type Type_Screen;
     public List<Windown> Windows;
     public InputField input_Name;
@@ -44,6 +45,9 @@ public class Mutiply_Screen : MonoBehaviour
     {
         string name = input_Name.text;
         DataMananger.Instance.Set_Name_Player(name);
+     
+       var a =    Instantiate(SpawnEffect.Instance.getEffectName("Status"), null);
+        a.GetComponent<Status>().SetText("CHANGE COMPLETE");
 
     }
     public void End_Game_Start() 
@@ -83,12 +87,27 @@ public class Mutiply_Screen : MonoBehaviour
 
     public void Open_Screen()
     {
-        gameObject.SetActive(true);
+        if (anim != null)
+        {
+            anim.SetBool("Open", true);
+        }
+        else
+        {
+            gameObject.SetActive(true);
+        }
+      
       
     }
     public void Close_Screen()
     {
-        gameObject.SetActive(false);
+        if (anim != null)
+        {
+            anim.SetBool("Open", false);
+        }
+        else
+        {
+            gameObject.SetActive(false);
+        }
     }
     public void OpenWindow(Windown windown)
     {

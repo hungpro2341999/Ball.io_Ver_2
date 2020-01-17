@@ -198,7 +198,7 @@ public class Enemy : MonoBehaviour
     {
         if (IsCollWall(body.velocity.normalized))
         {
-            body.velocity = body.velocity - Time.deltaTime * body.velocity*100;
+            body.velocity = body.velocity - Time.deltaTime * body.velocity*MassChance;
         }
          
         
@@ -490,7 +490,7 @@ public class Enemy : MonoBehaviour
      
       
         float ForceBack = 0;
-        ForceBack = (ForcePlayer + Force)*Length_Push;
+        ForceBack = (ForcePlayer + Force);
     
 
       
