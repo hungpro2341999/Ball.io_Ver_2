@@ -242,6 +242,7 @@ void Start()
         ClearRecover();
         //    Debug.Log(-getDirect() * SpeedVelocity);
         // ClearRecover();
+     
     }
 
 

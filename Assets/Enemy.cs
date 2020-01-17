@@ -180,6 +180,12 @@ public class Enemy : MonoBehaviour
                         isTargetBy.GetComponent<Enemy>().Incre_Level();
                         isTargetBy = null;
                     }
+                    if (isTargetBy.tag == "Player")
+                    {
+                        DataMananger.Instance.Add_Coin(5);
+                        Instantiate(SpawnEffect.Instance.SpawnStatus("Score"), null);
+
+                    }
                     body.constraints = RigidbodyConstraints.None;
                 }
             

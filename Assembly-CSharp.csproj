@@ -71,6 +71,7 @@
     <Compile Include="Assets\Cricle.cs" />
     <Compile Include="Assets\DataMananger.cs" />
     <Compile Include="Assets\DebugManager.cs" />
+    <Compile Include="Assets\Destroy.cs" />
     <Compile Include="Assets\DestroyMySelf.cs" />
     <Compile Include="Assets\Enemy.cs" />
     <Compile Include="Assets\ExampleClass.cs" />
