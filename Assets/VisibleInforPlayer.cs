@@ -42,6 +42,7 @@ public class VisibleInforPlayer : MonoBehaviour
             else
             {
                 a.GetComponent<GetInfor>().player = GamePlayerCtrl.Instance.Main_Player;
+                a.GetComponent<GetInfor>().Get_Infor_Player();
             }
             list.Add(a);
 

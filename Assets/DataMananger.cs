@@ -40,7 +40,8 @@ public class DataMananger : MonoBehaviour
 
     #region Transform
     public Text m_Coin;
-
+    public Transform Map;
+    public Skybox Sky;
 
     #endregion
     #region Option__Sound_Variable
@@ -82,7 +83,7 @@ public class DataMananger : MonoBehaviour
         }
 
         //  INIT SHOP
-      //  PlayerPrefs.DeleteKey(Key_Shop);
+       //  PlayerPrefs.DeleteKey(Key_Shop);
         if (!PlayerPrefs.HasKey(Key_Shop))
         {
           List<Infor_Skill> lists = new List<Infor_Skill>();
@@ -135,10 +136,10 @@ public class DataMananger : MonoBehaviour
         ///
 
         //Init Coin
-     //   PlayerPrefs.DeleteKey(Key_Coin);
+        //PlayerPrefs.DeleteKey(Key_Coin);
         if (!PlayerPrefs.HasKey(Key_Coin))
         {
-            PlayerPrefs.SetInt(Key_Coin,999999);
+            PlayerPrefs.SetInt(Key_Coin,0);
             PlayerPrefs.Save();
             m_Coin.text = Get_Coin();
             Coin = PlayerPrefs.GetInt(Key_Coin);
@@ -150,7 +151,7 @@ public class DataMananger : MonoBehaviour
 
         }
         // Init Ball Player
-     //   PlayerPrefs.DeleteKey(Key_Model_Use);
+         PlayerPrefs.DeleteKey(Key_Model_Use);
         if (!PlayerPrefs.HasKey(Key_Model_Use))
         {
             PlayerPrefs.SetInt(Key_Model_Use, 0);
@@ -345,6 +346,25 @@ public class DataMananger : MonoBehaviour
       
 
     }
+    public void Random_Map()
+    {
+
+        int r = Random.Range(0, Data_Skills.Maps.Count);
+        var map = Data_Skills.Maps[r];
+        var a = Instantiate(map.Shape, Vector3.zero, Quaternion.identity,Map);
+        a.GetComponent<Renderer>().material.SetTexture("_MainTex", map.Surface[Random.Range(0, map.Surface.Count - 1)].mainTexture);
+        
+
+        
+    }
+   
+    public void Random_Sky()
+    {
+        int r = Random.Range(0, Data_Skills.Sprite_Sky.Count);
+        var a = Data_Skills.Sprite_Sky[r];
+        RenderSettings.skybox = a;
+    }
+
     
     
 

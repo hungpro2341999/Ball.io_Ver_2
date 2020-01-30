@@ -164,11 +164,6 @@ public class Enemy : MonoBehaviour
 
                 MoveFollowDirect();
 
-
-
-
-
-
             }
             else
             {
@@ -177,9 +172,18 @@ public class Enemy : MonoBehaviour
                     isDead = true;
                     if (isTargetBy != null)
                     {
+                        if (isTargetBy.tag == "Player")
+                        {
+                            DataMananger.Instance.Add_Coin(5);
+                            var a = Instantiate(SpawnEffect.Instance.getEffectName("Score"), null);
+                            a.GetComponent<Destroy>().SetPosText(transform.position);
+
+                        }
                         isTargetBy.GetComponent<Enemy>().Incre_Level();
                         isTargetBy = null;
+                       
                     }
+                   
                     body.constraints = RigidbodyConstraints.None;
                 }
             
@@ -198,7 +202,7 @@ public class Enemy : MonoBehaviour
     {
         if (IsCollWall(body.velocity.normalized))
         {
-            body.velocity = body.velocity - Time.deltaTime * body.velocity*100;
+            body.velocity = body.velocity - Time.deltaTime * body.velocity*MassChance;
         }
          
         
@@ -372,7 +376,7 @@ public class Enemy : MonoBehaviour
                       
 
                    // ICanNotDead();
-                    body.AddForce(DirectMove*Speed*Time.deltaTime*Length, ForceModeWhenMove);
+                    body.AddForce(DirectMove*Speed*Time.deltaTime*2,ForceModeWhenMove);
 
 
 
@@ -428,7 +432,7 @@ public class Enemy : MonoBehaviour
     private void FixedUpdate()
     {
        
-        //ICanNotDead();
+        
     }
 
     public void Spawn_Effect()
@@ -484,18 +488,24 @@ public class Enemy : MonoBehaviour
         isMoveLimit = false;
         isDodge = false;
         isRunAway = false;
-        float ForcePlayer = enemy.GetComponent<Enemy>().Force;
+        float ForcePlayer = enemy.GetComponent<Enemy>().Get_Force();
        
-        float BoundPlayer = enemy.GetComponent<Enemy>().Bound;
+        float BoundPlayer = enemy.GetComponent<Enemy>().Bonnd;
      
       
         float ForceBack = 0;
-        ForceBack = (ForcePlayer + Force)*Length_Push;
-    
-
+        if (!isMoveBack)
+        {
+            ForceBack = (ForcePlayer + Get_Force());
+        }
+        else
+        {
+            ForceBack = 1;
+        }
       
-           
-            ForceIntertion = Mathf.Clamp((ForceBack/weight) *Length* BoundPlayer,MinForce,MaxForce);
+      
+      
+            ForceIntertion = (ForceBack/weight)* BoundPlayer;
 
 
         DirectMove = direct;
@@ -505,8 +515,12 @@ public class Enemy : MonoBehaviour
          //   Debug.Log(DirectMove + "  " + ForcePlayer + "  " + Force + "  " + Length + " " + BoundPlayer);
            // Debug.Log((ForcePlayer + Force) * Length * 1.2f);
             AddForce((DirectMove * ForceIntertion), ForceModeWhenInteraction, ForceIntertion);
-        
-            
+            if (DataMananger.Instance.Is_Variable() == 0) 
+            {
+                Handheld.Vibrate();
+            }
+          
+
         }
         else
         {
@@ -527,11 +541,6 @@ public class Enemy : MonoBehaviour
         this.ForceIntertion = ForceInteraction;
        
         body.AddForce(Force, Force_Mode);
-
-
-
-
-
 
     }
     public void RestoreStatus()
@@ -962,13 +971,13 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                float ForceTarget = Target.GetComponent<Enemy>().Force;
+                float ForceTarget = Target.GetComponent<Enemy>().Get_Force();
 
                 float AttackPower = ((Force / DistanceFromLimitNeart()) * Mass);
 
 
 
-                DirectMove = (new Vector3(Target.transform.position.x, 0, Target.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z)).normalized * 1.3f;
+                DirectMove = (new Vector3(Target.transform.position.x, 0, Target.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z))*0.5f;
 
             }
         }
@@ -1467,10 +1476,7 @@ public class Enemy : MonoBehaviour
         Swapped_To_Enmu_Limit_Level((int)index_Limit);
     }
 
-    public void Power_Player()
-    {
-
-    }
+   
     public void Swapped_To_Enmu_Limit_Level(int level)
     {
         switch (level)
@@ -1692,7 +1698,7 @@ public class Enemy : MonoBehaviour
             pos.y += 0.2f;
             weight += 1;
             Mass += 1;
-       //     Speed -= 2;
+       //    Speed -= 2;
             Bound += 1f;
             transform.position = pos;
             level += 0.8f;
@@ -1703,6 +1709,11 @@ public class Enemy : MonoBehaviour
     // Movement
     public List<Vector3> Point = new List<Vector3>();
     public Vector3 PosInit = Vector3.zero;
+
+    public float Get_Force()
+    {
+        return body.velocity.sqrMagnitude;
+    }
   
 }
     

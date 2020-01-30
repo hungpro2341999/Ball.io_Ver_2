@@ -38,6 +38,11 @@ public class GetInfor : MonoBehaviour
         
 
     }
+
+    public void Get_Infor_Player()
+    {
+        Name.text = player.GetComponent<InforPlayer>().namePlayer;
+    }
     public void GetData()
     {
         

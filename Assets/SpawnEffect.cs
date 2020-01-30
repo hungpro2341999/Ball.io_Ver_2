@@ -39,4 +39,8 @@ public class SpawnEffect : MonoBehaviour
         }
         return null;
     }
+    public void SpawnStatus(string s)
+    {
+
+    }
 }

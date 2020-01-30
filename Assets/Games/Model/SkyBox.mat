@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BackTex:
-        m_Texture: {fileID: 2800000, guid: da8da904f86d94d1d9430cdfefcc4db8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 43ca3bb652e678c4d8d88a3e9934fa98, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DownTex:
-        m_Texture: {fileID: 2800000, guid: 28ffb28ff5ec74e42ae7b3c074f75736, type: 3}
+        m_Texture: {fileID: 2800000, guid: 27ce66748cf5bfa48bbd00e9ad7922ac, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -48,11 +48,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FrontTex:
-        m_Texture: {fileID: 2800000, guid: 28927d50af75d49069727c90b5158cbd, type: 3}
+        m_Texture: {fileID: 2800000, guid: fb2ae0790bd3bfd479bc81d2c58429e6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LeftTex:
-        m_Texture: {fileID: 2800000, guid: 28927d50af75d49069727c90b5158cbd, type: 3}
+        m_Texture: {fileID: 2800000, guid: 43ca3bb652e678c4d8d88a3e9934fa98, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -72,11 +72,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RightTex:
-        m_Texture: {fileID: 2800000, guid: 97b3c5858d32f40d0a5b30107d3f6970, type: 3}
+        m_Texture: {fileID: 2800000, guid: 43ca3bb652e678c4d8d88a3e9934fa98, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _UpTex:
-        m_Texture: {fileID: 2800000, guid: 952821a5b66ce465bae40e4c935cba22, type: 3}
+        m_Texture: {fileID: 2800000, guid: 43ca3bb652e678c4d8d88a3e9934fa98, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -84,7 +84,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Exposure: 1
+    - _Exposure: 1.35
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -92,7 +92,7 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Rotation: 0
+    - _Rotation: 176
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1

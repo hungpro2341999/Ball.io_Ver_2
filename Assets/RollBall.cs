@@ -242,6 +242,7 @@ void Start()
         ClearRecover();
         //    Debug.Log(-getDirect() * SpeedVelocity);
         // ClearRecover();
+     
     }
 
 
@@ -500,6 +501,7 @@ void Start()
 
     }
 
+    public float cachedReal = 0;
     public Vector3 Process_Point(Vector3 point)
     {
         Point.Add(point);
@@ -518,9 +520,9 @@ void Start()
                     Point.RemoveRange(0, length - 1);
                     direct = Vector3.zero;
                     return Vector3.zero;
-
+                    
                 }
-                return direct.normalized;
+                return direct.normalized*cachedReal;
 
             }
             else

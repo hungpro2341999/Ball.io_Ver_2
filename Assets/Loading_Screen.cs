@@ -26,7 +26,11 @@ public class Loading_Screen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+           var a =  Instantiate(SpawnEffect.Instance.getEffectName("Score"), null);
+            a.GetComponent<Destroy>().SetPosText(Vector3.zero);
+        }
     }
 
     public void GameOver()
@@ -43,6 +47,10 @@ public class Loading_Screen : MonoBehaviour
     }
     public void StartProcess()
     {
+       if(Application.internetReachability != NetworkReachability.NotReachable)
+        {
+          
+       
 
         for (int i = 0; i < numberPlayer; i++)
         {
@@ -78,9 +86,17 @@ public class Loading_Screen : MonoBehaviour
                 }
                    
             }
-          
+
+                var a = Instantiate(SpawnEffect.Instance.getEffectName("Status"), null);
+                a.GetComponent<Status>().SetText("CONENCT SUSSECS PLEASE WAIT .......");
 
 
+            }
+        }
+        else
+        {
+            var a = Instantiate(SpawnEffect.Instance.getEffectName("Status"), null);
+            a.GetComponent<Status>().SetText("NOT CONNECT WITH INTERNET");
 
         }
     }
@@ -105,6 +121,7 @@ public class Loading_Screen : MonoBehaviour
 
         }
     }
+    
   
   
 }

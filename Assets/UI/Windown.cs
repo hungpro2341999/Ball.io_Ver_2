@@ -6,6 +6,7 @@ public class Windown : MonoBehaviour
 {
     
     public Windown_Type type;
+    public Animator Anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,9 +37,11 @@ public class Windown : MonoBehaviour
         {
             Cricle.Wait_Over_Game = true;
         }
+        
     }
     public void Close()
     {
         gameObject.SetActive(false);
+       
     }
 }
