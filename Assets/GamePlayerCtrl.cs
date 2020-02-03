@@ -301,7 +301,7 @@ public class GamePlayerCtrl : MonoBehaviour
         {
             Vector3 pos = Random.insideUnitCircle * Radius;
             pos = new Vector3(pos.x, Ground + OffSet, pos.y);
-            if (Physics.SphereCast(new Ray(pos, transform.up), 1.2f, 0,MaskPlayer))
+            if (Physics.SphereCast(new Ray(pos, transform.up), 1.2f, 0,MaskPlayer) && Physics.Raycast(new Ray(pos, -Vector3.up), 10))
             {
                 Accpect1 = false;
             }
@@ -340,7 +340,7 @@ public class GamePlayerCtrl : MonoBehaviour
                 a.name = "AI_" + i;
              
                 Debug.Log(a.name + " " + a.GetComponent<Enemy>().GetEnemyInRadius(1.5f,pos,transform.up));
-                if(a.GetComponent<Enemy>().GetEnemyInRadius(1, pos, transform.up) != 0)
+                if(a.GetComponent<Enemy>().GetEnemyInRadius(1, pos, transform.up) != 0 && Physics.Raycast(new Ray(pos, -Vector3.up),10))
                 {
                     Accpect = false;
                     a.GetComponent<Enemy>().Destroy();

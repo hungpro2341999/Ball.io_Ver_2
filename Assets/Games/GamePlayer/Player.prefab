@@ -104,7 +104,7 @@ MonoBehaviour:
     m_Bits: 0
   Force: 1
   Bonnd: 1
-  Mass: 1
+  Mass: 1.2
   ForceMass: 1
   ForceIntereact: 0
   CheckGround: 10
@@ -138,6 +138,7 @@ MonoBehaviour:
   index_Skill: 0
   index_scoward: 0
   indexPower: 0
+  maxVec: 15
   index_Blood_War: 0
   index_Dodge: 0
   Keep_Direction_Move: 0

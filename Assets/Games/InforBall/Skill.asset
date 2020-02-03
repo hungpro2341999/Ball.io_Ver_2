@@ -32,7 +32,7 @@ MonoBehaviour:
   - {fileID: 1872860102955231208, guid: 6bec949844dee024b8e8941bd65656ae, type: 3}
   - {fileID: 7508622925763489189, guid: b7614d2ef1490ac41a066353cf52a985, type: 3}
   - {fileID: 4295848721953573921, guid: 301c651e40ea55f4983f9a94c12597d4, type: 3}
-  - {fileID: 3173292893193063531, guid: db12494b05320794fa79b45b8b74149f, type: 3}
+  - {fileID: 2277475802639855574, guid: 54536ab4ea0e94344a34b297e443b87b, type: 3}
   List_infor_Skill:
   - id: 0
     isBuy: 1
@@ -156,8 +156,10 @@ MonoBehaviour:
   Model: {fileID: 2360497361332863634, guid: 6bb9fcc9ab7975a4b9f6710de03b99e9, type: 3}
   SkillUse: 0
   Maps:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5044741828238668554, guid: ab7048c414c406c489c5088cf05e1bb4, type: 3}
+  - {fileID: 6435899989970890786, guid: e63ad70eb3468f4419723bcab5583f5a, type: 3}
+  - {fileID: 8058671269210028006, guid: 27b700a34314e4145a9b1454b2f5e69b, type: 3}
+  Sprite_Sky:
+  - {fileID: 2100000, guid: 02af83994ac614448af326e8370707b6, type: 2}
+  - {fileID: 2100000, guid: 0e4c252701557b047afcf6ede6d0c932, type: 2}
+  - {fileID: 2100000, guid: 267aa30d142d0ac4e840d1c82d63323f, type: 2}

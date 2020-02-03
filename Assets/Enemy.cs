@@ -80,7 +80,7 @@ public class Enemy : MonoBehaviour
     public int index_Skill = 0;
     public int index_scoward = 0;
     public float indexPower;
-   
+    public float maxVec=3;
     public int index_Blood_War = 0;
     public int index_Dodge = 0;
 
@@ -500,7 +500,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            ForceBack = 1;
+            ForceBack = (ForcePlayer + Get_Force());
         }
       
       
@@ -524,7 +524,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-         //   Debug.Log(DirectMove + "  " + ForcePlayer + "  " + Force + "  " + Length + " " + BoundPlayer);
+           // Debug.Log(DirectMove + "  " + ForcePlayer + "  " + Force + "  " + Length + " " + BoundPlayer);
            // Debug.Log((ForcePlayer + Force) * Length * 1.2f);
             AddForce((DirectMove * ForceIntertion), ForceModeWhenInteraction, ForceIntertion);
         
@@ -539,8 +539,8 @@ public class Enemy : MonoBehaviour
         isMoveBack = true;
      //   body.velocity = Vector3.zero;
         this.ForceIntertion = ForceInteraction;
-       
-        body.AddForce(Force, Force_Mode);
+        body.velocity = Vector3.ClampMagnitude(Force * 0.35f,maxVec);
+      
 
     }
     public void RestoreStatus()
@@ -977,7 +977,7 @@ public class Enemy : MonoBehaviour
 
 
 
-                DirectMove = (new Vector3(Target.transform.position.x, 0, Target.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z))*0.5f;
+                DirectMove = (new Vector3(Target.transform.position.x, 0, Target.transform.position.z) - new Vector3(transform.position.x, 0, transform.position.z));
 
             }
         }
@@ -1536,9 +1536,6 @@ public class Enemy : MonoBehaviour
 
     }
 
-
-  
-
     private void OnDrawGizmos()
     {
         if (Target != null)
@@ -1560,10 +1557,6 @@ public class Enemy : MonoBehaviour
        
     }
     
-
-
-
-
     public float getValueMax(float[] score)
     {
         float index = 0;

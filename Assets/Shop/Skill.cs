@@ -19,6 +19,6 @@ public class Skill : ScriptableObject
     public Material Material;
     public GameObject Model;
     public int SkillUse;
-    public List<Map> Maps = new List<Map>();
+    public List<GameObject> Maps = new List<GameObject>();
     public List<Material> Sprite_Sky;
 }

@@ -14,6 +14,9 @@ public class Shop_Mananger : MonoBehaviour
     public  List<GameObject> listSkill;
     public Transform Parent_Review;
     public static Transform Review;
+  
+    float lastValue = 0;
+
     private void Awake()
     {
         if (Instance != null)
@@ -29,12 +32,16 @@ public class Shop_Mananger : MonoBehaviour
     void Start()
     {
         Shop_Mananger.Review = Parent_Review;
-        Load_Shop();
+       // Load_Shop();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+  
+        }
         Text_Cost.text = Shop_Mananger.Cost;
     }
     public void Load_Shop()
@@ -49,6 +56,10 @@ public class Shop_Mananger : MonoBehaviour
             a.GetComponent<InforSkill>().Load_Infor(i);
             listSkill.Add(a);
         }
+    }
+    public void AddSkin(GameObject Skin)
+    {
+        listSkill.Add(Skin);
     }
     public void SetCode(string cost)
     {
@@ -158,5 +169,13 @@ public class Shop_Mananger : MonoBehaviour
        
         
     }
+  
    
+  
+  
+    
+
+  
+  
+
 }

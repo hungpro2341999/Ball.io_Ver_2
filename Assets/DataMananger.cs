@@ -12,6 +12,7 @@ public class DataMananger : MonoBehaviour
     public Skill Data_Skills;
     public BotNameData Data_Bot;
     public List<Process_Player> Data_List_Player = new List<Process_Player>();
+    public List<Material> Material_Sky = new List<Material>();
     public int CountPlayer = 4;
     public int Coin;
     [SerializeField ]int index = 0;
@@ -41,7 +42,7 @@ public class DataMananger : MonoBehaviour
     #region Transform
     public Text m_Coin;
     public Transform Map;
-    public Skybox Sky;
+   
 
     #endregion
     #region Option__Sound_Variable
@@ -57,6 +58,12 @@ public class DataMananger : MonoBehaviour
         }
         GamePlayerCtrl.Instance.Event_Over_Game += Reset;
         Init_Key();
+    }
+
+    private void Start()
+    {
+        Random_Sky();
+        Random_Map();
     }
 
     public void Init_Key()
@@ -350,23 +357,23 @@ public class DataMananger : MonoBehaviour
     {
 
         int r = Random.Range(0, Data_Skills.Maps.Count);
-        var map = Data_Skills.Maps[r];
+        var map = Data_Skills.Maps[r].GetComponent<Map>();
         var a = Instantiate(map.Shape, Vector3.zero, Quaternion.identity,Map);
-        a.GetComponent<Renderer>().material.SetTexture("_MainTex", map.Surface[Random.Range(0, map.Surface.Count - 1)].mainTexture);
-        
-
-        
+        a.GetComponent<Transform>().Find("Shape").GetComponent<Renderer>().material = map.Surface[Random.Range(0, map.Surface.Count)];
+        a.name = "Map";
     }
    
     public void Random_Sky()
     {
-        int r = Random.Range(0, Data_Skills.Sprite_Sky.Count);
+        Debug.Log("Sky_Random");
+        int r = Random.Range(0, Data_Skills.Sprite_Sky.Count-1);
         var a = Data_Skills.Sprite_Sky[r];
         RenderSettings.skybox = a;
+
     }
-
+    public void Check()
+    {
+        Debug.Log("Change");
+    }
     
-    
-
-
 }

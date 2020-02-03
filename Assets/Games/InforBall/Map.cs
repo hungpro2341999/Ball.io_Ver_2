@@ -6,6 +6,6 @@ using UnityEngine.UI;
 public class Map:MonoBehaviour
 {
     public GameObject Shape;
-    public List<Image> Surface;
+    public List<Material> Surface;
     
 }

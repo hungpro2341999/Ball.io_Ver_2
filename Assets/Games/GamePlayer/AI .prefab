@@ -203,6 +203,7 @@ MonoBehaviour:
   index_Skill: 0
   index_scoward: 0
   indexPower: 0
+  maxVec: 15
   index_Blood_War: 8
   index_Dodge: 1
   Keep_Direction_Move: 0
