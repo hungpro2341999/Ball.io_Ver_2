@@ -155,7 +155,7 @@ MonoBehaviour:
   Ground: {fileID: 0}
   body: {fileID: 3662588694203468791}
   Target: {fileID: 0}
-  Speed: 15
+  Speed: 12.5
   Direct: {x: 0, y: 0, z: 0}
   isMoveBack: 0
   MaskPlayer:
@@ -440,7 +440,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1046669992987356375}
+  - {fileID: 8745477782472263095}
   m_Father: {fileID: 3662588694203468778}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -513,7 +513,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e7a4c69e84a1ce4e8d6986d0f894e4b, type: 3}
---- !u!4 &1046669992987356375 stripped
+--- !u!4 &8745477782472263095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8635838536979245674, guid: 7e7a4c69e84a1ce4e8d6986d0f894e4b,
     type: 3}

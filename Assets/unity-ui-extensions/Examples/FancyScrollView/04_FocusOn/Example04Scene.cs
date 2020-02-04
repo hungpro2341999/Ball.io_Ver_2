@@ -23,15 +23,16 @@ namespace UnityEngine.UI.Extensions.Examples
             scrollView.OnSelectedIndexChanged(HandleSelectedIndexChanged);
           
             var cellData = Enumerable.Range(0,3)
-                .Select(i => new Example04CellDto { Message = "Cell " + i })
+                .Select(i => new Example04CellDto { Message =  i.ToString() })
                 .ToList();
-
+            Debug.Log("DATACELL " + cellData.Count);
             scrollView.UpdateData(cellData);
             scrollView.UpdateSelection(-1);
         }
 
         void HandleSelectedIndexChanged(int index)
         {
+            Debug.Log("DATACELL ");
            // selectedItemInfo.text = String.Format("Selected item info: index {0}", index);
         }
     }

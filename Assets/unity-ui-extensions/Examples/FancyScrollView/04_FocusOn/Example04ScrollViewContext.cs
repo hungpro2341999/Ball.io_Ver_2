@@ -1,7 +1,6 @@
 ﻿using System;
 
-namespace UnityEngine.UI.Extensions.Examples
-{
+
     public class Example04ScrollViewContext 
     {
 
@@ -29,4 +28,4 @@ namespace UnityEngine.UI.Extensions.Examples
         public Action<Example04ScrollViewCell> OnPressedCell;
         public Action<int> OnSelectedIndexChanged;
     }
-}
+

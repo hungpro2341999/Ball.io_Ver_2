@@ -74,6 +74,7 @@
     <Compile Include="Assets\DebugManager.cs" />
     <Compile Include="Assets\Destroy.cs" />
     <Compile Include="Assets\DestroyMySelf.cs" />
+    <Compile Include="Assets\Dot_Ctrl.cs" />
     <Compile Include="Assets\Enemy.cs" />
     <Compile Include="Assets\ExampleClass.cs" />
     <Compile Include="Assets\ExampleScript.cs" />
@@ -141,6 +142,7 @@
     <Compile Include="Assets\LoadInfor.cs" />
     <Compile Include="Assets\Loading_Screen.cs" />
     <Compile Include="Assets\MoveFlowPlayer.cs" />
+    <Compile Include="Assets\MoveToTarget.cs" />
     <Compile Include="Assets\Octahedron Sphere\OctahedronSphereCreator.cs" />
     <Compile Include="Assets\Octahedron Sphere\OctahedronSphereTester.cs" />
     <Compile Include="Assets\Page.cs" />

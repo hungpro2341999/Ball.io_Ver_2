@@ -14,13 +14,7 @@ public class RollBall : Enemy
     public bool isClick1 = false;
     public bool isClick2 = false;
    
-    bool draw = true;
-   // public bool isGround = false;
-  //  public float CheckGround = 1;
-    //Time
-    bool UpdateDirect = false;
-    bool getPosOrignal = false;
-    float timeDirect = 0;
+   
     Vector2 posOriginal = Vector2.zero;
     public Vector3 LastDirect=Vector2.zero;
     // Velocity
@@ -28,7 +22,7 @@ public class RollBall : Enemy
     public float SpeedVelocity;
     public float SpeedNode;
     public float SpeedRoll = 3;
-    public float maxVec = 5;
+   
     // Gird
     Vector2[,] Gird;
     int Width = Screen.width;
@@ -93,23 +87,23 @@ void Start()
         {
             body.maxAngularVelocity = Mathf.Infinity;
 
-
-
-
-
-
-
             if (isGround)
             {
                 Power();
                 Warring_Enemy();
                 Warring_Limit();
+                if (Input.GetMouseButtonDown(0))
+                {
+                    isClick1 = true;
+                }
+
                 if (!isMoveBack)
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
                         isClick1 = true;
                     }
+
                     int count = ListPoint.Count;
                     int x = (int)(Width / offSetX);
                     int y = (int)(Height / offSetY);
@@ -189,7 +183,8 @@ void Start()
                 }
                 else
                 {
-                    if (Vector3.Magnitude(body.velocity) < Mass)
+
+                    if (Vector3.SqrMagnitude(body.velocity) < Mass)
                     {
                         isMoveBack = false;
                     }
@@ -201,10 +196,19 @@ void Start()
 
                     }
                     isClick1 = false;
-                    Reset();
-                    //ClearRecover();
+                    if (Input.GetMouseButtonDown(0))
+                    {
+                        isClick1 = true;
+                    }
+                    if (isClick1)
+                    {
+                        Vector3 point = Input.mousePosition;
+                        Process_Point(point);
+                    }
+                        // Reset();
+                        //ClearRecover();
 
-                }
+                    }
                 Force = body.velocity.magnitude;
 
             }

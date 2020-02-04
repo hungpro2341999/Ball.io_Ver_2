@@ -1,9 +1,9 @@
 ﻿/// Credit setchi (https://github.com/setchi)
 /// Sourced from - https://github.com/setchi/FancyScrollView
+using UnityEngine;
+using UnityEngine.UI;
 
-namespace UnityEngine.UI.Extensions
-{
-    public abstract class FancyScrollViewCell<TData, TContext> : MonoBehaviour where TContext : class
+public abstract class FancyScrollViewCell<TData, TContext> : MonoBehaviour where TContext : class
     {
         /// <summary>
         /// Gets or sets the index of the data.
@@ -61,4 +61,3 @@ namespace UnityEngine.UI.Extensions
     public abstract class FancyScrollViewCell<TData> : FancyScrollViewCell<TData, FancyScrollViewNullContext>
     {
     }
-}

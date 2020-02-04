@@ -2,11 +2,14 @@
 /// Sourced from - https://github.com/setchi/FancyScrollView
 
 using System.Collections.Generic;
+using System;
 
-namespace UnityEngine.UI.Extensions
-{
-    public abstract class FancyScrollView<TData, TContext> : MonoBehaviour where TContext : class
+using UnityEngine;
+
+
+public abstract class FancyScrollView<TData, TContext> : MonoBehaviour where TContext : class
     {
+        
         public static int CountSkinBall  = 0;
         [SerializeField, Range(float.Epsilon, 1f)]
         float cellInterval = 0;
@@ -18,6 +21,7 @@ namespace UnityEngine.UI.Extensions
         GameObject cellBase = null;
         [SerializeField]
         Transform cellContainer = null;
+        public int[] Index_Page = { 1, 2, 3 };
 
         public  List<FancyScrollViewCell<TData, TContext>> cells = new List<FancyScrollViewCell<TData, TContext>>();
         float currentPosition;
@@ -42,7 +46,7 @@ namespace UnityEngine.UI.Extensions
         }
         private void Update()
         {
-            Debug.Log("CELL : " + cells.Count);
+            Debug.Log("CELL : " + cellData.Count);
         }
         /// <summary>
         /// Updates the contents.
@@ -134,24 +138,24 @@ namespace UnityEngine.UI.Extensions
 
             var cellObject = Instantiate(cellBase, cellContainer);
             var cell = cellObject.GetComponent<FancyScrollViewCell<TData, TContext>>();
-            cellObject.name = GetHashCode().ToString();
+        //   cellObject.name = GetHashCode().ToString();
             cell.SetContext(Context);
             cell.SetVisible(true);
             cell.DataIndex = -1;
-            for(int i = 0; i < 9; i++)
-            {
-                if (CountSkinBall > DataMananger.Instance.Data_Skills.Images.Count)
-                {
-                    return cell;
-                }
-                var a = Instantiate(PageChild,cellObject.transform.Find("Image"));
-                a.GetComponent<InforSkill>().infor = DataMananger.Instance.Data_Skills.List_infor_Skill[CountSkinBall];
-                a.GetComponent<InforSkill>().Load_Infor( CountSkinBall);
-                Shop_Mananger.Instance.AddSkin(a);
-                CountSkinBall++;
-            }
+        //for(int i = 0; i < 9; i++)
+        //{
+        //    if (CountSkinBall > DataMananger.Instance.Data_Skills.Images.Count)
+        //    {
+        //        return cell;
+        //    }
+        //    var a = Instantiate(PageChild,cellObject.transform.Find("Image"));
+        //    a.GetComponent<InforSkill>().infor = DataMananger.Instance.Data_Skills.List_infor_Skill[CountSkinBall];
+        //    a.GetComponent<InforSkill>().Load_Infor( CountSkinBall);
+        //    Shop_Mananger.Instance.AddSkin(a);
+        //    CountSkinBall++;
+        //}
 
-            return cell;
+        return cell;
         }
         public void Push_Data_Shop()
         {
@@ -220,4 +224,3 @@ namespace UnityEngine.UI.Extensions
     public abstract class FancyScrollView<TData> : FancyScrollView<TData, FancyScrollViewNullContext>
     {
     }
-}

@@ -43,6 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a92ee2c478c3c0542811eccaf1735374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Shape: {fileID: 0}
+  Shape: {fileID: 4972020124337166903, guid: 36aa5f5faf584724dae08fc88633c4a8, type: 3}
   Surface:
   - {fileID: 2100000, guid: c862103fd3a19ad428cad96cd73e4272, type: 2}

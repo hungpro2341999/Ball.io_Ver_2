@@ -152,7 +152,25 @@ public class GamePlayerCtrl : MonoBehaviour
         {
             if (!Main_Player.GetComponent<Enemy>().isGround)
             {
-                isGameOver = true;
+                int count = 0;
+                for (int i = 0; i < player.Length; i++)
+                {
+                    if (player[i].GetComponent<Enemy>().isGround)
+                    {
+                        Debug.Log(player[i].name + " " + "Out");
+                        count++;
+                    }
+                }
+                if (count != 1)
+                {
+                    isGameOver = true;
+                }
+                else
+                {
+                    isGameOver = false;
+                    Status = StatusGame.End_Game;
+                }
+             
 
             }
             else

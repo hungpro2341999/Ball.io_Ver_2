@@ -6,7 +6,9 @@ ScriptsOnlyBuild:
     - DataMananger
     - Destroy
     - DestroyMySelf
+    - Dot_Ctrl
     - Enemy
+    - Example04ScrollViewCell
     - FPS_Counter
     - GameMangaer
     - GamePlayerCtrl
@@ -32,7 +34,6 @@ ScriptsOnlyBuild:
     - Status
     - UnityEngine.UI.Extensions.Examples.Example04Scene
     - UnityEngine.UI.Extensions.Examples.Example04ScrollView
-    - UnityEngine.UI.Extensions.Examples.Example04ScrollViewCell
     - UnityEngine.UI.Extensions.ScrollPositionController
     - VisibleInforPlayer
     - WaitForStart
@@ -213,17 +214,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11148}
     - Class: 114
-      Script: {instanceID: 11238}
+      Script: {instanceID: 11162}
     - Class: 114
-      Script: {instanceID: 11260}
+      Script: {instanceID: 11240}
     - Class: 114
-      Script: {instanceID: 11278}
+      Script: {instanceID: 11262}
     - Class: 114
-      Script: {instanceID: 11302}
+      Script: {instanceID: 11280}
     - Class: 114
-      Script: {instanceID: 11316}
+      Script: {instanceID: 11304}
     - Class: 114
-      Script: {instanceID: 11324}
+      Script: {instanceID: 11318}
+    - Class: 114
+      Script: {instanceID: 11326}
+    - Class: 114
+      Script: {instanceID: 22496}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -315,13 +320,13 @@ ScriptsOnlyBuild:
     className: Destroy_Review
   - hash:
       serializedVersion: 2
-      Hash: 787391ad7e2224b4a6df721a91ed69ce
+      Hash: 9eeea4d514dc063b9a6e6c4ca33dca2e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: RollBall
   - hash:
       serializedVersion: 2
-      Hash: e48651932979dfc43c34e54d1ce70fa2
+      Hash: 10ea895eaf0156bc39d1aafd27a8f31e
     assemblyName: Assembly-CSharp.dll
     namespaceName: UnityEngine.UI.Extensions.Examples
     className: Example03ScrollView
@@ -1059,7 +1064,7 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 18d6ec31426dbc27db3bc78782927732
+      Hash: 60783b9a4ef8c0c724b44eaa04b676f0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DataMananger
@@ -1455,7 +1460,7 @@ ScriptsOnlyBuild:
     className: GameCtrl
   - hash:
       serializedVersion: 2
-      Hash: 88827998a74fc45ad5594f7754713038
+      Hash: 8355a3e1c76e6071da542a39902394c5
     assemblyName: Assembly-CSharp.dll
     namespaceName: UnityEngine.UI.Extensions.Examples
     className: Page
@@ -1515,7 +1520,7 @@ ScriptsOnlyBuild:
     className: ExampleClass
   - hash:
       serializedVersion: 2
-      Hash: e48651932979dfc43c34e54d1ce70fa2
+      Hash: 10ea895eaf0156bc39d1aafd27a8f31e
     assemblyName: Assembly-CSharp.dll
     namespaceName: UnityEngine.UI.Extensions.Examples
     className: Example02ScrollView
@@ -1743,9 +1748,9 @@ ScriptsOnlyBuild:
     className: CUIGraphic
   - hash:
       serializedVersion: 2
-      Hash: 0edce28ae49ada447a6366418f39f87a
+      Hash: 52636eac71346daa160e2a562d50ae21
     assemblyName: Assembly-CSharp.dll
-    namespaceName: UnityEngine.UI.Extensions.Examples
+    namespaceName: 
     className: Example04ScrollViewCell
   - hash:
       serializedVersion: 2
@@ -1905,10 +1910,16 @@ ScriptsOnlyBuild:
     className: ShineEffector
   - hash:
       serializedVersion: 2
-      Hash: e48651932979dfc43c34e54d1ce70fa2
+      Hash: 717e5532772a965d85a0142485339dd6
     assemblyName: Assembly-CSharp.dll
     namespaceName: UnityEngine.UI.Extensions.Examples
     className: Example04ScrollView
+  - hash:
+      serializedVersion: 2
+      Hash: 008739f1fd741565983e6028c382ec0b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Dot_Ctrl
   - hash:
       serializedVersion: 2
       Hash: 3679b7897be9d3f60e6f03cb7149b291
@@ -1971,7 +1982,7 @@ ScriptsOnlyBuild:
     className: Status
   - hash:
       serializedVersion: 2
-      Hash: e48651932979dfc43c34e54d1ce70fa2
+      Hash: 10ea895eaf0156bc39d1aafd27a8f31e
     assemblyName: Assembly-CSharp.dll
     namespaceName: UnityEngine.UI.Extensions.Examples
     className: Example01ScrollView

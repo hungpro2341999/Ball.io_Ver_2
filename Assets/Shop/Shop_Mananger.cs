@@ -59,7 +59,15 @@ public class Shop_Mananger : MonoBehaviour
     }
     public void AddSkin(GameObject Skin)
     {
-        listSkill.Add(Skin);
+        if (!listSkill.Contains(Skin))
+        {
+            listSkill.Add(Skin);
+        }
+       
+    }
+    public void RemoveSkin(GameObject Skin)
+    {
+        listSkill.Remove(Skin);
     }
     public void SetCode(string cost)
     {
@@ -67,7 +75,7 @@ public class Shop_Mananger : MonoBehaviour
     }
     public static  void Choice(int id)
     {
-     
+        Debug.Log("Select Skin : " + id);
         Stuff_Choice = id;
       for(int i = 0; i < Shop_Mananger.Instance.listSkill.Count; i++)
         {
@@ -81,7 +89,7 @@ public class Shop_Mananger : MonoBehaviour
                 }
 
                 Shop_Mananger.Instance.listSkill[i].GetComponent<InforSkill>().Choice();
-                var a =    Instantiate(DataMananger.Instance.Data_Skills.ListModel[i],Shop_Mananger.Review);
+                var a =    Instantiate(DataMananger.Instance.Data_Skills.ListModel[id],Shop_Mananger.Review);
 
                 a.transform.localPosition = Vector3.zero;
                 a.transform.localScale = Vector3.one;
@@ -153,21 +161,56 @@ public class Shop_Mananger : MonoBehaviour
     }
     public void Load_Infor()
     {
-        List<Infor_Skill> lists = new List<Infor_Skill>();
-        
-        for(int i=0;i< Shop_Mananger.Instance.listSkill.Count; i++)
+      
+        List<Infor_Skill> List_new = new List<Infor_Skill>();
+        List<Infor_Skill> lists_Curr = JsonUtility.FromJson<List_Infor_Skill>(PlayerPrefs.GetString("Key_Shop")).lists;
+        Debug.Log("LENGHT_COUNT : " +lists_Curr.Count);
+      
+        for (int i=0;i< DataMananger.Instance.Data_Skills.Images.Count; i++)
         {
-            Infor_Skill infor = new Infor_Skill(i, Shop_Mananger.Instance.listSkill[i].GetComponent<InforSkill>().infor.isBuy,
-                Shop_Mananger.Instance.listSkill[i].GetComponent<InforSkill>().infor.isUse, DataMananger.Instance.Data_Skills.Cost[i]);
-
-            lists.Add(infor);
-
-
+            if (Shop_Mananger.Instance.HasIndexSkin(i))
+            {
+                Debug.Log("index" + i);
+                //Infor_Skill infor = new Infor_Skill(i, Shop_Mananger.Instance.listSkill[i].GetComponent<InforSkill>().infor.isBuy,
+                //Shop_Mananger.Instance.listSkill[i].GetComponent<InforSkill>().infor.isUse, DataMananger.Instance.Data_Skills.Cost[i]);
+                Infor_Skill infor = Infor_Skin(i);
+                List_new.Add(infor);
+            }
+            else
+            {
+                List_new.Add(lists_Curr[i]);
+            }
         }
-        DataMananger.Instance.Save_Shop(lists);
+        
+        DataMananger.Instance.Save_Shop(List_new);
         DataMananger.Instance.Render();
        
         
+    }
+    public Infor_Skill Infor_Skin(int id)
+    {
+        for(int i = 0; i < listSkill.Count; i++)
+        {
+            if (listSkill[i].GetComponent<InforSkill>().infor.id == id)
+            {
+                return new Infor_Skill(listSkill[i].GetComponent<InforSkill>().infor.id, listSkill[i].GetComponent<InforSkill>().infor.isBuy,
+                    listSkill[i].GetComponent<InforSkill>().infor.isUse, DataMananger.Instance.Data_Skills.Cost[i]);
+            }
+        }
+        return null;
+    }
+    public bool HasIndexSkin(int index)
+    {
+        bool isContainer = false;
+        for(int i = 0; i < listSkill.Count; i++)
+        {
+            if (listSkill[i].GetComponent<InforSkill>().infor.id == index)
+            {
+                isContainer = true;
+            }
+            
+        }
+        return isContainer;
     }
   
    

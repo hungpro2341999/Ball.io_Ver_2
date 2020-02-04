@@ -11,7 +11,7 @@ public class MoveFlowPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pos = transform.position;
+        pos = transform.position+Vector3.forward*-5;
         GamePlayerCtrl.Instance.Event_Over_Game += Reset;
     }
     public void Reset()

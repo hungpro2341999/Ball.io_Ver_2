@@ -57,4 +57,8 @@ public class InforSkill : MonoBehaviour,IPointerDownHandler
         }
        
     }
+    public void DestroySelf()
+    {
+        Destroy(gameObject);
+    }
 }

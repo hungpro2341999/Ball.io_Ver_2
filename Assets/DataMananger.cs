@@ -24,7 +24,7 @@ public class DataMananger : MonoBehaviour
 
     public const string Key_Sound = "Key_Sound";
     public const string Key_Variable = "Key_Var";
-    public const string Key_Shop = "Key_Shop";
+    public string Key_Shop = "Key_Shop";
     public const string Key_Coin = "Key_Coin";
   
     public const string Key_Model_Use = "Key_Model_Use";
@@ -90,12 +90,12 @@ public class DataMananger : MonoBehaviour
         }
 
         //  INIT SHOP
-       //  PlayerPrefs.DeleteKey(Key_Shop);
+         PlayerPrefs.DeleteKey(Key_Shop);
         if (!PlayerPrefs.HasKey(Key_Shop))
         {
           List<Infor_Skill> lists = new List<Infor_Skill>();
 
-            for(int i = 0; i < Data_Skills.ListModel.Count; i++)
+            for(int i = 0; i < Data_Skills.Images.Count; i++)
             {
                 if (i != 0)
                 {
@@ -128,7 +128,7 @@ public class DataMananger : MonoBehaviour
         else
         {
             List<Infor_Skill> list = JsonUtility.FromJson<List_Infor_Skill>(PlayerPrefs.GetString(Key_Shop)).lists;
-        //    Debug.Log("CO SKIN : " + list.Count);
+            Debug.Log("CO SKIN : " + list.Count);
             Data_Skills.List_infor_Skill = list;
             Render();
 
@@ -158,7 +158,7 @@ public class DataMananger : MonoBehaviour
 
         }
         // Init Ball Player
-         PlayerPrefs.DeleteKey(Key_Model_Use);
+       //  PlayerPrefs.DeleteKey(Key_Model_Use);
         if (!PlayerPrefs.HasKey(Key_Model_Use))
         {
             PlayerPrefs.SetInt(Key_Model_Use, 0);
@@ -330,11 +330,8 @@ public class DataMananger : MonoBehaviour
     public void Push_Infor(GetInfor player)
     {
         Process_Player process = Data_List_Player[index];
-       
-        
-          
-            player.Flag.sprite = process.sprite;
-            player.Name.text = process.name;
+        player.Flag.sprite = process.sprite;
+        player.Name.text = process.name;
 
         index++;
         Debug.Log("index : " + process.name);
@@ -343,8 +340,6 @@ public class DataMananger : MonoBehaviour
     public void Push_Infor(InforPlayer player)
     {
         Process_Player process = Data_List_Player[index_1];
-
-
 
         player.Sprite_Flag = process.sprite;
         player.namePlayer = process.name;
