@@ -30,11 +30,17 @@ public class Windown : MonoBehaviour
     }
     public void Open()
     {
+     
         gameObject.SetActive(true);
         if (Anim != null)
         {
             Open_Anim = !Open_Anim;
             Anim.SetBool("Open", Open_Anim);
+
+            if (type == Windown_Type.Shop)
+            {
+                gameObject.GetComponentInParent<Animator>().SetBool("Open", true);
+            }
             if (type == Windown_Type.End_Game)
             {
                 StartCoroutine(BackToStartScreen());
@@ -47,6 +53,10 @@ public class Windown : MonoBehaviour
         }
         else
         {
+            if (type == Windown_Type.Shop)
+            {
+                gameObject.GetComponentInParent<Animator>().SetBool("Open", true);
+            }
             if (type == Windown_Type.End_Game)
             {
                 StartCoroutine(BackToStartScreen());

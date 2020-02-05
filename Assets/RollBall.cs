@@ -24,11 +24,11 @@ public class RollBall : Enemy
     public float SpeedRoll = 3;
    
     // Gird
-    Vector2[,] Gird;
-    int Width = Screen.width;
-    int Height = Screen.height;
-    public int offSetX;
-    public int offSetY;
+    //Vector2[,] Gird;
+    //int Width = Screen.width;
+    //int Height = Screen.height;
+    //public int offSetX;
+    //public int offSetY;
 
     // Recover Path
     public List<Vector3> ListPoint= new List<Vector3>();
@@ -104,9 +104,9 @@ void Start()
                         isClick1 = true;
                     }
 
-                    int count = ListPoint.Count;
-                    int x = (int)(Width / offSetX);
-                    int y = (int)(Height / offSetY);
+                    //int count = ListPoint.Count;
+                    //int x = (int)(Width / offSetX);
+                    //int y = (int)(Height / offSetY);
 
 
 
@@ -156,11 +156,7 @@ void Start()
                         //ClearRecover();
                         Reset();
                       
-
-
-
-
-
+                        
                     }
                     if (Input.GetMouseButtonUp(0))
                     {
@@ -185,7 +181,13 @@ void Start()
 
 
                     }
-                   
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        isClick1 = false;
+                        Reset();
+                        //ClearRecover();
+
+                    }
                     if (Input.GetMouseButtonDown(0))
                     {
                         isClick1 = true;
@@ -423,7 +425,7 @@ void Start()
         if (ListPath.Count > 0)
         {
             return false;
-        }
+        }   
         else
         {
             return true;
@@ -433,16 +435,16 @@ void Start()
     
     public void InitGird()
     {
-       // Debug.Log(Width + "  " + Height);
-        int x = (int)( Width / offSetX);
-        int y = (int)(Height / offSetY);
-        Gird = new Vector2[x, y];
-      //  Debug.Log(x+" "+y);
-        for(int i=y-1; i>=0; i --)
-            for(int j = 0; j <x; j++)
-            {
-                Gird[j,i] = new Vector2(j*offSetX,Height-i*offSetY);
-            }
+      // // Debug.Log(Width + "  " + Height);
+      //  int x = (int)( Width / offSetX);
+      //  int y = (int)(Height / offSetY);
+      //  Gird = new Vector2[x, y];
+      ////  Debug.Log(x+" "+y);
+      //  for(int i=y-1; i>=0; i --)
+      //      for(int j = 0; j <x; j++)
+      //      {
+      //          Gird[j,i] = new Vector2(j*offSetX,Height-i*offSetY);
+      //      }
         
     }
     public void IncreTime()

@@ -139,7 +139,7 @@ MonoBehaviour:
   index_Skill: 0
   index_scoward: 0
   indexPower: 0
-  maxVec: 15
+  maxVec: 20
   index_Blood_War: 0
   index_Dodge: 0
   Keep_Direction_Move: 0
@@ -181,8 +181,6 @@ MonoBehaviour:
   SpeedVelocity: 15
   SpeedNode: 1
   SpeedRoll: 1
-  offSetX: 8
-  offSetY: 8
   ListPoint: []
   ListDirect: []
   ListPath: []

@@ -41,4 +41,12 @@ public class Cricle : MonoBehaviour
 
 
     }
+    private void OnDisable()
+    {
+       Image_Cricle.fillAmount = 0;
+    }
+    private void OnEnable()
+    {
+        Image_Cricle.fillAmount = 0;
+    }
 }

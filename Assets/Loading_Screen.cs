@@ -47,7 +47,7 @@ public class Loading_Screen : MonoBehaviour
     }
     public void StartProcess()
     {
-       if(Application.internetReachability != NetworkReachability.NotReachable)
+       if(/*Application.internetReachability != NetworkReachability.NotReachable*/1==1)
         {
           
        
@@ -95,8 +95,8 @@ public class Loading_Screen : MonoBehaviour
         }
         else
         {
-            var a = Instantiate(SpawnEffect.Instance.getEffectName("Status"), null);
-            a.GetComponent<Status>().SetText("NOT CONNECT WITH INTERNET");
+            //var a = Instantiate(SpawnEffect.Instance.getEffectName("Status"), null);
+            //a.GetComponent<Status>().SetText("NOT CONNECT WITH INTERNET");
 
         }
     }

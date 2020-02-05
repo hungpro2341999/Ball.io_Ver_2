@@ -171,6 +171,7 @@ public class Enemy : MonoBehaviour
                 if (!isDead)
                 {
                     isDead = true;
+                    GamePlayerCtrl.Instance.Incre_Radius();
                     if (isTargetBy != null)
                     {
                         if (isTargetBy.tag == "Player")
