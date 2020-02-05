@@ -19,4 +19,9 @@ public class InforMap : MonoBehaviour
     {
         
     }
+
+    public void Destroy()
+    {
+        Destroy(gameObject);
+    }
 }

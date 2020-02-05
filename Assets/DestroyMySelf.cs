@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DestroyMySelf : MonoBehaviour
 {
-    
+   
     ParticleSystem system;
     // Start is called before the first frame update
     void Start()

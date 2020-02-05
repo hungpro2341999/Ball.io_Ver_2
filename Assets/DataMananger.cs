@@ -64,6 +64,8 @@ public class DataMananger : MonoBehaviour
     {
         Random_Sky();
         Random_Map();
+        GamePlayerCtrl.Instance.Event_Over_Game += Random_Map;
+        GamePlayerCtrl.Instance.Event_Over_Game += Random_Sky;
     }
 
     public void Init_Key()
@@ -350,7 +352,15 @@ public class DataMananger : MonoBehaviour
     }
     public void Random_Map()
     {
-
+         var map_1 = GameObject.Find("Map");
+        if (map_1 != null)
+        {
+            map_1.GetComponent<InforMap>().Destroy();
+        }
+        else
+        {
+            
+        }
         int r = Random.Range(0, Data_Skills.Maps.Count);
         var map = Data_Skills.Maps[r].GetComponent<Map>();
         var a = Instantiate(map.Shape, Vector3.zero, Quaternion.identity,Map);

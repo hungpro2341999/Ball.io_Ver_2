@@ -24,10 +24,11 @@ public class GamePlayerCtrl : MonoBehaviour
     public bool isWinGame = false;
     public delegate void Event_Game();
     public LayerMask MaskPlayer;
+    public LayerMask GroundLayer;
     public Event_Game Event_Reset_Game;
    
     public Event_Game Event_Over_Game;
-    public Event_Game Event_Back_To_Screen_Game;
+   // public Event_Game Event_Back_To_Screen_Game;
     private void Awake()
     {
         if (Instance != null)
@@ -319,7 +320,7 @@ public class GamePlayerCtrl : MonoBehaviour
         {
             Vector3 pos = Random.insideUnitCircle * Radius;
             pos = new Vector3(pos.x, Ground + OffSet, pos.y);
-            if (Physics.SphereCast(new Ray(pos, transform.up), 1.2f, 0,MaskPlayer) && Physics.Raycast(new Ray(pos, -Vector3.up), 10))
+            if (Physics.SphereCast(new Ray(pos, transform.up), 1.2f, 0,MaskPlayer) && Physics.Raycast(new Ray(pos, -Vector3.up), 10,GroundLayer))
             {
                 Accpect1 = false;
             }
@@ -349,7 +350,7 @@ public class GamePlayerCtrl : MonoBehaviour
         while (!Accpect)
         {
             Vector3 pos = Random.insideUnitCircle * Radius;
-            pos = new Vector3(pos.x, Ground + OffSet, pos.y);
+            pos = new Vector3(pos.x, Ground + OffSet, pos.z);
             if (Physics.SphereCastAll(new Ray(pos, transform.up), 1.5f, 0, MaskPlayer).Length==0)
             {
                 Debug.Log("OK");
@@ -358,7 +359,7 @@ public class GamePlayerCtrl : MonoBehaviour
                 a.name = "AI_" + i;
              
                 Debug.Log(a.name + " " + a.GetComponent<Enemy>().GetEnemyInRadius(1.5f,pos,transform.up));
-                if(a.GetComponent<Enemy>().GetEnemyInRadius(1, pos, transform.up) != 0 && Physics.Raycast(new Ray(pos, -Vector3.up),10))
+                if(a.GetComponent<Enemy>().GetEnemyInRadius(1, pos, transform.up) != 0 && Physics.Raycast(new Ray(pos, -Vector3.up),100))
                 {
                     Accpect = false;
                     a.GetComponent<Enemy>().Destroy();

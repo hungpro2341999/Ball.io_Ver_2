@@ -25,6 +25,7 @@ public class GameMangaer : MonoBehaviour
     void Start()
     {
         Open_Screen(Screen_Type.Screen_Start);
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
@@ -89,6 +90,7 @@ public class GameMangaer : MonoBehaviour
         switch (screen)
         {
             case Screen_Type.Screen_Play:
+
                 Debug.Log("STARTTTTTT");
                 Close(Screen_Type.Screen_loading);
                 GamePlayerCtrl.Instance.Event_Reset_Game();

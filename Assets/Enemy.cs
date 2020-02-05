@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour
     public float Range;
     public float SpeedChance = 5;
     public float Length = 100;
+    public float SpeedSlownDown = 1f;
     //Local Variable
     public List<Transform> ListRay = new List<Transform>();
     float Percent;
@@ -439,10 +440,14 @@ public class Enemy : MonoBehaviour
     {
         if (CoolTimeSmoke < 0)
         {
-            CoolTimeSmoke = 1;
-          //  var a = Instantiate(ParticeSmoke, transform.position, Quaternion.identity, null);
+            CoolTimeSmoke = 0.1f;
+            if (Force >= 1f)
+            {
+                var a = Instantiate(ParticeSmoke, transform.position, Quaternion.identity, null);
 
-         
+            }
+
+
         }
         else
         {
@@ -515,7 +520,7 @@ public class Enemy : MonoBehaviour
          //   Debug.Log(DirectMove + "  " + ForcePlayer + "  " + Force + "  " + Length + " " + BoundPlayer);
            // Debug.Log((ForcePlayer + Force) * Length * 1.2f);
             AddForce((DirectMove * ForceIntertion), ForceModeWhenInteraction, ForceIntertion);
-            if (DataMananger.Instance.Is_Variable() == 0) 
+            if (DataMananger.Instance.Is_Variable() == 1) 
             {
                 Handheld.Vibrate();
             }
@@ -1691,7 +1696,8 @@ public class Enemy : MonoBehaviour
             pos.y += 0.2f;
             weight += 1;
             Mass += 1;
-       //    Speed -= 2;
+            Speed -= 5f;
+            Speed = Mathf.Clamp(Speed, 1, Mathf.Infinity);
             Bound += 1f;
             transform.position = pos;
             level += 0.8f;

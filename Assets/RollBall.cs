@@ -169,17 +169,7 @@ void Start()
                         //ClearRecover();
 
                     }
-                    if (isClick1)
-                    {
-                        if (!isMoveBack)
-                        {
-
-                        }
-
-
-
-
-                    }
+                   
                 }
                 else
                 {
@@ -195,7 +185,7 @@ void Start()
 
 
                     }
-                    isClick1 = false;
+                   
                     if (Input.GetMouseButtonDown(0))
                     {
                         isClick1 = true;
@@ -213,6 +203,7 @@ void Start()
 
             }
         }
+        Spawn_Effect();
     }
     private void LateUpdate()
     {
@@ -381,7 +372,7 @@ void Start()
 
             
 
-            body.AddForce(DirectMove * SpeedVelocity*Time.deltaTime*Length,ForceModeWhenMove);
+            body.AddForce(DirectMove * Speed*Time.deltaTime*Length,ForceModeWhenMove);
             //  Body.AddForce(new Vector3(LastDirect.x * SpeedVelocity, 0, -LastDirect.y * SpeedVelocity));
             // Body.AddForce(LastDirect* SpeedVelocity,ForceMode.VelocityChange);
             //   Debug.Log("ADD FORCE_1");

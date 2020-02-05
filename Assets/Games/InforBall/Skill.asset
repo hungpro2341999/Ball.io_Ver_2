@@ -39,7 +39,7 @@ MonoBehaviour:
     isUse: 1
     Cost: 200
   - id: 1
-    isBuy: 1
+    isBuy: 0
     isUse: 0
     Cost: 200
   - id: 2
@@ -148,6 +148,6 @@ MonoBehaviour:
   - {fileID: 1513948956859360057, guid: e63ad70eb3468f4419723bcab5583f5a, type: 3}
   - {fileID: 8058671269210028006, guid: 27b700a34314e4145a9b1454b2f5e69b, type: 3}
   Sprite_Sky:
-  - {fileID: 2100000, guid: 02af83994ac614448af326e8370707b6, type: 2}
-  - {fileID: 2100000, guid: 0e4c252701557b047afcf6ede6d0c932, type: 2}
-  - {fileID: 2100000, guid: 267aa30d142d0ac4e840d1c82d63323f, type: 2}
+  - {fileID: 2100000, guid: b946638d93c857049a3381049563f522, type: 2}
+  - {fileID: 2100000, guid: bfb5a79ed3080964ba9b31eea6d30c21, type: 2}
+  - {fileID: 2100000, guid: 513d88ee702ee3d4591290ef97245410, type: 2}
