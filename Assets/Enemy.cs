@@ -111,9 +111,11 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (DataMananger.MapSelec == 3)
+        if (DataMananger.MapSelec == 3 || DataMananger.MapSelec == 4)
         {
             Radius = 1;
+            maxVec = 10;
+            Speed -= 3;
         }
      
         SizeSmoke = 0.8f;
@@ -395,22 +397,25 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-          
-            if (Vector3.Magnitude(body.velocity) < Mass)
-            {
-                isTargetBy = null;
-                isMoveBack = false;
-            }
-            else
-            {
-            //     Debug.Log("Chance");
-                body.velocity = body.velocity - Time.deltaTime * body.velocity*MassChance/2;
-             // body.AddForce(-DirectMove.normalized * Mass);
-               
-            }
+           
+                if (Vector3.Magnitude(body.velocity) < Mass)
+                {
+                    isTargetBy = null;
+                    isMoveBack = false;
+                }
+                else
+                {
+                    //     Debug.Log("Chance");
+                    body.velocity = body.velocity - Time.deltaTime * body.velocity * MassChance / 2;
+                    // body.AddForce(-DirectMove.normalized * Mass);
+
+                }
+            
+           
+         
         }
     }
-
+    public float Reset_Mass = 0.08f;
     public bool isCollWith(Player player)
     {
        
@@ -533,8 +538,9 @@ public class Enemy : MonoBehaviour
   
         if (gameObject.tag == "Player")
         {
-         //   Debug.Log(DirectMove + "  " + ForcePlayer + "  " + Force + "  " + Length + " " + BoundPlayer);
-           // Debug.Log((ForcePlayer + Force) * Length * 1.2f);
+            //   Debug.Log(DirectMove + "  " + ForcePlayer + "  " + Force + "  " + Length + " " + BoundPlayer);
+            // Debug.Log((ForcePlayer + Force) * Length * 1.2f);
+            StartCoroutine(Return_Move_Back(0.05f));
             AddForce((DirectMove * ForceIntertion), ForceModeWhenInteraction, ForceIntertion);
             if (DataMananger.Instance.Is_Variable() == 1) 
             {
@@ -545,8 +551,9 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-           // Debug.Log(DirectMove + "  " + ForcePlayer + "  " + Force + "  " + Length + " " + BoundPlayer);
-           // Debug.Log((ForcePlayer + Force) * Length * 1.2f);
+            StartCoroutine(Return_Move_Back(0.05f));
+            // Debug.Log(DirectMove + "  " + ForcePlayer + "  " + Force + "  " + Length + " " + BoundPlayer);
+            // Debug.Log((ForcePlayer + Force) * Length * 1.2f);
             AddForce((DirectMove * ForceIntertion), ForceModeWhenInteraction, ForceIntertion);
         
 
@@ -1711,7 +1718,7 @@ public class Enemy : MonoBehaviour
             Vector3 pos = transform.position;
             pos.y += 0.2f;
             weight += 1;
-            if (DataMananger.MapSelec != 3)
+            if (DataMananger.MapSelec != 3 || DataMananger.MapSelec != 4)
             {
             Radius += 0.8f;
         }
@@ -1735,6 +1742,13 @@ public class Enemy : MonoBehaviour
     public float Get_Force()
     {
         return body.velocity.sqrMagnitude;
+    }
+    public IEnumerator Return_Move_Back(float time)
+    {
+        yield return new WaitForSeconds(time);
+        isTargetBy = null;
+       
+        isMoveBack = false;
     }
   
 }

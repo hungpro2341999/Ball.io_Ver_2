@@ -101,7 +101,7 @@ public class GamePlayerCtrl : MonoBehaviour
             {
                 if (Random.Range(0, 2) != 1)
                 {
-                    if (DataMananger.MapSelec != 3)
+                    if (DataMananger.MapSelec != 3 || DataMananger.MapSelec != 4)
                     {
                         player[i].GetComponent<Enemy>().Radius += Random.Range(-0.1f, 0.5f);
                     }
@@ -308,6 +308,7 @@ public class GamePlayerCtrl : MonoBehaviour
             player[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
             player[i].GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             player[i].GetComponent<Rigidbody>().isKinematic = false;
+            player[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         }
 
 

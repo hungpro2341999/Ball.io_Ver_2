@@ -92,7 +92,7 @@ public class DataMananger : MonoBehaviour
         }
 
         //  INIT SHOP
-        // PlayerPrefs.DeleteKey(Key_Shop);
+        //   PlayerPrefs.DeleteKey(Key_Shop);
         if (!PlayerPrefs.HasKey(Key_Shop))
         {
           List<Infor_Skill> lists = new List<Infor_Skill>();
@@ -366,7 +366,7 @@ public class DataMananger : MonoBehaviour
             
         }
         int r = Random.Range(0, Data_Skills.Maps.Count);
-        var map = Data_Skills.Maps[4].GetComponent<Map>();
+        var map = Data_Skills.Maps[r].GetComponent<Map>();
         MapSelec = r;
         var a = Instantiate(map.Shape, Vector3.zero, Quaternion.identity,Map);
         int index_material = Random.Range(0, map.Surface.Count);

@@ -8,6 +8,7 @@ public class Review_Skin : MonoBehaviour
     public static Review_Skin Instance = null;
     public Transform Parent_Skin;
     public int id_Skin;
+    public Vector3 pos_init;
     private void Awake()
     {
         if (Instance != null)
@@ -22,6 +23,7 @@ public class Review_Skin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
         GamePlayerCtrl.Instance.Event_Reset_Game += UnActiveSkin;
         GamePlayerCtrl.Instance.Event_Over_Game += ActiveSkin;
        SetUpSkin();
@@ -30,7 +32,14 @@ public class Review_Skin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (DataMananger.MapSelec != 3)
+        {
+            GetComponent<FloatingObject>().enabled = false;
+        }
+        else
+        {
+            GetComponent<FloatingObject>().enabled = true;
+        }
     }
     public void SetUpSkin()
     {
@@ -52,5 +61,19 @@ public class Review_Skin : MonoBehaviour
     public void Set_Active(bool active)
     {
         gameObject.SetActive(active);
+    }
+    private void OnDisable()
+    {
+        transform.position = pos_init;
+        transform.eulerAngles = Vector3.zero;
+    }
+    private void OnEnable()
+    {
+
+        transform.position = pos_init;
+        transform.eulerAngles = Vector3.zero;
+
+
+
     }
 }
