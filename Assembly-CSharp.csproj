@@ -78,6 +78,7 @@
     <Compile Include="Assets\Enemy.cs" />
     <Compile Include="Assets\ExampleClass.cs" />
     <Compile Include="Assets\ExampleScript.cs" />
+    <Compile Include="Assets\FinalMap\FloatingObject.cs" />
     <Compile Include="Assets\FX Quest\Scripts\EQ_CloudFlow.cs" />
     <Compile Include="Assets\FX Quest\Scripts\EQ_OrbitCamera.cs" />
     <Compile Include="Assets\FX Quest\Scripts\EQ_ParticleMoveSample.cs" />
@@ -149,6 +150,7 @@
     <Compile Include="Assets\Player.cs" />
     <Compile Include="Assets\Point.cs" />
     <Compile Include="Assets\QuangCao\Scripts\ManagerAds.cs" />
+    <Compile Include="Assets\Review_Skin.cs" />
     <Compile Include="Assets\RollBall.cs" />
     <Compile Include="Assets\Shop\Infor_Skill.cs" />
     <Compile Include="Assets\Shop\List_Infor_Skill.cs" />
@@ -156,6 +158,7 @@
     <Compile Include="Assets\Shop\Skill.cs" />
     <Compile Include="Assets\SpawnEffect.cs" />
     <Compile Include="Assets\Status.cs" />
+    <Compile Include="Assets\UI.cs" />
     <Compile Include="Assets\UI\Mutiply_Screen.cs" />
     <Compile Include="Assets\UI\Windown.cs" />
     <Compile Include="Assets\unity-ui-extensions\Examples\ComboBox\ComboBoxChanged.cs" />

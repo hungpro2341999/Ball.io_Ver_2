@@ -4,10 +4,22 @@ using UnityEngine;
 
 public class MoveFlowPlayer : MonoBehaviour
 {
+    public static MoveFlowPlayer Instance = null;
     public Vector3 pos;
-   public Player player;
+    public Player player;
     public float offset = 5;
     public float Speed = 2;
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {

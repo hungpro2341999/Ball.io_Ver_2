@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public enum Screen_Game {Screen_Start,Screen_Play,Screen_Loading};
@@ -8,7 +9,8 @@ public enum Screen_Game {Screen_Start,Screen_Play,Screen_Loading};
 public class GameMangaer : MonoBehaviour
 {
     public List<Mutiply_Screen> mutiply_Screens;
-    public static GameMangaer Instance = null; 
+    public static GameMangaer Instance = null;
+    public Button Play;
     private void Awake()
     {
         if (Instance != null)
@@ -99,10 +101,24 @@ public class GameMangaer : MonoBehaviour
                 break;
 
             case Screen_Type.Screen_loading:
-
-                Open(Screen_Type.Screen_loading);
-                Close(Screen_Type.Screen_Start);
-                GetScreen(Screen_Type.Screen_loading).GetComponent<Loading_Screen>().StartProcess();
+                if(Application.internetReachability != NetworkReachability.NotReachable)
+                {
+                    if (!GamePlayerCtrl.isPlayingGame)
+                    {
+                        GamePlayerCtrl.isPlayingGame = true;
+                        Play.interactable = false;
+                        Open(Screen_Type.Screen_loading);
+                        Close(Screen_Type.Screen_Start);
+                        GetScreen(Screen_Type.Screen_loading).GetComponent<Loading_Screen>().StartProcess();
+                    }
+                   
+                }
+                else
+                {
+                    var a = Instantiate(SpawnEffect.Instance.getEffectName("Status"), null);
+                    a.GetComponent<Status>().SetText("PLEASE CONNECT INTERNET  !!!");
+                }
+              
                 break;
 
             case Screen_Type.Screen_Start:
@@ -218,19 +234,42 @@ public class GameMangaer : MonoBehaviour
     public void GetReward()
     {
         Debug.Log("Show_1");
-        ManagerAds.Ins.ShowRewardedVideo(success =>
+        if (ManagerAds.Ins.IsRewardVideoAvailable())
         {
-            if (success)
+            ManagerAds.Ins.ShowRewardedVideo(success =>
             {
-                Debug.Log("Show");
-                DataMananger.Instance.Add_Coin(20);
-            }
-        });
+                if (success)
+                {
+                    Debug.Log("Show");
+                    DataMananger.Instance.Add_Coin(20);
+                }
+            });
+        }
+           
     }
     public void Open_Ads_Full() 
     {
         ManagerAds.Ins.ShowInterstitial();
     }
+    public void X2_Coin()
+     {
+        if (ManagerAds.Ins.IsRewardVideoAvailable())
+        {
+            ManagerAds.Ins.ShowRewardedVideo(success =>
+            {
+                if (success)
+                {
+                    int coin = RollBall.Coin;
+                    DataMananger.Instance.Add_Coin(coin);
+                    RollBall.Coin = 0;
+                    GamePlayerCtrl.Instance.Back_To_Game();
+                }
+            });
+        }
+       
+       
+
+     }
     
    
 }

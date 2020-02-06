@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class DataMananger : MonoBehaviour
 {
     public static DataMananger Instance = null;
-
+    public static int MapSelec = -1;
     #region Data
     public Skill Data_Skills;
     public BotNameData Data_Bot;
@@ -92,7 +92,7 @@ public class DataMananger : MonoBehaviour
         }
 
         //  INIT SHOP
-         PlayerPrefs.DeleteKey(Key_Shop);
+        // PlayerPrefs.DeleteKey(Key_Shop);
         if (!PlayerPrefs.HasKey(Key_Shop))
         {
           List<Infor_Skill> lists = new List<Infor_Skill>();
@@ -150,13 +150,15 @@ public class DataMananger : MonoBehaviour
         {
             PlayerPrefs.SetInt(Key_Coin,0);
             PlayerPrefs.Save();
-            m_Coin.text = Get_Coin();
+            //m_Coin.text = Get_Coin();
             Coin = PlayerPrefs.GetInt(Key_Coin);
+            StartCoroutine(Start_Add_Coin(10));
         }
         else
         {
             Coin = PlayerPrefs.GetInt(Key_Coin);
-            m_Coin.text = Get_Coin();
+            m_Coin.text = 0.ToString();
+            StartCoroutine(Start_Add_Coin(10));
 
         }
         // Init Ball Player
@@ -266,14 +268,16 @@ public class DataMananger : MonoBehaviour
     {
         this.Coin += coin;
         Save_Coin(this.Coin);
-        m_Coin.text = Get_Coin();
-       
+       // m_Coin.text = Get_Coin();
+        StartCoroutine(Start_Add_Coin(3));
+
     }
     public void Earn_Coin(int coin)
     {
         this.Coin -= coin;
         Save_Coin(this.Coin);
-        m_Coin.text = this.Coin.ToString();
+        //m_Coin.text = this.Coin.ToString();
+        StartCoroutine(Start_Add_Coin(-10));
     }
     public void Set_Coin(int coin)
     {
@@ -362,9 +366,20 @@ public class DataMananger : MonoBehaviour
             
         }
         int r = Random.Range(0, Data_Skills.Maps.Count);
-        var map = Data_Skills.Maps[r].GetComponent<Map>();
+        var map = Data_Skills.Maps[4].GetComponent<Map>();
+        MapSelec = r;
         var a = Instantiate(map.Shape, Vector3.zero, Quaternion.identity,Map);
-        a.GetComponent<Transform>().Find("Shape").GetComponent<Renderer>().material = map.Surface[Random.Range(0, map.Surface.Count)];
+        int index_material = Random.Range(0, map.Surface.Count);
+        Transform[] shape = a.GetComponent<Transform>().Find("Shape").GetComponentsInChildren<Transform>();
+        Debug.Log("Shape : " + shape.Length);
+        for(int i = 0; i < shape.Length; i++)
+        {
+        if(shape[i].name == "Shape" && shape[i].GetComponent<Renderer>()!=null)
+            {
+                shape[i].GetComponent<Renderer>().material = map.Surface[index_material];
+            }
+        }
+         //a.GetComponents<Transform>().Find("Shape").GetComponent<Renderer>().material = map.Surface[Random.Range(0, map.Surface.Count)];
         a.name = "Map";
     }
    
@@ -378,7 +393,28 @@ public class DataMananger : MonoBehaviour
     }
     public void Check()
     {
+
         Debug.Log("Change");
+    }
+    public IEnumerator Start_Add_Coin(int count)
+    {
+        while (int.Parse(m_Coin.text)!= int.Parse(DataMananger.Instance.Get_Coin()))
+        {
+            if (Mathf.Sign(count) != -1)
+            {
+                int Coin = int.Parse(m_Coin.text) + count;
+                Coin = (int)Mathf.Clamp(Coin, 0, int.Parse(DataMananger.Instance.Get_Coin()));
+                m_Coin.text = Coin.ToString();
+                yield return new WaitForSeconds(0);
+            }
+            else 
+            {
+                Coin = (int)Mathf.Clamp(Coin, 0, int.Parse(DataMananger.Instance.Get_Coin()));
+                m_Coin.text = Coin.ToString();
+                yield return new WaitForSeconds(0);
+            }
+           
+        }
     }
     
 }

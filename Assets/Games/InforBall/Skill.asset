@@ -33,88 +33,98 @@ MonoBehaviour:
   - {fileID: 7508622925763489189, guid: b7614d2ef1490ac41a066353cf52a985, type: 3}
   - {fileID: 4295848721953573921, guid: 301c651e40ea55f4983f9a94c12597d4, type: 3}
   - {fileID: 2277475802639855574, guid: 54536ab4ea0e94344a34b297e443b87b, type: 3}
+  - {fileID: 5656722465606450521, guid: 27c4d6ea12ff9014197c034751f0f5a4, type: 3}
+  - {fileID: 8070792936829912660, guid: 2956f9c76e4fb3947801d1431702fa57, type: 3}
   List_infor_Skill:
   - id: 0
     isBuy: 1
     isUse: 1
-    Cost: 200
+    Cost: 0
   - id: 1
     isBuy: 0
     isUse: 0
-    Cost: 200
+    Cost: 210
   - id: 2
-    isBuy: 0
+    isBuy: 1
     isUse: 0
-    Cost: 200
+    Cost: 250
   - id: 3
     isBuy: 0
     isUse: 0
-    Cost: 200
+    Cost: 250
   - id: 4
     isBuy: 0
     isUse: 0
-    Cost: 200
+    Cost: 250
   - id: 5
     isBuy: 0
     isUse: 0
-    Cost: 200
+    Cost: 300
   - id: 6
     isBuy: 0
     isUse: 0
-    Cost: 200
+    Cost: 350
   - id: 7
     isBuy: 0
     isUse: 0
-    Cost: 200
+    Cost: 400
   - id: 8
     isBuy: 0
     isUse: 0
-    Cost: 200
+    Cost: 500
   - id: 9
     isBuy: 0
     isUse: 0
-    Cost: 200
+    Cost: 500
   - id: 10
     isBuy: 0
     isUse: 0
-    Cost: 200
+    Cost: 550
   - id: 11
     isBuy: 0
     isUse: 0
-    Cost: 200
+    Cost: 550
   - id: 12
     isBuy: 0
     isUse: 0
-    Cost: 200
+    Cost: 600
   - id: 13
     isBuy: 0
     isUse: 0
-    Cost: 200
+    Cost: 610
   - id: 14
     isBuy: 0
     isUse: 0
-    Cost: 200
+    Cost: 615
   - id: 15
     isBuy: 0
     isUse: 0
-    Cost: 200
+    Cost: 350
   - id: 16
     isBuy: 0
     isUse: 0
-    Cost: 200
+    Cost: 500
   - id: 17
     isBuy: 0
     isUse: 0
-    Cost: 200
+    Cost: 500
   - id: 18
     isBuy: 0
     isUse: 0
-    Cost: 200
+    Cost: 700
   - id: 19
     isBuy: 0
     isUse: 0
-    Cost: 200
-  Cost: c8000000c8000000c8000000c8000000c8000000c8000000c8000000c8000000c8000000c8000000c8000000c8000000c8000000c8000000c8000000c8000000c8000000c8000000c8000000c8000000
+    Cost: 500
+  - id: 20
+    isBuy: 0
+    isUse: 0
+    Cost: 1000
+  - id: 21
+    isBuy: 0
+    isUse: 0
+    Cost: 1000
+  Cost: 00000000d2000000fa000000fa000000fa0000002c0100005e01000090010000f4010000f401000026020000260200005802000062020000670200005e010000f4010000f4010000bc020000f4010000e8030000e8030000
   Images:
   - {fileID: 21300000, guid: 84880a91d9d26084091716718f1a8c5d, type: 3}
   - {fileID: 21300000, guid: 89f4fa42fc25aa7488eeb17b02159851, type: 3}
@@ -136,6 +146,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 02804b80b437a4a4e98e7320cd01ef29, type: 3}
   - {fileID: 21300000, guid: ec375336f04d78e468f4a9b5229d9eab, type: 3}
   - {fileID: 21300000, guid: 4f6cdeed4d9956f418647fbbe6d177ae, type: 3}
+  - {fileID: 21300000, guid: 251b4a625acd49247ae34d944494c2db, type: 3}
+  - {fileID: 21300000, guid: f322b975d5b0f804781e51e5b0a703e5, type: 3}
   isBuy: 0
   isUse: 0
   Type_Skill: 0
@@ -146,7 +158,9 @@ MonoBehaviour:
   Maps:
   - {fileID: 5044741828238668554, guid: ab7048c414c406c489c5088cf05e1bb4, type: 3}
   - {fileID: 1513948956859360057, guid: e63ad70eb3468f4419723bcab5583f5a, type: 3}
-  - {fileID: 8058671269210028006, guid: 27b700a34314e4145a9b1454b2f5e69b, type: 3}
+  - {fileID: 4255185793089351303, guid: 27b700a34314e4145a9b1454b2f5e69b, type: 3}
+  - {fileID: 1894799458552816112, guid: ab192a811c662a44b886b26fdd44f8ed, type: 3}
+  - {fileID: 4945016676121000659, guid: 36eb1fdd9470b3f42903f380ad93be2e, type: 3}
   Sprite_Sky:
   - {fileID: 2100000, guid: b946638d93c857049a3381049563f522, type: 2}
   - {fileID: 2100000, guid: bfb5a79ed3080964ba9b31eea6d30c21, type: 2}

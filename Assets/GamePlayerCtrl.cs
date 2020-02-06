@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum StatusGame { Play,Pause,Out_Game,Wait,Reset,Game_Over,Watching,End_Game,None,Back_To_Game}
+public enum StatusGame { Play,Pause,Out_Game,Wait,Reset,Game_Over,Watching,End_Game,None,Back_To_Game,Not_Connect_Internet}
 public class GamePlayerCtrl : MonoBehaviour
 {
+   
     public static GamePlayerCtrl Instance;
     public Transform WaitForStart;
     public Mutiply_Screen Windown;
@@ -26,7 +27,9 @@ public class GamePlayerCtrl : MonoBehaviour
     public LayerMask MaskPlayer;
     public LayerMask GroundLayer;
     public Event_Game Event_Reset_Game;
-   
+    public static bool  connect = true;
+    public static bool isPlayingGame = false;
+
     public Event_Game Event_Over_Game;
    // public Event_Game Event_Back_To_Screen_Game;
     private void Awake()
@@ -41,7 +44,9 @@ public class GamePlayerCtrl : MonoBehaviour
         }
 
         Event_Reset_Game += Start_Game;
-        Event_Over_Game += GameOver;
+        Event_Reset_Game += Play;
+       Event_Over_Game += GameOver;
+        Event_Over_Game += NotPlay;
     }
 
     public void GameOver()
@@ -69,6 +74,14 @@ public class GamePlayerCtrl : MonoBehaviour
         
        
     }
+    public void Play()
+    {
+        isPlayingGame = true;
+    }
+    public void NotPlay()
+    {
+        isPlayingGame = false;
+    }
 
     public void EndGame()
     {
@@ -80,56 +93,112 @@ public class GamePlayerCtrl : MonoBehaviour
             player[i].GetComponent<Enemy>().Destroy();
         }
     }
+    public void Incre_Radius()
+    {
+        for (int i = 0; i < player.Length; i++)
+        {
+            try
+            {
+                if (Random.Range(0, 2) != 1)
+                {
+                    if (DataMananger.MapSelec != 3)
+                    {
+                        player[i].GetComponent<Enemy>().Radius += Random.Range(-0.1f, 0.5f);
+                    }
+                   
+                }
+               
+            }
+            catch (System.Exception)
+            {
+                Debug.Log("Null AI");
+                throw;
+            }
+          
+            
+        }
+        Debug.Log("5");
+    }
     private void FixedUpdate()
     {
-        if(Status == StatusGame.Back_To_Game) 
+       
+     
+        if (Application.internetReachability == NetworkReachability.NotReachable)
         {
-            GamePlayerCtrl.Instance.Event_Over_Game();
-            GameMangaer.Instance.Open_Screen(Screen_Type.Screen_Start);
-            Status = StatusGame.None;
-
-        }
-        if(Status == StatusGame.Out_Game)
-        {
-            if (Is_End_Game())
+            if (isPlayingGame)
             {
+                if (connect)
+                {
+                    connect = false;
+                    Windown.OpenWindow(Windown_Type.End_Game);
+                    GamePlayerCtrl.Instance.Event_Over_Game();
+                    Stop_All_Player();
+                    GameMangaer.Instance.Open_Screen(Screen_Type.Screen_Start);
+                    var a = Instantiate(SpawnEffect.Instance.getEffectName("Status"), null);
+                    a.GetComponent<Status>().SetText("YOU ARE DISCONNECTED INTERNET  !!!");
+                }
+            }
+           
                 
-                Status = StatusGame.End_Game;
-                Debug.Log("END_GAME");
-                Windown.CloseWindow(Windown_Type.End_Game);
-            }
-        }
 
-        if (Status == StatusGame.Play)
+        }
+        else
         {
-            if (Is_Game_OVer())
+            connect = true;
+            if (Status == StatusGame.Back_To_Game)
             {
+                GamePlayerCtrl.Instance.Event_Over_Game();
+                GameMangaer.Instance.Open_Screen(Screen_Type.Screen_Start);
+                Status = StatusGame.None;
+
+            }
+            if (Status == StatusGame.Out_Game)
+            {
+                if (Is_End_Game())
+                {
+
+                    Status = StatusGame.End_Game;
+                    Debug.Log("END_GAME");
+                    Windown.CloseWindow(Windown_Type.End_Game);
+                }
+            }
+
+            if (Status == StatusGame.Play)
+            {
+                if (Is_Game_OVer())
+                {
+                    Status = StatusGame.Out_Game;
+                    Debug.Log("GameOVer");
+                    Windown.OpenWindow(Windown_Type.Game_Over);
+
+                }
+                if (Is_End_Game())
+                {
+                    Status = StatusGame.End_Game;
+                    Debug.Log("END_GAME");
+                    Windown.CloseWindow(Windown_Type.End_Game);
+                }
+            }
+            if (Status == StatusGame.Watching)
+            {
+                if (isGameOver)
+                {
+                    Windown.CloseWindow(Windown_Type.Game_Over);
+                    Windown.OpenWindow(Windown_Type.Watching);
+                }
                 Status = StatusGame.Out_Game;
-                Debug.Log("GameOVer");
-                Windown.OpenWindow(Windown_Type.Game_Over);
+            }
+            if (Status == StatusGame.End_Game)
+            {
+                Windown.OpenWindow(Windown_Type.End_Game);
+                Status = StatusGame.None;
 
             }
-            if (Is_End_Game())
-            {
-                Status = StatusGame.End_Game;
-                Debug.Log("END_GAME");
-                Windown.CloseWindow(Windown_Type.End_Game);
-            }
         }
-        if (Status == StatusGame.Watching)
-        {
-            if (isGameOver)
-            {
-                Windown.CloseWindow(Windown_Type.Game_Over);
-            }
-            Status = StatusGame.Out_Game;
-        }
-        if (Status == StatusGame.End_Game)
-        {
-            Windown.OpenWindow(Windown_Type.End_Game);
-            Status = StatusGame.None;
 
-        }
+
+        
+            
     }
 
     public void Start_Game()
@@ -224,6 +293,7 @@ public class GamePlayerCtrl : MonoBehaviour
             if(player[i].name  == "Player" || player[i].tag == "Player")
             {
                 Main_Player = player[i];
+                MoveFlowPlayer.Instance.player = Main_Player;
 
             }
             else
@@ -279,22 +349,6 @@ public class GamePlayerCtrl : MonoBehaviour
 
     }
     
-   
-
-    public void PushInfor()
-    {
-
-        
-    }
-
-
-
-
-    public void RemovePlayer(Player player)
-    {
-
-    }
-
     public Player getPlayer(int index)
     {
         return this.player[index];
@@ -313,6 +367,20 @@ public class GamePlayerCtrl : MonoBehaviour
         
 
     }
+    public void Stop_All_Player()
+    {
+        //for (int i = 0; i < player.Length; i++)
+        //{
+        //    //if (player[i] != null)
+        //    //{
+        //    //    player[i].GetComponent<Rigidbody>().isKinematic = true;
+        //    //    player[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
+        //    //    player[i].GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        //    //}
+           
+           
+        //}
+    }
     public void Reset_Game()
     {
         bool Accpect1 = false;
@@ -320,24 +388,27 @@ public class GamePlayerCtrl : MonoBehaviour
         {
             Vector3 pos = Random.insideUnitCircle * Radius;
             pos = new Vector3(pos.x, Ground + OffSet, pos.y);
-            if (Physics.SphereCast(new Ray(pos, transform.up), 1.2f, 0,MaskPlayer) && Physics.Raycast(new Ray(pos, -Vector3.up), 10,GroundLayer))
+            if (Physics.SphereCast(new Ray(pos, transform.up), 1.2f, 0,MaskPlayer) || !Physics.Raycast(new Ray(pos, -Vector3.up), 100,GroundLayer))
             {
                 Accpect1 = false;
             }
             else
             {
+               
                 Accpect1 = true;
                 var a1 = Instantiate(Player, pos, Quaternion.identity, Parent);
                 a1.name = "Player";
+                
                 a1.GetComponent<InforPlayer>().SetInfor();
                 Accpect1 = true;
-            
+                Main_Player = a1.GetComponent<Player>();
+
             }
         }
 
         for (int i=0; i<Count_Player; i++)
         {
-           StartCoroutine(Spawn_Player(Time.fixedDeltaTime *10*i,i));
+           StartCoroutine(Spawn_Player(Time.fixedDeltaTime *2*i,i));
                  
         }
       
@@ -350,7 +421,7 @@ public class GamePlayerCtrl : MonoBehaviour
         while (!Accpect)
         {
             Vector3 pos = Random.insideUnitCircle * Radius;
-            pos = new Vector3(pos.x, Ground + OffSet, pos.z);
+            pos = new Vector3(pos.x, Ground + OffSet, pos.y);
             if (Physics.SphereCastAll(new Ray(pos, transform.up), 1.5f, 0, MaskPlayer).Length==0)
             {
                 Debug.Log("OK");
@@ -358,8 +429,8 @@ public class GamePlayerCtrl : MonoBehaviour
 
                 a.name = "AI_" + i;
              
-                Debug.Log(a.name + " " + a.GetComponent<Enemy>().GetEnemyInRadius(1.5f,pos,transform.up));
-                if(a.GetComponent<Enemy>().GetEnemyInRadius(1, pos, transform.up) != 0 && Physics.Raycast(new Ray(pos, -Vector3.up),100))
+                Debug.Log(a.name + " " + a.GetComponent<Enemy>().GetEnemyInRadius(2f,pos,transform.up));
+                if(a.GetComponent<Enemy>().GetEnemyInRadius(1, pos, transform.up) != 0 || !Physics.Raycast(new Ray(pos, -Vector3.up),100,GroundLayer))
                 {
                     Accpect = false;
                     a.GetComponent<Enemy>().Destroy();

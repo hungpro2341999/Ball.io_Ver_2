@@ -104,7 +104,7 @@ MonoBehaviour:
     m_Bits: 0
   Force: 1
   Bonnd: 1
-  Mass: 2
+  Mass: 2.5
   ForceMass: 1
   ForceIntereact: 0
   CheckGround: 10
@@ -169,6 +169,7 @@ MonoBehaviour:
   isTargetBy: {fileID: 0}
   Length_Push: 0
   level: 1
+  SizeSmoke: 0.8
   isColling: 0
   player: []
   Point: []
@@ -181,8 +182,6 @@ MonoBehaviour:
   SpeedVelocity: 15
   SpeedNode: 1
   SpeedRoll: 1
-  offSetX: 8
-  offSetY: 8
   ListPoint: []
   ListDirect: []
   ListPath: []
@@ -196,7 +195,7 @@ MonoBehaviour:
   rotationX: 0
   rotationY: 0
   SpeedRotaion: 20
-  cachedReal: 0.04
+  cachedReal: 0.03
 --- !u!135 &7024401171822998005
 SphereCollider:
   m_ObjectHideFlags: 0

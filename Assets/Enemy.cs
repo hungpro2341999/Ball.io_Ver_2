@@ -107,11 +107,16 @@ public class Enemy : MonoBehaviour
     public Player isTargetBy;
     public float Length_Push;
     public float level=1;
-
+    public float SizeSmoke = 0.8f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (DataMananger.MapSelec == 3)
+        {
+            Radius = 1;
+        }
+     
+        SizeSmoke = 0.8f;
         Percent = GameObject.Find("Map").GetComponent<InforMap>().Radian;
     //    Debug.Log(gameObject.name +" "+ DistanceFromWall(new Vector3(1,0,0)));
       
@@ -171,11 +176,13 @@ public class Enemy : MonoBehaviour
                 if (!isDead)
                 {
                     isDead = true;
+                    GamePlayerCtrl.Instance.Incre_Radius();
                     if (isTargetBy != null)
                     {
                         if (isTargetBy.tag == "Player")
                         {
-                            DataMananger.Instance.Add_Coin(5);
+                           RollBall.Coin += 25;
+                            DataMananger.Instance.Add_Coin(25);
                             var a = Instantiate(SpawnEffect.Instance.getEffectName("Score"), null);
                             a.GetComponent<Destroy>().SetPosText(transform.position);
 
@@ -444,6 +451,15 @@ public class Enemy : MonoBehaviour
             if (Force >= 1f)
             {
                 var a = Instantiate(ParticeSmoke, transform.position, Quaternion.identity, null);
+                //ParticleSystem.MainModule sys = a.GetComponent<ParticleSystem.MainModule>();
+                //sys.startSizeXMultiplier = SizeSmoke;
+                //sys.startSizeYMultiplier = SizeSmoke;
+                //sys.startSizeXMultiplier = SizeSmoke;
+
+                var main = a.GetComponent<ParticleSystem>().main;
+                main.startSizeXMultiplier = SizeSmoke;
+                main.startSizeYMultiplier = SizeSmoke;
+                main.startSizeZMultiplier = SizeSmoke;
 
             }
 
@@ -784,27 +800,27 @@ public class Enemy : MonoBehaviour
         {
            
             RaycastHit[] hits = Physics.RaycastAll(ListRay[i].transform.position, direct, Mathf.Infinity, MaskPlayer);
-            for(int j = 0; j < hits.Length; j++)
+            for (int j = 0; j < hits.Length; j++)
             {
                 if (hits[j].collider.gameObject == player.gameObject)
-                {
-                    isColl = true; 
-                }
-            }
-            /*
-            if(status == Type_Status.DODGE)
-            {
-                RaycastHit[] hits1 = Physics.RaycastAll(ListRay[i].transform.position, -direct, Mathf.Infinity, MaskPlayer);
-                for (int j = 0; j < hits1.Length; j++)
-                {
-                    if (hits1[j].collider.gameObject == player.gameObject)
+                    if (status == Type_Status.DODGE)
                     {
-                        isColl = true;
+                        {
+                            isColl = true;
+                        }
+                    }
+                /*
+                    RaycastHit[] hits1 = Physics.RaycastAll(ListRay[i].transform.position, -direct, Mathf.Infinity, MaskPlayer);
+                    for (int j = 0; j < hits1.Length; j++)
+                    {
+                        if (hits1[j].collider.gameObject == player.gameObject)
+                        {
+                            isColl = true;
+                        }
                     }
                 }
+                */
             }
-            */
-
     }
         return isColl;
     }
@@ -1695,15 +1711,22 @@ public class Enemy : MonoBehaviour
             Vector3 pos = transform.position;
             pos.y += 0.2f;
             weight += 1;
-            Mass += 1;
+            if (DataMananger.MapSelec != 3)
+            {
+            Radius += 0.8f;
+        }
+        Mass += 1;
             Speed -= 5f;
             Speed = Mathf.Clamp(Speed, 1, Mathf.Infinity);
             Bound += 1f;
             transform.position = pos;
             level += 0.8f;
             MassChance +=5;
-            Radius += 0.8f;
-        }
+            
+           SizeSmoke += 0.35f;
+     
+        // ParticeSmoke.GetComponent<ParticleSystem>().startSize += 1.5f;
+    }
 
     // Movement
     public List<Vector3> Point = new List<Vector3>();

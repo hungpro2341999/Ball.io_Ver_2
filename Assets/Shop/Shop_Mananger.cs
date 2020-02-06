@@ -104,60 +104,72 @@ public class Shop_Mananger : MonoBehaviour
     }
     public void Buy()
     {
-        if (Text_Cost.text!="USE")
+        if (Application.internetReachability != NetworkReachability.NotReachable)
         {
-         
 
-            if (Stuff_Choice != -1)
+
+            if (Text_Cost.text != "USE")
             {
-                    for (int i = 0; i < listSkill.Count; i++)
+
+
+                if (Stuff_Choice != -1)
                 {
-                    InforSkill infor =  Shop_Mananger.Instance.listSkill[i].GetComponent<InforSkill>();
-                    if (Stuff_Choice == infor.infor.id)
+                    for (int i = 0; i < listSkill.Count; i++)
                     {
-                        if (!infor.infor.isBuy)
+                        InforSkill infor = Shop_Mananger.Instance.listSkill[i].GetComponent<InforSkill>();
+                        if (Stuff_Choice == infor.infor.id)
                         {
-                            if (infor.infor.Cost <= DataMananger.Instance.Get_Coin_Current())
+                            if (!infor.infor.isBuy)
                             {
-                               
-                                DataMananger.Instance.Earn_Coin(infor.infor.Cost);
-                                infor.infor.isBuy = true;
-                                SetCode("USE");
-                                Load_Infor();
+                                if (infor.infor.Cost <= DataMananger.Instance.Get_Coin_Current())
+                                {
 
-                                var a = Instantiate(SpawnEffect.Instance.getEffectName("Status"), null);
-                                a.GetComponent<Status>().SetText("OK YOU GOT SOMETHING  LET TRY IT !!!");
+                                    DataMananger.Instance.Earn_Coin(infor.infor.Cost);
+                                    infor.infor.isBuy = true;
+                                    SetCode("USE");
+                                    Load_Infor();
+
+                                    var a = Instantiate(SpawnEffect.Instance.getEffectName("Status"), null);
+                                    a.GetComponent<Status>().SetText("BUYED SKIN COMPLETED !!!");
+
+                                }
+                                else
+                                {
+                                    var a = Instantiate(SpawnEffect.Instance.getEffectName("Status"), null);
+                                    a.GetComponent<Status>().SetText("NOT ENOUGHT MONEY !!!");
+                                }
 
                             }
-                            else
-                            {
-                                var a = Instantiate(SpawnEffect.Instance.getEffectName("Status"), null);
-                                a.GetComponent<Status>().SetText("NOT ENOUGHT MONEY !!!");
-                            }
-
                         }
+
                     }
-                   
+                }
+
+                else
+                {
+                    var a = Instantiate(SpawnEffect.Instance.getEffectName("Status"), null);
+                    a.GetComponent<Status>().SetText("CHOICE SOMETHING MAN !!!");
                 }
             }
-            else
+            else if (Text_Cost.text == "USE")
             {
+
+
+                DataMananger.Instance.Set_Id_Skin_Use(Stuff_Choice);
+                Review_Skin.Instance.SetUpSkin();
                 var a = Instantiate(SpawnEffect.Instance.getEffectName("Status"), null);
-                a.GetComponent<Status>().SetText("CHOICE SOMETHING MAN !!!");
+                a.GetComponent<Status>().SetText("Change Skin Completed !!!");
+                Debug.Log("USE" + "   " + DataMananger.Instance.Get_Id_Skin());
+
+
+
             }
         }
-        else if(Text_Cost.text == "USE")
+        else
         {
-           
-           
-            DataMananger.Instance.Set_Id_Skin_Use(Stuff_Choice);
-            
-            Debug.Log("USE"+"   "+DataMananger.Instance.Get_Id_Skin());
-
-            
-            
+            var a = Instantiate(SpawnEffect.Instance.getEffectName("Status"), null);
+            a.GetComponent<Status>().SetText("NOT CONNECT INTERNET !!!");
         }
-     
     }
     public void Load_Infor()
     {

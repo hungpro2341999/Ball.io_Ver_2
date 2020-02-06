@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum Windown_Type {Start,Shop,Setting,Quest,Play,Revice,Game_Over,Rank,End_Game,Wait_For_Start}
+public enum Windown_Type {Start,Shop,Setting,Quest,Play,Revice,Game_Over,Rank,End_Game,Wait_For_Start,Watching}
 public enum Screen_Type {Screen_Start,Screen_Play,Screen_loading}
 
 public class Mutiply_Screen : MonoBehaviour
