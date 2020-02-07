@@ -45,7 +45,7 @@ public class GamePlayerCtrl : MonoBehaviour
 
         Event_Reset_Game += Start_Game;
         Event_Reset_Game += Play;
-       Event_Over_Game += GameOver;
+        Event_Over_Game += GameOver;
         Event_Over_Game += NotPlay;
     }
 
@@ -429,7 +429,8 @@ public class GamePlayerCtrl : MonoBehaviour
                 var a = Instantiate(AI, pos, Quaternion.identity, Parent);
 
                 a.name = "AI_" + i;
-             
+
+               
                 //Debug.Log(a.name + " " + a.GetComponent<Enemy>().GetEnemyInRadius(2f,pos,transform.up));
                 if(a.GetComponent<Enemy>().GetEnemyInRadius(1, pos, transform.up) != 0 || !Physics.Raycast(new Ray(pos, -Vector3.up),100,GroundLayer))
                 {
@@ -442,16 +443,16 @@ public class GamePlayerCtrl : MonoBehaviour
                     Accpect = true;
                 }
                 //   StartCoroutine(Spawn_Player(Time.fixedDeltaTime * 3 * i, pos, i));
-              
 
+                yield return new WaitForSeconds(0);
 
             }
             else
             {
                 Accpect = false;
                 Debug.Log(" NOT OK :" + Physics.SphereCastAll(new Ray(pos, transform.up), 1f, 0, MaskPlayer).Length);
-              
 
+                yield return new WaitForSeconds(0);
 
             }
             yield return new WaitForSeconds(0);

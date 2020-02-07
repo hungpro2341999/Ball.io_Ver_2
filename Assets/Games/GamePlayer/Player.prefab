@@ -60,7 +60,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7024401171822998008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.267, y: 0, z: 0.028}
+  m_LocalPosition: {x: -0.221, y: 0, z: 0.028}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1077255141651849199}
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65549fb03de650d47a646f9509f29fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MassChance: 6
+  MassChance: 3
   Status: 0
   text: {fileID: 0}
   Type_Chance: 4
@@ -139,7 +139,7 @@ MonoBehaviour:
   index_Skill: 0
   index_scoward: 0
   indexPower: 0
-  maxVec: 12
+  maxVec: 15
   index_Blood_War: 0
   index_Dodge: 0
   Keep_Direction_Move: 0
@@ -208,8 +208,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.10641223
-  m_Center: {x: -0.0033394694, y: 0.0005938411, z: 0.00999999}
+  m_Radius: 0.08978895
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &7024401171822998010
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class InforMap : MonoBehaviour
     public float Radian;
     public float Ground;
     public Vector3 Vertice;
-    public float RateTime = 10;
+    public float RateTime;
     float time;
     float timeCurr=0;
     public float offsetLevel;
@@ -18,8 +18,8 @@ public class InforMap : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeCurr = 6;
-        RateTime = 6;
+        timeCurr = 15;
+        RateTime = 15;
       //  time = RateTime;
     }
 

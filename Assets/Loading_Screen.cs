@@ -11,7 +11,7 @@ public class Loading_Screen : MonoBehaviour
     
     public int numberPlayer;
     public List<int> Loaded;
-    public float WaitTime = 2;
+    public float WaitTime = 3;
     public bool isComplete = false;
     // Start is called before the first frame update
     private void Awake()
@@ -65,7 +65,7 @@ public class Loading_Screen : MonoBehaviour
             {
            
                 int index = Random.Range(0, numberPlayer);
-             //   Debug.Log("INDEX : " + index);
+                Debug.Log("INDEX : " + index);
                 if (Loaded.Contains(index))
                 {
                     continue;
@@ -87,8 +87,7 @@ public class Loading_Screen : MonoBehaviour
                    
             }
 
-                var a = Instantiate(SpawnEffect.Instance.getEffectName("Status"), null);
-                a.GetComponent<Status>().SetText("CONENCT SUSSECS PLEASE WAIT .......");
+               
 
 
             }
@@ -101,27 +100,29 @@ public class Loading_Screen : MonoBehaviour
         }
     }
 
-    public IEnumerator Process_Loading(int index,GameObject game,float wait_time,bool isComplete)
+    public IEnumerator Process_Loading(int index, GameObject game, float wait_time, bool isComplete)
     {
-     //   Debug.Log("INDEX : "+index);
+        //   Debug.Log("INDEX : "+index);
         Process_Player process = DataMananger.Instance.Set_Random_Infor();
-     //   Debug.Log(process.name);
+        //   Debug.Log(process.name);
         list_Process.Add(process);
-       
-     yield return new WaitForSeconds(wait_time);
+
+        yield return new WaitForSeconds(Time.deltaTime * index*10);
+        //   yield return new WaitForSeconds(0);
         game.GetComponent<LoadInfor>().SetImage(process.sprite);
         if (isComplete)
         {
             DataMananger.Instance.Push_Data(list_Process);
             DataMananger.Instance.CountPlayer = numberPlayer;
-            yield return new WaitForSeconds(WaitTime*1.5f);
+            ////    yield return new WaitForSeconds(5);
+            //yield return new WaitForSeconds(0);
             GameMangaer.Instance.Open_Screen(Screen_Type.Screen_Play);
-            
-            Debug.Log("Start_Game");
+
+            //Debug.Log("Start_Game");
 
         }
+
     }
-    
     
   
   

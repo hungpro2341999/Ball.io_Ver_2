@@ -113,15 +113,19 @@ public class Enemy : MonoBehaviour
     {
         if (DataMananger.MapSelec == 3 || DataMananger.MapSelec == 4)
         {
-            Radius = 1;
+            Radius =  Random.Range(0.2f,0.5f);
             maxVec = 10;
             Speed -= 3;
+            maxVec = 15;
         }
         else
         {
+            Radius = Random.Range(0.2f, 1);
+           
             maxVec = 15;
         }
-     
+        index_Blood_War = Random.Range(1, 9);
+        index_Dodge = Random.Range(1, 9);
         SizeSmoke = 0.2f;
         Percent = GameObject.Find("Map").GetComponent<InforMap>().Radian;
     //    Debug.Log(gameObject.name +" "+ DistanceFromWall(new Vector3(1,0,0)));
@@ -532,7 +536,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            ForceBack = (ForcePlayer + Get_Force()*1.4f);
+            ForceBack = (ForcePlayer + Get_Force());
         }
 
         if (ForceBack > 1)
@@ -551,7 +555,7 @@ public class Enemy : MonoBehaviour
             //   Debug.Log(DirectMove + "  " + ForcePlayer + "  " + Force + "  " + Length + " " + BoundPlayer);
             // Debug.Log((ForcePlayer + Force) * Length * 1.2f);
             StartCoroutine(Return_Move_Back(0.05f));
-            AddForce((DirectMove * ForceIntertion), ForceModeWhenInteraction, ForceIntertion);
+            AddForce((DirectMove * ForceIntertion*0.5f), ForceModeWhenInteraction, ForceIntertion);
             if (DataMananger.Instance.Is_Variable() == 1) 
             {
                 Handheld.Vibrate();
@@ -1124,8 +1128,8 @@ public class Enemy : MonoBehaviour
         }
 
     
-        float[] ScoreGood = GetArrayMax(score,2);
-        int r = Random.Range(0,2);
+        float[] ScoreGood = GetArrayMax(score,1);
+        int r = Random.Range(0,1);
         int r1 = getIndexMax(score);
      
         index =  getIndex(score, ScoreGood[r]);
@@ -1229,7 +1233,7 @@ public class Enemy : MonoBehaviour
 
 
         float[] ScoreGood = GetArrayMax(score, directs.Length / 2);
-        int r = Random.Range(0, directs.Length / 4);
+        int r = Random.Range(0, directs.Length);
 
         index = getIndexMax(score);
 
@@ -1730,14 +1734,14 @@ public class Enemy : MonoBehaviour
             weight += 1;
             if (DataMananger.MapSelec != 3 || DataMananger.MapSelec != 4)
             {
-            Radius += 0.8f;
-           }
-        Mass += 1;
+          //  Radius += 0.8f;
+            }
+        Mass += 3;
             Speed -= 5f;
             Speed = Mathf.Clamp(Speed, 1, Mathf.Infinity);
-            Bound += 1f;
+            Bound += 1.2f;
             transform.position = pos;
-            level += 0.8f;
+            level += 0.35f;
             MassChance +=5;
             
           // SizeSmoke += 0.35f;

@@ -23,7 +23,7 @@ public class MoveFlowPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pos = transform.position+Vector3.forward*-5;
+        pos = new Vector3(0.15f,25,-5);
         GamePlayerCtrl.Instance.Event_Over_Game += Reset;
     }
     public void Reset()
@@ -33,22 +33,27 @@ public class MoveFlowPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         player = GamePlayerCtrl.Instance.Main_Player;
         if (player != null)
         {
             if (player.GetComponent<Enemy>().isGround)
             {
+
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - offset), Speed * Time.deltaTime);
+                Camera.main.fieldOfView = 25;
             }
             else
             {
                 transform.position = Vector3.MoveTowards(transform.position, pos, Speed * Time.deltaTime);
+                Camera.main.fieldOfView = 80;
             }
         }
           
         else
         {
             transform.position = Vector3.MoveTowards(transform.position, pos, Speed * Time.deltaTime);
+            Camera.main.fieldOfView = 80;
         }
       
     }
