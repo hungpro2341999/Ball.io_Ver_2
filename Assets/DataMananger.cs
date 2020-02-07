@@ -10,6 +10,7 @@ public class DataMananger : MonoBehaviour
     public static int MapSelec = -1;
     #region Data
     public Skill Data_Skills;
+    public List<GameObject> Audio = new List<GameObject>();
     public BotNameData Data_Bot;
     public List<Process_Player> Data_List_Player = new List<Process_Player>();
     public List<Material> Material_Sky = new List<Material>();
@@ -62,12 +63,13 @@ public class DataMananger : MonoBehaviour
 
     private void Start()
     {
+       
         Random_Sky();
         Random_Map();
         GamePlayerCtrl.Instance.Event_Over_Game += Random_Map;
         GamePlayerCtrl.Instance.Event_Over_Game += Random_Sky;
     }
-
+    
     public void Init_Key()
     {
         if (!PlayerPrefs.HasKey(Key_Sound))
@@ -92,7 +94,7 @@ public class DataMananger : MonoBehaviour
         }
 
         //  INIT SHOP
-        // PlayerPrefs.DeleteKey(Key_Shop);
+        //   PlayerPrefs.DeleteKey(Key_Shop);
         if (!PlayerPrefs.HasKey(Key_Shop))
         {
           List<Infor_Skill> lists = new List<Infor_Skill>();
@@ -308,6 +310,10 @@ public class DataMananger : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            DataMananger.Instance.PlayAudio("va2",new Vector3(0,50,0));
+        }
     }
     public void Reset()
     {
@@ -366,7 +372,7 @@ public class DataMananger : MonoBehaviour
             
         }
         int r = Random.Range(0, Data_Skills.Maps.Count);
-        var map = Data_Skills.Maps[4].GetComponent<Map>();
+        var map = Data_Skills.Maps[r].GetComponent<Map>();
         MapSelec = r;
         var a = Instantiate(map.Shape, Vector3.zero, Quaternion.identity,Map);
         int index_material = Random.Range(0, map.Surface.Count);
@@ -414,6 +420,26 @@ public class DataMananger : MonoBehaviour
                 yield return new WaitForSeconds(0);
             }
            
+        }
+    }
+    public void PlayAudio(string name,Vector3 pos)
+    {
+        for(int i = 0; i < Audio.Count; i++)
+        {
+           
+            if(Audio[i].name == name)
+            {
+                if (DataMananger.Instance.Is_Mute() == 1)
+                {
+                    Debug.Log("Play :"+name);
+                    var a =  Instantiate(Audio[i],pos,Quaternion.identity,null);
+                    a.GetComponent<AudioSource>().Play();
+                    a.AddComponent<DestroyAudio>();
+                    
+                    //Audio[i].Play();
+                }
+            }
+         
         }
     }
     

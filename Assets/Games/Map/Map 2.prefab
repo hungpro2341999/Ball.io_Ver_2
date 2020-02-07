@@ -232,6 +232,8 @@ MonoBehaviour:
   Radian: 6
   Ground: 20
   Vertice: {x: 0, y: 0, z: 0}
+  RateTime: 50
+  offsetLevel: 0
 --- !u!1 &5625380010854539262
 GameObject:
   m_ObjectHideFlags: 0

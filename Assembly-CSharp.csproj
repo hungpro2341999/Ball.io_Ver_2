@@ -86,6 +86,9 @@
     <Compile Include="Assets\GameCtrl.cs" />
     <Compile Include="Assets\GameMangaer.cs" />
     <Compile Include="Assets\GamePlayerCtrl.cs" />
+    <Compile Include="Assets\Games\Audio\AudioManager.cs" />
+    <Compile Include="Assets\Games\Audio\DestroyAudio.cs" />
+    <Compile Include="Assets\Games\Audio\Sound.cs" />
     <Compile Include="Assets\Games\BotNameData.cs" />
     <Compile Include="Assets\Games\FPS_Counter.cs" />
     <Compile Include="Assets\Games\InforBall\Map.cs" />
@@ -156,6 +159,7 @@
     <Compile Include="Assets\Shop\List_Infor_Skill.cs" />
     <Compile Include="Assets\Shop\Shop_Mananger.cs" />
     <Compile Include="Assets\Shop\Skill.cs" />
+    <Compile Include="Assets\SoundUI.cs" />
     <Compile Include="Assets\SpawnEffect.cs" />
     <Compile Include="Assets\Status.cs" />
     <Compile Include="Assets\UI.cs" />

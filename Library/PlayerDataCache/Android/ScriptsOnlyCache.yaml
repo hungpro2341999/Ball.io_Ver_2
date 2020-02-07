@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AudioManager
     - BotNameData
     - Cricle
     - DataMananger
@@ -10,11 +11,11 @@ ScriptsOnlyBuild:
     - Enemy
     - Example04ScrollViewCell
     - FPS_Counter
+    - FloatingObject
     - GameMangaer
     - GamePlayerCtrl
     - GetInfor
     - GetInforRankPlayer
-    - GoogleMobileAds.Common.MobileAdsEventExecutor
     - InforMap
     - InforPlayer
     - InforSkill
@@ -31,6 +32,7 @@ ScriptsOnlyBuild:
     - RollBall
     - Shop_Mananger
     - Skill
+    - SoundUI
     - SpawnEffect
     - Status
     - UnityEngine.UI.Extensions.Examples.Example04Scene
@@ -43,16 +45,9 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
-    UnityEditor.TestRunner.dll:
-    - UnityEditor.TestTools.TestRunner.TestListCacheData
-    UnityEngine.Advertisements.Editor.dll:
-    - UnityEngine.Advertisements.Editor.Banner
-    - UnityEngine.Advertisements.Editor.Placeholder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -64,7 +59,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.InputField
     - UnityEngine.UI.LayoutElement
     - UnityEngine.UI.Mask
-    - UnityEngine.UI.RawImage
     - UnityEngine.UI.RectMask2D
     - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Shadow
@@ -147,8 +141,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9694}
     - Class: 114
-      Script: {instanceID: 9708}
-    - Class: 114
       Script: {instanceID: 9710}
     - Class: 114
       Script: {instanceID: 9714}
@@ -187,51 +179,57 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10146}
     - Class: 114
-      Script: {instanceID: 10184}
+      Script: {instanceID: 10186}
     - Class: 114
-      Script: {instanceID: 10260}
+      Script: {instanceID: 10262}
     - Class: 114
-      Script: {instanceID: 10282}
+      Script: {instanceID: 10284}
     - Class: 114
-      Script: {instanceID: 10300}
+      Script: {instanceID: 10302}
     - Class: 114
-      Script: {instanceID: 10354}
+      Script: {instanceID: 10356}
     - Class: 114
-      Script: {instanceID: 10426}
+      Script: {instanceID: 10428}
     - Class: 114
-      Script: {instanceID: 10462}
+      Script: {instanceID: 10440}
     - Class: 114
-      Script: {instanceID: 10516}
+      Script: {instanceID: 10466}
     - Class: 114
-      Script: {instanceID: 10720}
+      Script: {instanceID: 10520}
     - Class: 114
-      Script: {instanceID: 10752}
+      Script: {instanceID: 10724}
     - Class: 114
-      Script: {instanceID: 10794}
+      Script: {instanceID: 10756}
     - Class: 114
-      Script: {instanceID: 10826}
+      Script: {instanceID: 10798}
     - Class: 114
-      Script: {instanceID: 10854}
+      Script: {instanceID: 10830}
     - Class: 114
-      Script: {instanceID: 10964}
+      Script: {instanceID: 10858}
     - Class: 114
-      Script: {instanceID: 11132}
+      Script: {instanceID: 10968}
     - Class: 114
-      Script: {instanceID: 11154}
+      Script: {instanceID: 11136}
     - Class: 114
-      Script: {instanceID: 11168}
+      Script: {instanceID: 11158}
     - Class: 114
-      Script: {instanceID: 11246}
+      Script: {instanceID: 11174}
     - Class: 114
-      Script: {instanceID: 11268}
+      Script: {instanceID: 11224}
     - Class: 114
-      Script: {instanceID: 11286}
+      Script: {instanceID: 11254}
     - Class: 114
-      Script: {instanceID: 11310}
+      Script: {instanceID: 11276}
     - Class: 114
-      Script: {instanceID: 11324}
+      Script: {instanceID: 11282}
     - Class: 114
-      Script: {instanceID: 11332}
+      Script: {instanceID: 11296}
+    - Class: 114
+      Script: {instanceID: 11320}
+    - Class: 114
+      Script: {instanceID: 11334}
+    - Class: 114
+      Script: {instanceID: 11342}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -327,7 +325,7 @@ ScriptsOnlyBuild:
     className: Destroy_Review
   - hash:
       serializedVersion: 2
-      Hash: d06bc2728af4567122d9cc9204f4636d
+      Hash: 8c95713d908144ff02eb8e426f6630c7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: RollBall
@@ -655,6 +653,18 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: UnityEngine.UI.Extensions
     className: HorizontalScrollSnap
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements
+    className: CallbackExecutor
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: UnityEngine.Advertisements.dll
+    namespaceName: UnityEngine.Advertisements.Editor
+    className: Placeholder
   - hash:
       serializedVersion: 2
       Hash: d1bfd3339c8d62684d4ca7d389cbf6ae
@@ -1047,7 +1057,7 @@ ScriptsOnlyBuild:
     className: AnalyticsTracker
   - hash:
       serializedVersion: 2
-      Hash: a5b9d29cdc191490fdc666e9d307a586
+      Hash: 49e9a733f854100c934eadeec2a48c8c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Review_Skin
@@ -1083,7 +1093,7 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 60783b9a4ef8c0c724b44eaa04b676f0
+      Hash: 68c31e1ad24969876ac0e0a403c954c4
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: DataMananger
@@ -1357,6 +1367,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: UnityEngine.UI.Extensions.Examples
     className: PauseMenu
+  - hash:
+      serializedVersion: 2
+      Hash: 44a93b5a0695b2dea6e7ecd2e159cd2d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SoundUI
   - hash:
       serializedVersion: 2
       Hash: 88a886bc03d974fd5a17daa19cf4fb58
@@ -1935,6 +1951,12 @@ ScriptsOnlyBuild:
     className: Example04ScrollView
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DestroyAudio
+  - hash:
+      serializedVersion: 2
       Hash: 008739f1fd741565983e6028c382ec0b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1963,6 +1985,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: UnityEngine.UI.Extensions
     className: ReorderableListDebug
+  - hash:
+      serializedVersion: 2
+      Hash: 5345d50a0c5bce57eff4f24953559cda
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FloatingObject
   - hash:
       serializedVersion: 2
       Hash: a544ec2cf3213599228a098c645b8f93
@@ -2013,6 +2041,12 @@ ScriptsOnlyBuild:
     className: InforMap
   - hash:
       serializedVersion: 2
+      Hash: 738cf93d51c11dc522ce843f236f95bc
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AudioManager
+  - hash:
+      serializedVersion: 2
       Hash: 55ccb6b8dfbbbc7dbe926fd546d747d3
     assemblyName: Assembly-CSharp.dll
     namespaceName: UnityEngine.UI.Extensions.Examples
@@ -2061,7 +2095,7 @@ ScriptsOnlyBuild:
     className: UIMultiplyEffect
   - hash:
       serializedVersion: 2
-      Hash: 8294b24fedd2f17293ce785987768f82
+      Hash: 588bf1a6eb757bb1e33b5b9afca67f7f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Enemy
@@ -2080,4 +2114,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Textture/SampleScene.unity
-  playerPath: C:/Users/Hong Anh/Desktop/Ball.apk
+  playerPath: C:/Users/Hong Anh/Desktop/Ball_1.0.apk

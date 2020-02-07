@@ -54,7 +54,7 @@ public class RollBall : Enemy
 void Start()
     {
         RollBall.Coin = 0;
-        SizeSmoke = 0.8f;
+        SizeSmoke = 0.2f;
         InitGird();
         SetUpSkin();
         body = GetComponent<Rigidbody>();

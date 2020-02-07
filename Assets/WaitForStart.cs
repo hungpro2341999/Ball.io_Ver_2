@@ -29,7 +29,7 @@ public class WaitForStart : MonoBehaviour
     {
         for(int i = 0; i < List.Length; i++)
         {
-            Debug.Log("LENGTH : " +i);
+        //    Debug.Log("LENGTH : " +i);
             StartCoroutine(EnableString(i,i));
         }
       
@@ -56,6 +56,7 @@ public class WaitForStart : MonoBehaviour
     {
 
         yield return new WaitForSeconds(time);
+        DataMananger.Instance.PlayAudio("sfx_ready", Vector3.zero);
         GamePlayerCtrl.Instance.Status = StatusGame.Play;
         GamePlayerCtrl.Instance.isGameOver = false;
         GamePlayerCtrl.Instance.isGamePause = false;

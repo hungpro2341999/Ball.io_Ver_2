@@ -43,6 +43,7 @@ public class Windown : MonoBehaviour
             }
             if (type == Windown_Type.End_Game)
             {
+                DataMananger.Instance.PlayAudio("end_game", Vector3.zero);
                 StartCoroutine(BackToStartScreen());
             }
             else if (type == Windown_Type.Game_Over)

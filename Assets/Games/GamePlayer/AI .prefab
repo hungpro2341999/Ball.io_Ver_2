@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3662588694125563161}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.995, y: 0.101, z: -0.265}
+  m_LocalPosition: {x: -0.099, y: -0.083, z: -0.006}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3662588694203468778}
@@ -127,8 +127,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.26
-  m_Center: {x: -0.006435752, y: -1.06656003e-10, z: 4.9468e-11}
+  m_Radius: 0.102070235
+  m_Center: {x: 0.00039301813, y: -7.995796e-14, z: -0.0012842342}
 --- !u!114 &3662588694203468790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   Ground: {fileID: 0}
   body: {fileID: 3662588694203468791}
   Target: {fileID: 0}
-  Speed: 12.5
+  Speed: 15
   Direct: {x: 0, y: 0, z: 0}
   isMoveBack: 0
   MaskPlayer:
@@ -180,8 +180,8 @@ MonoBehaviour:
   - {fileID: 3662588695155295730}
   - {fileID: 3662588694125563160}
   weight: 1
-  distanceRay: 1
-  Radius: 1.5
+  distanceRay: 0.5
+  Radius: 0.5
   MinForce: 500
   MaxForce: 1300
   isMoveLimit: 0
@@ -235,6 +235,7 @@ MonoBehaviour:
   Length_Push: 30
   level: 1
   SizeSmoke: 0.8
+  Reset_Mass: 0.08
   isColling: 0
   player: []
   Point: []
@@ -251,9 +252,9 @@ Rigidbody:
   m_Drag: 0.5
   m_AngularDrag: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 122
   m_CollisionDetection: 3
 --- !u!114 &3662588694203468784
 MonoBehaviour:
@@ -409,7 +410,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3662588695155295731}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.006, y: -0.087, z: 0.275}
+  m_LocalPosition: {x: 0.111, y: 0.095, z: 0.008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3662588694203468778}
@@ -440,7 +441,7 @@ Transform:
   m_GameObject: {fileID: 6454341423555359891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 1046669992987356375}
   m_Father: {fileID: 3662588694203468778}
@@ -512,6 +513,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376199101001588428, guid: 7e7a4c69e84a1ce4e8d6986d0f894e4b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376199101001588428, guid: 7e7a4c69e84a1ce4e8d6986d0f894e4b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376199101001588428, guid: 7e7a4c69e84a1ce4e8d6986d0f894e4b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e7a4c69e84a1ce4e8d6986d0f894e4b, type: 3}

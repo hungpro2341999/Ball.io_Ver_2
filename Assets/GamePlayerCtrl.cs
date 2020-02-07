@@ -101,7 +101,7 @@ public class GamePlayerCtrl : MonoBehaviour
             {
                 if (Random.Range(0, 2) != 1)
                 {
-                    if (DataMananger.MapSelec != 3)
+                    if (DataMananger.MapSelec != 3 || DataMananger.MapSelec != 4)
                     {
                         player[i].GetComponent<Enemy>().Radius += Random.Range(-0.1f, 0.5f);
                     }
@@ -264,7 +264,7 @@ public class GamePlayerCtrl : MonoBehaviour
             {
                 if (player[i].GetComponent<Enemy>().isGround)
                 {
-                    Debug.Log(player[i].name + " " + "Out");
+                  //  Debug.Log(player[i].name + " " + "Out");
                     count++;
                 }
             }
@@ -308,6 +308,7 @@ public class GamePlayerCtrl : MonoBehaviour
             player[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
             player[i].GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
             player[i].GetComponent<Rigidbody>().isKinematic = false;
+            player[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         }
 
 
@@ -429,7 +430,7 @@ public class GamePlayerCtrl : MonoBehaviour
 
                 a.name = "AI_" + i;
              
-                Debug.Log(a.name + " " + a.GetComponent<Enemy>().GetEnemyInRadius(2f,pos,transform.up));
+                //Debug.Log(a.name + " " + a.GetComponent<Enemy>().GetEnemyInRadius(2f,pos,transform.up));
                 if(a.GetComponent<Enemy>().GetEnemyInRadius(1, pos, transform.up) != 0 || !Physics.Raycast(new Ray(pos, -Vector3.up),100,GroundLayer))
                 {
                     Accpect = false;

@@ -107,16 +107,22 @@ public class Enemy : MonoBehaviour
     public Player isTargetBy;
     public float Length_Push;
     public float level=1;
-    public float SizeSmoke = 0.8f;
+    public float SizeSmoke = 0.05f;
     // Start is called before the first frame update
     void Start()
     {
-        if (DataMananger.MapSelec == 3)
+        if (DataMananger.MapSelec == 3 || DataMananger.MapSelec == 4)
         {
             Radius = 1;
+            maxVec = 10;
+            Speed -= 3;
+        }
+        else
+        {
+            maxVec = 15;
         }
      
-        SizeSmoke = 0.8f;
+        SizeSmoke = 0.2f;
         Percent = GameObject.Find("Map").GetComponent<InforMap>().Radian;
     //    Debug.Log(gameObject.name +" "+ DistanceFromWall(new Vector3(1,0,0)));
       
@@ -181,6 +187,7 @@ public class Enemy : MonoBehaviour
                     {
                         if (isTargetBy.tag == "Player")
                         {
+                            DataMananger.Instance.PlayAudio("levelup", Vector3.zero);
                            RollBall.Coin += 25;
                             DataMananger.Instance.Add_Coin(25);
                             var a = Instantiate(SpawnEffect.Instance.getEffectName("Score"), null);
@@ -395,22 +402,25 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-          
-            if (Vector3.Magnitude(body.velocity) < Mass)
-            {
-                isTargetBy = null;
-                isMoveBack = false;
-            }
-            else
-            {
-            //     Debug.Log("Chance");
-                body.velocity = body.velocity - Time.deltaTime * body.velocity*MassChance/2;
-             // body.AddForce(-DirectMove.normalized * Mass);
-               
-            }
+           
+                if (Vector3.Magnitude(body.velocity) < Mass)
+                {
+                    isTargetBy = null;
+                    isMoveBack = false;
+                }
+                else
+                {
+                    //     Debug.Log("Chance");
+                    body.velocity = body.velocity - Time.deltaTime * body.velocity * MassChance / 2;
+                    // body.AddForce(-DirectMove.normalized * Mass);
+
+                }
+            
+           
+         
         }
     }
-
+    public float Reset_Mass = 0.08f;
     public bool isCollWith(Player player)
     {
        
@@ -503,9 +513,10 @@ public class Enemy : MonoBehaviour
         return false;
         }
     public bool isColling = false;
-        public void MoveBack(GameObject player,Vector3 direct,Enemy enemy)
+        public void MoveBack(GameObject player,Vector3 direct,Enemy enemy,Vector3 pos)
         {
         StopAllCoroutines();
+       
         isMoveLimit = false;
         isDodge = false;
         isRunAway = false;
@@ -517,14 +528,18 @@ public class Enemy : MonoBehaviour
         float ForceBack = 0;
         if (!isMoveBack)
         {
-            ForceBack = (ForcePlayer + Get_Force());
+            ForceBack = (ForcePlayer + Get_Force()*1.5f);
         }
         else
         {
-            ForceBack = (ForcePlayer + Get_Force());
+            ForceBack = (ForcePlayer + Get_Force()*1.4f);
         }
-      
-      
+
+        if (ForceBack > 1)
+        {
+            DataMananger.Instance.PlayAudio("va2", pos);
+           
+        }
       
             ForceIntertion = (ForceBack/weight)* BoundPlayer;
 
@@ -533,8 +548,9 @@ public class Enemy : MonoBehaviour
   
         if (gameObject.tag == "Player")
         {
-         //   Debug.Log(DirectMove + "  " + ForcePlayer + "  " + Force + "  " + Length + " " + BoundPlayer);
-           // Debug.Log((ForcePlayer + Force) * Length * 1.2f);
+            //   Debug.Log(DirectMove + "  " + ForcePlayer + "  " + Force + "  " + Length + " " + BoundPlayer);
+            // Debug.Log((ForcePlayer + Force) * Length * 1.2f);
+            StartCoroutine(Return_Move_Back(0.05f));
             AddForce((DirectMove * ForceIntertion), ForceModeWhenInteraction, ForceIntertion);
             if (DataMananger.Instance.Is_Variable() == 1) 
             {
@@ -545,8 +561,9 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-           // Debug.Log(DirectMove + "  " + ForcePlayer + "  " + Force + "  " + Length + " " + BoundPlayer);
-           // Debug.Log((ForcePlayer + Force) * Length * 1.2f);
+            StartCoroutine(Return_Move_Back(0.05f));
+            // Debug.Log(DirectMove + "  " + ForcePlayer + "  " + Force + "  " + Length + " " + BoundPlayer);
+            // Debug.Log((ForcePlayer + Force) * Length * 1.2f);
             AddForce((DirectMove * ForceIntertion), ForceModeWhenInteraction, ForceIntertion);
         
 
@@ -590,7 +607,7 @@ public class Enemy : MonoBehaviour
                 Vector3 direct = (pos - pos1).normalized;
                 direct = new Vector3(direct.x, 0, direct.z);
                 Debug.Log("Hit");
-                MoveBack(gameObject, direct, collision.gameObject.GetComponent<Enemy>());
+                MoveBack(gameObject, direct, collision.gameObject.GetComponent<Enemy>(),pos);
             
          
           
@@ -1711,10 +1728,10 @@ public class Enemy : MonoBehaviour
             Vector3 pos = transform.position;
             pos.y += 0.2f;
             weight += 1;
-            if (DataMananger.MapSelec != 3)
+            if (DataMananger.MapSelec != 3 || DataMananger.MapSelec != 4)
             {
             Radius += 0.8f;
-        }
+           }
         Mass += 1;
             Speed -= 5f;
             Speed = Mathf.Clamp(Speed, 1, Mathf.Infinity);
@@ -1723,7 +1740,7 @@ public class Enemy : MonoBehaviour
             level += 0.8f;
             MassChance +=5;
             
-           SizeSmoke += 0.35f;
+          // SizeSmoke += 0.35f;
      
         // ParticeSmoke.GetComponent<ParticleSystem>().startSize += 1.5f;
     }
@@ -1735,6 +1752,13 @@ public class Enemy : MonoBehaviour
     public float Get_Force()
     {
         return body.velocity.sqrMagnitude;
+    }
+    public IEnumerator Return_Move_Back(float time)
+    {
+        yield return new WaitForSeconds(time);
+        isTargetBy = null;
+       
+        isMoveBack = false;
     }
   
 }
