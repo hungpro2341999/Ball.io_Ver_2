@@ -160,7 +160,6 @@ MonoBehaviour:
   - {fileID: 1513948956859360057, guid: e63ad70eb3468f4419723bcab5583f5a, type: 3}
   - {fileID: 4255185793089351303, guid: 27b700a34314e4145a9b1454b2f5e69b, type: 3}
   - {fileID: 1894799458552816112, guid: ab192a811c662a44b886b26fdd44f8ed, type: 3}
-  - {fileID: 4945016676121000659, guid: 36eb1fdd9470b3f42903f380ad93be2e, type: 3}
   Sprite_Sky:
   - {fileID: 2100000, guid: b946638d93c857049a3381049563f522, type: 2}
   - {fileID: 2100000, guid: bfb5a79ed3080964ba9b31eea6d30c21, type: 2}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InforMap : MonoBehaviour
 {
@@ -9,24 +10,30 @@ public class InforMap : MonoBehaviour
     public float Radian;
     public float Ground;
     public Vector3 Vertice;
-    public float RateTime = 10;
+    public float RateTime;
     float time;
     float timeCurr=0;
     public float offsetLevel;
     int count = 0;
     bool complete = false;
+    public GameObject Img_Warring;
+    float warringTime;
+    int farme = 0;
     // Start is called before the first frame update
     void Start()
     {
-        timeCurr = 6;
-        RateTime = 6;
+      
+        timeCurr = 15;
+        RateTime = 15;
+        warringTime = RateTime*0.35f;
+
       //  time = RateTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-       // if(GamePlayerCtrl.isPlayingGame)
+        if(GamePlayerCtrl.isPlayingGame)
         Setting_Level();
     }
 
@@ -53,7 +60,31 @@ public class InforMap : MonoBehaviour
             {
                 
                 timeCurr -= Time.deltaTime;
+                if (Img_Warring != null)
+                {
+                    if (timeCurr < warringTime)
+                    {
+                        if (farme % 10 == 0)
+                        {
+                            Warring(!Img_Warring.active);
+                        }
+                       
+                        farme++;
+                        
+                    }
+                    else
+                    {
+                        Warring(false);
+                        farme++;
+                    }
+                  
+                }
+               
             }
+        }
+        else
+        {
+            Warring(false);
         }
        
     }
@@ -62,5 +93,10 @@ public class InforMap : MonoBehaviour
         transform.localScale -= Vector3.right * offset;
        
         transform.localScale -= Vector3.forward * offset;
+    }
+   
+    public void Warring(bool active)
+    {
+        Img_Warring.SetActive(active);
     }
 }

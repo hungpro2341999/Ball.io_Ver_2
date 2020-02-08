@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class WaitForStart : MonoBehaviour
 {
+    public GameObject Start_Game;
     public string[] List = new string[5] { "1", "2", "3", "START","PLAY"};
   
     public Text text;
@@ -44,7 +45,9 @@ public class WaitForStart : MonoBehaviour
             text.text = List[i];
             if (i == 3)
             {
+            
             StartCoroutine(Play(1));
+            Instantiate(Start_Game, null);
             }
 
       
@@ -54,7 +57,7 @@ public class WaitForStart : MonoBehaviour
     }
     public IEnumerator Play(float time)
     {
-
+        
         yield return new WaitForSeconds(time);
         DataMananger.Instance.PlayAudio("sfx_ready", Vector3.zero);
         GamePlayerCtrl.Instance.Status = StatusGame.Play;

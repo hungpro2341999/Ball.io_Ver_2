@@ -113,15 +113,19 @@ public class Enemy : MonoBehaviour
     {
         if (DataMananger.MapSelec == 3 || DataMananger.MapSelec == 4)
         {
-            Radius = 1;
+            Radius =  Random.Range(0.2f,0.5f);
             maxVec = 10;
             Speed -= 3;
+            maxVec = 15;
         }
         else
         {
+            Radius = Random.Range(1f, 1.5f);
+           
             maxVec = 15;
         }
-     
+        index_Blood_War = Random.Range(1, 9);
+        index_Dodge = Random.Range(1, 9);
         SizeSmoke = 0.2f;
         Percent = GameObject.Find("Map").GetComponent<InforMap>().Radian;
     //    Debug.Log(gameObject.name +" "+ DistanceFromWall(new Vector3(1,0,0)));
@@ -175,7 +179,7 @@ public class Enemy : MonoBehaviour
                 Warring_Limit();
 
                 MoveFollowDirect();
-
+                Spawn_Effect();
             }
             else
             {
@@ -209,7 +213,7 @@ public class Enemy : MonoBehaviour
 
 
             //InforBall
-            Spawn_Effect();
+        
             Force = Vector3.Magnitude(body.velocity);
         }
     }
@@ -405,13 +409,13 @@ public class Enemy : MonoBehaviour
            
                 if (Vector3.Magnitude(body.velocity) < Mass)
                 {
-                    isTargetBy = null;
+                    StartCoroutine(Remove_Target(1));
                     isMoveBack = false;
                 }
                 else
                 {
                     //     Debug.Log("Chance");
-                    body.velocity = body.velocity - Time.deltaTime * body.velocity * MassChance / 2;
+                    body.velocity = body.velocity - Time.deltaTime * body.velocity * MassChance;
                     // body.AddForce(-DirectMove.normalized * Mass);
 
                 }
@@ -420,6 +424,7 @@ public class Enemy : MonoBehaviour
          
         }
     }
+   
     public float Reset_Mass = 0.08f;
     public bool isCollWith(Player player)
     {
@@ -528,20 +533,25 @@ public class Enemy : MonoBehaviour
         float ForceBack = 0;
         if (!isMoveBack)
         {
-            ForceBack = (ForcePlayer + Get_Force()*1.5f);
+            ForceBack = (ForcePlayer + Get_Force())*0.8f;
         }
         else
         {
-            ForceBack = (ForcePlayer + Get_Force()*1.4f);
+            ForceBack = (ForcePlayer + Get_Force()*0.7f);
         }
 
-        if (ForceBack > 1)
+        if (ForceBack > 2)
         {
             DataMananger.Instance.PlayAudio("va2", pos);
            
+
         }
-      
-            ForceIntertion = (ForceBack/weight)* BoundPlayer;
+        if (ForceBack > 4)
+        {
+            Instantiate(SpawnEffect.Instance.getEffectName("Hit"), pos, Quaternion.identity, null);
+            ForceIntertion = (ForceBack / weight) * BoundPlayer;
+        }
+          
 
 
         DirectMove = direct;
@@ -592,7 +602,7 @@ public class Enemy : MonoBehaviour
         Keep_Direction_Move = false;
         Keep_Direction_RunAway = false;
     }
-
+   
     private void OnCollisionEnter(Collision collision)
     {
 
@@ -601,17 +611,18 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.layer == 10)
         {
             isTargetBy = collision.gameObject.GetComponent<Player>();
-           
-                Vector3 pos1 = collision.gameObject.transform.position;
+            Vector3 posInit = collision.collider.ClosestPointOnBounds(transform.position);
+       
+            Vector3 pos1 = collision.gameObject.transform.position;
                 Vector3 pos = transform.position;
                 Vector3 direct = (pos - pos1).normalized;
                 direct = new Vector3(direct.x, 0, direct.z);
                 Debug.Log("Hit");
-                MoveBack(gameObject, direct, collision.gameObject.GetComponent<Enemy>(),pos);
+                MoveBack(gameObject, direct, collision.gameObject.GetComponent<Enemy>(),posInit);
             
          
           
-          Instantiate(SpawnEffect.Instance.getEffectName("Hit"), collision.collider.ClosestPointOnBounds(transform.position), Quaternion.identity, null);
+         
         }
      
     }
@@ -1124,8 +1135,8 @@ public class Enemy : MonoBehaviour
         }
 
     
-        float[] ScoreGood = GetArrayMax(score,2);
-        int r = Random.Range(0,2);
+        float[] ScoreGood = GetArrayMax(score,1);
+        int r = Random.Range(0,1);
         int r1 = getIndexMax(score);
      
         index =  getIndex(score, ScoreGood[r]);
@@ -1229,7 +1240,7 @@ public class Enemy : MonoBehaviour
 
 
         float[] ScoreGood = GetArrayMax(score, directs.Length / 2);
-        int r = Random.Range(0, directs.Length / 4);
+        int r = Random.Range(0, directs.Length);
 
         index = getIndexMax(score);
 
@@ -1727,17 +1738,17 @@ public class Enemy : MonoBehaviour
             transform.localScale +=  Vector3.one;
             Vector3 pos = transform.position;
             pos.y += 0.2f;
-            weight += 1;
+            weight += 3;
             if (DataMananger.MapSelec != 3 || DataMananger.MapSelec != 4)
             {
-            Radius += 0.8f;
-           }
-        Mass += 1;
+               Radius += 0.8f;
+            }
+           // Mass += 2;
             Speed -= 5f;
             Speed = Mathf.Clamp(Speed, 1, Mathf.Infinity);
-            Bound += 1f;
+            Bound += 2f;
             transform.position = pos;
-            level += 0.8f;
+            level += 0.35f;
             MassChance +=5;
             
           // SizeSmoke += 0.35f;
@@ -1759,6 +1770,12 @@ public class Enemy : MonoBehaviour
         isTargetBy = null;
        
         isMoveBack = false;
+    }
+    public IEnumerator Remove_Target(float time)
+    {
+
+        yield return new WaitForSeconds(time);
+        Target = null;
     }
   
 }

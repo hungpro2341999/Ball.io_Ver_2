@@ -45,7 +45,7 @@ public class GamePlayerCtrl : MonoBehaviour
 
         Event_Reset_Game += Start_Game;
         Event_Reset_Game += Play;
-       Event_Over_Game += GameOver;
+        Event_Over_Game += GameOver;
         Event_Over_Game += NotPlay;
     }
 
@@ -389,14 +389,14 @@ public class GamePlayerCtrl : MonoBehaviour
         {
             Vector3 pos = Random.insideUnitCircle * Radius;
             pos = new Vector3(pos.x, Ground + OffSet, pos.y);
-            if (Physics.SphereCast(new Ray(pos, transform.up), 1.2f, 0,MaskPlayer) || !Physics.Raycast(new Ray(pos, -Vector3.up), 100,GroundLayer))
+            if (Physics.SphereCast(new Ray(pos, transform.up),0.35f, 0,MaskPlayer) || !Physics.Raycast(new Ray(pos, -Vector3.up), 100,GroundLayer))
             {
                 Accpect1 = false;
             }
             else
             {
                
-                Accpect1 = true;
+               
                 var a1 = Instantiate(Player, pos, Quaternion.identity, Parent);
                 a1.name = "Player";
                 
@@ -409,7 +409,7 @@ public class GamePlayerCtrl : MonoBehaviour
 
         for (int i=0; i<Count_Player; i++)
         {
-           StartCoroutine(Spawn_Player(Time.fixedDeltaTime *2*i,i));
+           StartCoroutine(Spawn_Player(Random.Range(0,2),i));
                  
         }
       
@@ -421,17 +421,19 @@ public class GamePlayerCtrl : MonoBehaviour
         bool Accpect = false;
         while (!Accpect)
         {
+          
             Vector3 pos = Random.insideUnitCircle * Radius;
             pos = new Vector3(pos.x, Ground + OffSet, pos.y);
-            if (Physics.SphereCastAll(new Ray(pos, transform.up), 1.5f, 0, MaskPlayer).Length==0)
+            if (Physics.SphereCastAll(new Ray(pos, transform.up), 0.35f, 0, MaskPlayer).Length==0)
             {
                 Debug.Log("OK");
                 var a = Instantiate(AI, pos, Quaternion.identity, Parent);
 
                 a.name = "AI_" + i;
-             
+
+               
                 //Debug.Log(a.name + " " + a.GetComponent<Enemy>().GetEnemyInRadius(2f,pos,transform.up));
-                if(a.GetComponent<Enemy>().GetEnemyInRadius(1, pos, transform.up) != 0 || !Physics.Raycast(new Ray(pos, -Vector3.up),100,GroundLayer))
+                if(a.GetComponent<Enemy>().GetEnemyInRadius(0.2f, pos, transform.up) != 0 || !Physics.Raycast(new Ray(pos, -Vector3.up),100,GroundLayer))
                 {
                     Accpect = false;
                     a.GetComponent<Enemy>().Destroy();
@@ -442,19 +444,20 @@ public class GamePlayerCtrl : MonoBehaviour
                     Accpect = true;
                 }
                 //   StartCoroutine(Spawn_Player(Time.fixedDeltaTime * 3 * i, pos, i));
-              
 
+               
 
             }
             else
             {
                 Accpect = false;
-                Debug.Log(" NOT OK :" + Physics.SphereCastAll(new Ray(pos, transform.up), 1f, 0, MaskPlayer).Length);
-              
+                Debug.Log(" NOT OK :" + Physics.SphereCastAll(new Ray(pos, transform.up), 0.75f, 0, MaskPlayer).Length);
 
+              //  yield return new WaitForSeconds(0);
 
             }
-            yield return new WaitForSeconds(0);
+          //  Accpect = true;
+
         }
       
      

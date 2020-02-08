@@ -60,7 +60,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7024401171822998008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.267, y: 0, z: 0.028}
+  m_LocalPosition: {x: -0.221, y: 0, z: 0.028}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1077255141651849199}
@@ -79,11 +79,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65549fb03de650d47a646f9509f29fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MassChance: 6
+  MassChance: 3
   Status: 0
   text: {fileID: 0}
   Type_Chance: 4
-  ForceModeWhenMove: 1
+  ForceModeWhenMove: 2
   ForceModeWhenInteraction: 2
   ForceModeWhenBrake: 2
   status: 2
@@ -104,14 +104,14 @@ MonoBehaviour:
     m_Bits: 0
   Force: 1
   Bonnd: 1
-  Mass: 2.5
+  Mass: 1
   ForceMass: 1
   ForceIntereact: 0
   CheckGround: 10
   isGround: 1
   Range: 0
   SpeedChance: 5
-  Length: 100
+  Length: 80
   SpeedSlownDown: 1
   ListRay: []
   weight: 1
@@ -139,7 +139,7 @@ MonoBehaviour:
   index_Skill: 0
   index_scoward: 0
   indexPower: 0
-  maxVec: 12
+  maxVec: 15
   index_Blood_War: 0
   index_Dodge: 0
   Keep_Direction_Move: 0
@@ -196,7 +196,7 @@ MonoBehaviour:
   rotationX: 0
   rotationY: 0
   SpeedRotaion: 20
-  cachedReal: 0.03
+  cachedReal: 0.0315
 --- !u!135 &7024401171822998005
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -208,8 +208,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.10641223
-  m_Center: {x: -0.0033394694, y: 0.0005938411, z: 0.00999999}
+  m_Radius: 0.08484897
+  m_Center: {x: 0.00022639334, y: 0.00033394992, z: -0.0006438643}
 --- !u!54 &7024401171822998010
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -218,8 +218,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7024401171822998008}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0.5
+  m_Mass: 2
+  m_Drag: 1.8
   m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0

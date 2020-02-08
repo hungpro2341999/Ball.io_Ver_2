@@ -339,6 +339,14 @@ public class DataMananger : MonoBehaviour
        process_Player.name = b;
         return process_Player;
     }
+
+    public Process_Player Set_Infor_Player()
+    {
+        Process_Player process_Player = new Process_Player();
+        process_Player.name = DataMananger.Instance.Get_Name_Player();
+        process_Player.sprite =  Data_Bot.botNames[Random.Range(0, Data_Bot.botNames.Count)].icon;
+        return process_Player;
+    }
     public void Push_Infor(GetInfor player)
     {
         Process_Player process = Data_List_Player[index];

@@ -217,8 +217,7 @@ public class GameMangaer : MonoBehaviour
     public void Open_Ads_Reward(int Coint) 
     {
         Debug.Log("Show_1");
-        if (ManagerAds.Ins.IsRewardVideoAvailable())
-        {
+     
             ManagerAds.Ins.ShowRewardedVideo(success =>
             {
                 if (success)
@@ -228,7 +227,7 @@ public class GameMangaer : MonoBehaviour
                 }
             });
 
-        }
+        
 
     }
     public void GetReward()
