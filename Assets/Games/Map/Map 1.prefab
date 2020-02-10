@@ -3141,7 +3141,7 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 0
+  m_IgnoreReversedGraphics: 1
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
@@ -4096,7 +4096,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.6415094, g: 0.34193662, b: 0.34193662, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -4233,16 +4233,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4972020124337166896}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: c1b168882e28d464eb43c6de9ac0fb13,
-        type: 3}
-      propertyPath: m_Name
-      value: Shape
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: c1b168882e28d464eb43c6de9ac0fb13,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c1b168882e28d464eb43c6de9ac0fb13,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4312,6 +4302,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 4.84
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c1b168882e28d464eb43c6de9ac0fb13,
+        type: 3}
+      propertyPath: m_Name
+      value: Shape
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c1b168882e28d464eb43c6de9ac0fb13,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: c1b168882e28d464eb43c6de9ac0fb13,
         type: 3}

@@ -175,6 +175,7 @@ MonoBehaviour:
   SpeedChance: 1
   Length: 70
   SpeedSlownDown: 1
+  Skin: {fileID: 6454341423555359890}
   ListRay:
   - {fileID: 3662588694203468778}
   - {fileID: 3662588695155295730}
@@ -443,7 +444,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_Children:
-  - {fileID: 8745477782472262948}
+  - {fileID: 1046669992987356375}
   m_Father: {fileID: 3662588694203468778}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -454,11 +455,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6454341423555359890}
     m_Modifications:
-    - target: {fileID: 8365473006117341444, guid: 7e7a4c69e84a1ce4e8d6986d0f894e4b,
-        type: 3}
-      propertyPath: m_Name
-      value: Iron
-      objectReference: {fileID: 0}
     - target: {fileID: 8635838536979245674, guid: 7e7a4c69e84a1ce4e8d6986d0f894e4b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -514,6 +510,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8365473006117341444, guid: 7e7a4c69e84a1ce4e8d6986d0f894e4b,
+        type: 3}
+      propertyPath: m_Name
+      value: Iron
+      objectReference: {fileID: 0}
     - target: {fileID: 7376199101001588428, guid: 7e7a4c69e84a1ce4e8d6986d0f894e4b,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -531,7 +532,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e7a4c69e84a1ce4e8d6986d0f894e4b, type: 3}
---- !u!4 &8745477782472262948 stripped
+--- !u!4 &1046669992987356375 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8635838536979245674, guid: 7e7a4c69e84a1ce4e8d6986d0f894e4b,
     type: 3}

@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 7024401171822998010}
   - component: {fileID: 7024401171822998004}
   - component: {fileID: 7024401171822998007}
+  - component: {fileID: 8346658085971650095}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -93,7 +94,7 @@ MonoBehaviour:
   Ground: {fileID: 0}
   body: {fileID: 7024401171822998010}
   Target: {fileID: 0}
-  Speed: 18
+  Speed: 15
   Direct: {x: 0, y: 0, z: 0}
   isMoveBack: 0
   MaskPlayer:
@@ -113,6 +114,7 @@ MonoBehaviour:
   SpeedChance: 5
   Length: 80
   SpeedSlownDown: 1
+  Skin: {fileID: 0}
   ListRay: []
   weight: 1
   distanceRay: 0
@@ -224,7 +226,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 122
   m_CollisionDetection: 3
 --- !u!114 &7024401171822998004
 MonoBehaviour:
@@ -252,6 +254,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sprite_Flag: {fileID: 0}
   namePlayer: 
+--- !u!81 &8346658085971650095
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7024401171822998008}
+  m_Enabled: 1
 --- !u!1001 &8747182084882717798
 PrefabInstance:
   m_ObjectHideFlags: 0

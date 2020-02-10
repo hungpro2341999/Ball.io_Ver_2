@@ -484,6 +484,7 @@ public class GamePlayerCtrl : MonoBehaviour
 
     public void Back_To_Game()
     {
+        ManagerAds.Ins.ShowInterstitial();
         Status = StatusGame.Back_To_Game;
     }
     public void VicTory()

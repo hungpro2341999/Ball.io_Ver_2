@@ -439,6 +439,7 @@ public class DataMananger : MonoBehaviour
             {
                 if (DataMananger.Instance.Is_Mute() == 1)
                 {
+                    Vector3 vec = Camera.main.transform.position;
                     Debug.Log("Play :"+name);
                     var a =  Instantiate(Audio[i],pos,Quaternion.identity,null);
                     a.GetComponent<AudioSource>().Play();
@@ -450,5 +451,6 @@ public class DataMananger : MonoBehaviour
          
         }
     }
+   
     
 }

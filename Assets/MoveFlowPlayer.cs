@@ -41,12 +41,12 @@ public class MoveFlowPlayer : MonoBehaviour
             {
 
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z - offset), Speed * Time.deltaTime);
-                Camera.main.fieldOfView = 25;
+                Camera.main.fieldOfView = Mathf.MoveTowards(Camera.main.fieldOfView, 25f, Time.deltaTime * 50);
             }
             else
             {
                 transform.position = Vector3.MoveTowards(transform.position, pos, Speed * Time.deltaTime);
-                Camera.main.fieldOfView = 80;
+                Camera.main.fieldOfView = Mathf.MoveTowards(Camera.main.fieldOfView,80, Time.deltaTime * 50);
             }
         }
           

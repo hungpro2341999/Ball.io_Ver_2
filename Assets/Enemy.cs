@@ -14,7 +14,7 @@ public enum CHANGE_VELOCITY { MOVE, ATTACK,DODGE,RUN,NONE}
 public class Enemy : MonoBehaviour
 {
 
-   
+  
     public float MassChance = 1;
     public AiStatus Status;
     public Text text;
@@ -45,6 +45,7 @@ public class Enemy : MonoBehaviour
     public float SpeedChance = 5;
     public float Length = 100;
     public float SpeedSlownDown = 1f;
+    public Transform Skin;
     //Local Variable
     public List<Transform> ListRay = new List<Transform>();
     float Percent;
@@ -124,9 +125,21 @@ public class Enemy : MonoBehaviour
            
             maxVec = 20;
         }
+        if (Random.Range(0, 6) != 1)
+        {
+         
+            index_Blood_War = Random.Range(1, 10);
+            index_Dodge = Random.Range(1, 3);
 
-        index_Blood_War = Random.Range(1, 10);
-        index_Dodge = Random.Range(1, 3);
+        }
+        else
+        {
+            Radius = 3f;
+            Speed += 3;
+            index_Blood_War = 9;
+            index_Dodge = 1;
+        }
+      
         SizeSmoke = 0.2f;
         Percent = GameObject.Find("Map").GetComponent<InforMap>().Radian;
     //    Debug.Log(gameObject.name +" "+ DistanceFromWall(new Vector3(1,0,0)));
@@ -165,7 +178,8 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            isGround = false;
+            //  isGround = false;
+            StartCoroutine(Remove(0.5f));
             body.constraints = RigidbodyConstraints.None;
         }
         if (!GamePlayerCtrl.Instance.isGamePause )
@@ -1746,7 +1760,8 @@ public class Enemy : MonoBehaviour
                Radius += 0.8f;
             }
         //    Mass += 0.5f;
-            Speed -= 5f;
+            Speed -= 4f;
+        
             Speed = Mathf.Clamp(Speed, 1, Mathf.Infinity);
             Bound += 1f;
             transform.position = pos;
@@ -1779,7 +1794,22 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(time);
         Target = null;
     }
-  
+    public IEnumerator Remove(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        isGround = Physics.Raycast(new Ray(transform.position, -Vector3.up), CheckGround);
+        if (isGround)
+        {
+            Skin.gameObject.SetActive(true);
+        }
+        else
+        {
+            Skin.gameObject.SetActive(false);
+        }
+      
+
+    }
+
 }
     
     

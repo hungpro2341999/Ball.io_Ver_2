@@ -39,91 +39,91 @@ MonoBehaviour:
   - id: 0
     isBuy: 1
     isUse: 1
-    Cost: 0
+    Cost: 250
   - id: 1
-    isBuy: 0
-    isUse: 0
-    Cost: 210
-  - id: 2
     isBuy: 1
     isUse: 0
-    Cost: 250
+    Cost: 300
+  - id: 2
+    isBuy: 0
+    isUse: 0
+    Cost: 350
   - id: 3
     isBuy: 0
     isUse: 0
-    Cost: 250
+    Cost: 400
   - id: 4
     isBuy: 0
     isUse: 0
-    Cost: 250
+    Cost: 500
   - id: 5
-    isBuy: 0
+    isBuy: 1
     isUse: 0
-    Cost: 300
+    Cost: 500
   - id: 6
     isBuy: 0
     isUse: 0
-    Cost: 350
+    Cost: 550
   - id: 7
     isBuy: 0
     isUse: 0
-    Cost: 400
+    Cost: 550
   - id: 8
     isBuy: 0
     isUse: 0
-    Cost: 500
+    Cost: 600
   - id: 9
     isBuy: 0
     isUse: 0
-    Cost: 500
+    Cost: 610
   - id: 10
     isBuy: 0
     isUse: 0
-    Cost: 550
+    Cost: 615
   - id: 11
     isBuy: 0
     isUse: 0
-    Cost: 550
+    Cost: 350
   - id: 12
     isBuy: 0
     isUse: 0
-    Cost: 600
+    Cost: 500
   - id: 13
     isBuy: 0
     isUse: 0
-    Cost: 610
+    Cost: 500
   - id: 14
     isBuy: 0
     isUse: 0
-    Cost: 615
+    Cost: 700
   - id: 15
     isBuy: 0
     isUse: 0
-    Cost: 350
+    Cost: 500
   - id: 16
     isBuy: 0
     isUse: 0
-    Cost: 500
+    Cost: 1000
   - id: 17
     isBuy: 0
     isUse: 0
-    Cost: 500
+    Cost: 1000
   - id: 18
     isBuy: 0
     isUse: 0
-    Cost: 700
+    Cost: 0
   - id: 19
     isBuy: 0
     isUse: 0
-    Cost: 500
+    Cost: 210
   - id: 20
     isBuy: 0
     isUse: 0
-    Cost: 1000
+    Cost: 250
   - id: 21
     isBuy: 0
     isUse: 0
-    Cost: 1000
+    Cost: 250
   Cost: 00000000d2000000fa000000fa000000fa0000002c0100005e01000090010000f4010000f401000026020000260200005802000062020000670200005e010000f4010000f4010000bc020000f4010000e8030000e8030000
   Images:
   - {fileID: 21300000, guid: 84880a91d9d26084091716718f1a8c5d, type: 3}

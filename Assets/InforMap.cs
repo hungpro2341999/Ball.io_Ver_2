@@ -20,12 +20,13 @@ public class InforMap : MonoBehaviour
     float warringTime;
     int farme = 0;
     public Text CountTime;
+    public float Speed =1;
     // Start is called before the first frame update
     void Start()
     {
-      
-        timeCurr = 20;
-        RateTime = 20;
+        Speed = 1;
+        timeCurr = 10;
+        RateTime = 10;
         warringTime = RateTime*0.35f;
 
       //  time = RateTime;
@@ -57,7 +58,7 @@ public class InforMap : MonoBehaviour
             if (timeCurr < 0)
             {
                 timeCurr = RateTime;
-                Redution_Map(0.1f);
+                StartCoroutine(Redution_Map(0.1f));
                 count++;
                 if (count > 7)
                 {
@@ -96,11 +97,19 @@ public class InforMap : MonoBehaviour
         }
        
     }
-    public void Redution_Map(float offset)
+    public IEnumerator Redution_Map(float offset)
     {
-        transform.localScale -= Vector3.right * offset;
+        float target = transform.localScale.x -offset;
+        while (transform.localScale.x >= target)
+        {
+            transform.localScale -= Vector3.right*Time.deltaTime*Speed;
+
+            transform.localScale -= Vector3.forward*Time.deltaTime*Speed;
+
+            yield return new WaitForSeconds(0);
+        }
+
        
-        transform.localScale -= Vector3.forward * offset;
     }
    
     public void Warring(bool active)
@@ -109,14 +118,18 @@ public class InforMap : MonoBehaviour
     }
     public void VisibleCountTime(bool active)
     {
-        if (active)
+        if (CountTime != null)
         {
-            CountTime.text = ((int)timeCurr).ToString();
+            if (active)
+            {
+                CountTime.text = ((int)timeCurr).ToString();
+            }
+            else
+            {
+                CountTime.text = "";
+            }
         }
-        else
-        {
-            CountTime.text = "";
-        }
+      
       
     }
 
