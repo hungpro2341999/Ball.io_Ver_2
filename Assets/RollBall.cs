@@ -80,8 +80,8 @@ void Start()
         }
         else
         {
-            isGround = false;
-            body.constraints = RigidbodyConstraints.None;
+            StartCoroutine(GameOver(1));
+           
         }
 
         if (!GamePlayerCtrl.Instance.isGameOver || !GamePlayerCtrl.Instance.isGamePause)
@@ -491,11 +491,11 @@ void Start()
        
        // Body.AddTorque(Body.angularVelocity.normalized * 30, ForceMode.Impulse);
     }
-    public IEnumerator GameOver()
+    public IEnumerator GameOver(float waitTime)
     {
-      
-        yield  return new WaitForSeconds(0.75f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        yield return new WaitForSeconds(waitTime);
+        isGround = Physics.Raycast(new Ray(transform.position, -Vector3.up), CheckGround);
+        
 
     }
 
@@ -538,6 +538,7 @@ void Start()
             return Vector3.zero;
         }
 
+
     }
     public void Reset()
     {
@@ -573,5 +574,6 @@ void Start()
 
 
     }
+    
 
 }

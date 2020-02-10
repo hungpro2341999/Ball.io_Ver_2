@@ -113,19 +113,20 @@ public class Enemy : MonoBehaviour
     {
         if (DataMananger.MapSelec == 3 || DataMananger.MapSelec == 4)
         {
-            Radius =  Random.Range(0.2f,0.5f);
+            Radius =  Random.Range(0.5f,1f);
             maxVec = 10;
             Speed -= 3;
             maxVec = 15;
         }
         else
         {
-            Radius = Random.Range(1f, 1.5f);
+            Radius = Random.Range(0.5f, 1.5f);
            
-            maxVec = 15;
+            maxVec = 20;
         }
-        index_Blood_War = Random.Range(1, 9);
-        index_Dodge = Random.Range(1, 9);
+
+        index_Blood_War = Random.Range(1, 10);
+        index_Dodge = Random.Range(1, 3);
         SizeSmoke = 0.2f;
         Percent = GameObject.Find("Map").GetComponent<InforMap>().Radian;
     //    Debug.Log(gameObject.name +" "+ DistanceFromWall(new Vector3(1,0,0)));
@@ -409,7 +410,8 @@ public class Enemy : MonoBehaviour
            
                 if (Vector3.Magnitude(body.velocity) < Mass)
                 {
-                    StartCoroutine(Remove_Target(1));
+                //    StartCoroutine(Remove_Target(1));
+                    
                     isMoveBack = false;
                 }
                 else
@@ -533,11 +535,11 @@ public class Enemy : MonoBehaviour
         float ForceBack = 0;
         if (!isMoveBack)
         {
-            ForceBack = (ForcePlayer + Get_Force())*0.8f;
+            ForceBack = (ForcePlayer + Get_Force());
         }
         else
         {
-            ForceBack = (ForcePlayer + Get_Force()*0.7f);
+            ForceBack = (ForcePlayer + Get_Force())*0.75f;
         }
 
         if (ForceBack > 2)
@@ -546,7 +548,7 @@ public class Enemy : MonoBehaviour
            
 
         }
-        if (ForceBack > 4)
+        if (ForceBack > 3)
         {
             Instantiate(SpawnEffect.Instance.getEffectName("Hit"), pos, Quaternion.identity, null);
             ForceIntertion = (ForceBack / weight) * BoundPlayer;
@@ -560,7 +562,7 @@ public class Enemy : MonoBehaviour
         {
             //   Debug.Log(DirectMove + "  " + ForcePlayer + "  " + Force + "  " + Length + " " + BoundPlayer);
             // Debug.Log((ForcePlayer + Force) * Length * 1.2f);
-            StartCoroutine(Return_Move_Back(0.05f));
+         //    StartCoroutine(Return_Move_Back(0.05f));
             AddForce((DirectMove * ForceIntertion), ForceModeWhenInteraction, ForceIntertion);
             if (DataMananger.Instance.Is_Variable() == 1) 
             {
@@ -571,7 +573,7 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            StartCoroutine(Return_Move_Back(0.05f));
+       //     StartCoroutine(Return_Move_Back(0.05f));
             // Debug.Log(DirectMove + "  " + ForcePlayer + "  " + Force + "  " + Length + " " + BoundPlayer);
             // Debug.Log((ForcePlayer + Force) * Length * 1.2f);
             AddForce((DirectMove * ForceIntertion), ForceModeWhenInteraction, ForceIntertion);
@@ -587,7 +589,7 @@ public class Enemy : MonoBehaviour
         isMoveBack = true;
      //   body.velocity = Vector3.zero;
         this.ForceIntertion = ForceInteraction;
-        body.velocity = Vector3.ClampMagnitude(Force * 0.35f,maxVec);
+        body.AddForce(Vector3.ClampMagnitude(Force,maxVec),ForceModeWhenInteraction);
       
 
     }
@@ -1738,20 +1740,20 @@ public class Enemy : MonoBehaviour
             transform.localScale +=  Vector3.one;
             Vector3 pos = transform.position;
             pos.y += 0.2f;
-            weight += 3;
+            weight += 1;
             if (DataMananger.MapSelec != 3 || DataMananger.MapSelec != 4)
             {
                Radius += 0.8f;
             }
-           // Mass += 2;
+        //    Mass += 0.5f;
             Speed -= 5f;
             Speed = Mathf.Clamp(Speed, 1, Mathf.Infinity);
-            Bound += 2f;
+            Bound += 1f;
             transform.position = pos;
-            level += 0.35f;
-            MassChance +=5;
+            level += 0.15f;
+            MassChance +=1;
             
-          // SizeSmoke += 0.35f;
+           SizeSmoke += 0.2f;
      
         // ParticeSmoke.GetComponent<ParticleSystem>().startSize += 1.5f;
     }
@@ -1767,7 +1769,7 @@ public class Enemy : MonoBehaviour
     public IEnumerator Return_Move_Back(float time)
     {
         yield return new WaitForSeconds(time);
-        isTargetBy = null;
+   
        
         isMoveBack = false;
     }

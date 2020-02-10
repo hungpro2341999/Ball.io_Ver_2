@@ -33,7 +33,7 @@ public class GameMangaer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+     //   Physics.gravity = -Vector3.up*2.2f;
     }
     public void OpenScreen(Mutiply_Screen screen)
     {
@@ -105,7 +105,7 @@ public class GameMangaer : MonoBehaviour
                 {
                     if (!GamePlayerCtrl.isPlayingGame)
                     {
-                        GamePlayerCtrl.isPlayingGame = true;
+                        
                         Play.interactable = false;
                         Open(Screen_Type.Screen_loading);
                         Close(Screen_Type.Screen_Start);

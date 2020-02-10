@@ -23,7 +23,7 @@ public class MoveFlowPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pos = new Vector3(0.15f,25,-5);
+        pos = new Vector3(0.15f,27,-5);
         GamePlayerCtrl.Instance.Event_Over_Game += Reset;
     }
     public void Reset()

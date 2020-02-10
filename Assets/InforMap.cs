@@ -19,12 +19,13 @@ public class InforMap : MonoBehaviour
     public GameObject Img_Warring;
     float warringTime;
     int farme = 0;
+    public Text CountTime;
     // Start is called before the first frame update
     void Start()
     {
       
-        timeCurr = 15;
-        RateTime = 15;
+        timeCurr = 20;
+        RateTime = 20;
         warringTime = RateTime*0.35f;
 
       //  time = RateTime;
@@ -33,8 +34,15 @@ public class InforMap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GamePlayerCtrl.isPlayingGame)
-        Setting_Level();
+        if (GamePlayerCtrl.isPlayingGame)
+        {
+            Setting_Level();
+        }
+        else
+        {
+            VisibleCountTime(false);
+        }
+       
     }
 
     public void Destroy()
@@ -43,7 +51,7 @@ public class InforMap : MonoBehaviour
     }
     public void Setting_Level()
     {
-
+        VisibleCountTime(true);
         if (!complete)
         {
             if (timeCurr < 0)
@@ -99,4 +107,17 @@ public class InforMap : MonoBehaviour
     {
         Img_Warring.SetActive(active);
     }
+    public void VisibleCountTime(bool active)
+    {
+        if (active)
+        {
+            CountTime.text = ((int)timeCurr).ToString();
+        }
+        else
+        {
+            CountTime.text = "";
+        }
+      
+    }
+
 }
