@@ -103,7 +103,7 @@ public class GamePlayerCtrl : MonoBehaviour
                 {
                     if (DataMananger.MapSelec != 3 || DataMananger.MapSelec != 4)
                     {
-                        player[i].GetComponent<Enemy>().Radius += Random.Range(-0.1f, 0.5f);
+                        player[i].GetComponent<Enemy>().Radius += Random.Range(0.1f, 0.5f);
                     }
                    
                 }
@@ -258,12 +258,14 @@ public class GamePlayerCtrl : MonoBehaviour
     {
         if (player != null)
         {
+            int indexPlayer = 0;
             bool isWin = false;
             int count = 0;
             for (int i = 0; i < player.Length; i++)
             {
                 if (player[i].GetComponent<Enemy>().isGround)
                 {
+                    indexPlayer = i;
                   //  Debug.Log(player[i].name + " " + "Out");
                     count++;
                 }
@@ -271,6 +273,10 @@ public class GamePlayerCtrl : MonoBehaviour
             if (count <= 1)
             {
                 isWin = true;
+                if (player[indexPlayer].tag=="Player")
+                {
+                    VicTory();
+                }
             }
 
             return isWin;
@@ -479,6 +485,12 @@ public class GamePlayerCtrl : MonoBehaviour
     public void Back_To_Game()
     {
         Status = StatusGame.Back_To_Game;
+    }
+    public void VicTory()
+    {
+        int coin = RollBall.Coin;
+        DataMananger.Instance.Add_Coin(coin*2 + 125);
+       // RollBall.Coin = 0;
     }
 
 

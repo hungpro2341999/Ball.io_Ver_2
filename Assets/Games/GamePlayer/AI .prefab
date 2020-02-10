@@ -127,8 +127,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.085395455
-  m_Center: {x: -0.0068386793, y: 0.00036084652, z: -0.0005648136}
+  m_Radius: 0.13556097
+  m_Center: {x: -0.0007145107, y: 0.00047186017, z: -0.00061775744}
 --- !u!114 &3662588694203468790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   Ground: {fileID: 0}
   body: {fileID: 3662588694203468791}
   Target: {fileID: 0}
-  Speed: 15
+  Speed: 18
   Direct: {x: 0, y: 0, z: 0}
   isMoveBack: 0
   MaskPlayer:
@@ -166,7 +166,7 @@ MonoBehaviour:
     m_Bits: 0
   Force: 1
   Bonnd: 1
-  Mass: 1
+  Mass: 0.8
   ForceMass: 10
   ForceIntereact: 30
   CheckGround: 20
@@ -248,8 +248,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3662588694203468785}
   serializedVersion: 2
-  m_Mass: 2
-  m_Drag: 1.8
+  m_Mass: 1.5
+  m_Drag: 2
   m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -441,9 +441,9 @@ Transform:
   m_GameObject: {fileID: 6454341423555359891}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalScale: {x: 0.45, y: 0.45, z: 0.45}
   m_Children:
-  - {fileID: 1046669992987356375}
+  - {fileID: 8745477782472262948}
   m_Father: {fileID: 3662588694203468778}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -531,7 +531,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e7a4c69e84a1ce4e8d6986d0f894e4b, type: 3}
---- !u!4 &1046669992987356375 stripped
+--- !u!4 &8745477782472262948 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8635838536979245674, guid: 7e7a4c69e84a1ce4e8d6986d0f894e4b,
     type: 3}

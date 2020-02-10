@@ -45,7 +45,7 @@ public class WaitForStart : MonoBehaviour
             text.text = List[i];
             if (i == 3)
             {
-            
+         
             StartCoroutine(Play(1));
             Instantiate(Start_Game, null);
             }
@@ -66,7 +66,8 @@ public class WaitForStart : MonoBehaviour
         GamePlayerCtrl.Instance.Init_Infor();
         text.text = "";
         gameObject.SetActive(false);
-       
+        GamePlayerCtrl.isPlayingGame = true;
+
     }
 
 

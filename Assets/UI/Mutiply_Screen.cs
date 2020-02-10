@@ -12,6 +12,7 @@ public class Mutiply_Screen : MonoBehaviour
     public Screen_Type Type_Screen;
     public List<Windown> Windows;
     public InputField input_Name;
+    public Animator Setting;
     //   public BotNameData botnameData;
 
     // Start is called before the first frame update
@@ -103,6 +104,10 @@ public class Mutiply_Screen : MonoBehaviour
         if (anim != null)
         {
             anim.SetBool("Open", false);
+            if(Type_Screen == Screen_Type.Screen_Start)
+            {
+                Setting.SetBool("Open", false);
+            }
         }
         else
         {
@@ -117,6 +122,7 @@ public class Mutiply_Screen : MonoBehaviour
             {
              
                 windown.Open();
+                
             }
             else
             {

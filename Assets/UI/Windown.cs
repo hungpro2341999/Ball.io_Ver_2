@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Windown : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Windown : MonoBehaviour
     public Windown_Type type;
     public Animator Anim;
     bool Open_Anim = false;
+    public Text Coin;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +50,8 @@ public class Windown : MonoBehaviour
             }
             else if (type == Windown_Type.Game_Over)
             {
-                Cricle.Wait_Over_Game = true;
+                //   Cricle.Wait_Over_Game = true;
+                StartCoroutine(Start_Add_Coin(1));
             }
 
         }
@@ -74,5 +77,15 @@ public class Windown : MonoBehaviour
     {
         gameObject.SetActive(false);
        
+    }
+    IEnumerator Start_Add_Coin(int amount)
+    {
+        int targetCoin = RollBall.Coin;
+        while(int.Parse(Coin.text)==targetCoin)
+        yield return new WaitForSeconds(0);
+        int coin = int.Parse(Coin.text);
+        coin += amount;
+        coin = Mathf.Clamp(coin,0, targetCoin);
+        Coin.text = coin.ToString();
     }
 }
